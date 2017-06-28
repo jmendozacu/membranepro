@@ -1,0 +1,51 @@
+<!--@subject Bun venit, {{var customer.name}}! @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"htmlescape var=$customer.name":"Customer Name",
+"store url=\"customer/account/\"":"Customer Account Url"}
+@-->
+
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" height="100%" width="100%">
+        <tr>
+            <td align="center" valign="top" style="padding:20px 0 20px 0">
+                <!-- [ header starts here] -->
+                <table bgcolor="FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+                    <tr>
+                        <td valign="top">
+                            <a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a>
+                        </td>
+                    </tr>
+                    <!-- [ middle starts here] -->
+                    <tr>
+                        <td valign="top">
+                            <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 11px 0;"">Buna ziua, {{htmlescape var=$customer.name}}!</h1>
+                            <p style="font-size:12px; line-height:16px; margin:0 0 16px 0;">Bine ati venit la {{var store.getFrontendName()}}.<br/>Pentru a va autentifica de pe site-ul nostru apasati <a href="{{store url="customer/account/"}}" style="color:#CC3333;">Login</a> sau <a href="{{store url="customer/account/"}}" style="color:#CC3333;">Contul meu</a> in partea de sus a fiecarei pagini, si apoi introduceti adresa de email si parola.</p>
+                            <p style="font-size:12px; line-height:16px; margin:0 0 8px 0;">Dupa ce va autentificati in cont, veti putea sa:</p>
+                            <ul style="font-size:12px; line-height:16px; margin:0 0 16px 0; padding:0;">
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Comandati produse mai rapid</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Verificati starea comenzilor Dvs.</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Vedeti comenzile anterioare</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Modificati informatiile contului Dvs.</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Schimbati parola</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Introduceti adrese alternative (pentru livrarea catre mai multi membrii ai familiei si prieteni!)</li>
+                            </ul>
+                            <p style="font-size:12px; line-height:16px; margin:0;">Daca aveti intrebari legate de contul Dvs. sau oricare alta problema, va rugam sa ne contactati la <b><a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#CC3333;">{{config path='trans_email/ident_support/email'}}</a></b> sau prin telefon la <b>{{config path='general/store_information/phone'}}</b>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;"><center>
+                          <p style="font-size:12px; margin:0;">Va multumim, <strong>{{var store.getFrontendName()}}</strong></p></center></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>

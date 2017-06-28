@@ -1,0 +1,74 @@
+<?php 
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_RewardPoints
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+/**
+ * Rewardpoints Account Dashboard
+ * 
+ * @see Magestore_RewardPoints_Block_Account_Dashboard
+ */
+?>
+
+<p>
+    <?php if ($_expireDays = $this->getTransactionExpireDays()): ?>
+    <strong>
+        <?php echo $this->__('A transaction will expire after %s since creation.',
+            ($_expireDays == 1) ? $_expireDays . ' ' . $this->__('day') : $_expireDays . ' ' . $this->__('days')
+        ) ?>
+    </strong>
+    <br/>
+        <?php echo $this->__('View transaction history to follow when the transaction expires.') ?>
+    <br/>
+    <?php endif ?>
+    <?php if ($_holdingDays = $this->getHoldingDays()): ?>
+    <strong>
+        <?php echo $this->__('A transaction will be withheld for %s since creation.',
+            ($_holdingDays == 1) ? $_holdingDays . ' ' . $this->__('day') : $_holdingDays . ' ' . $this->__('days')
+        ) ?>
+        <br/>
+    </strong>
+    <?php endif ?>
+</p>
+    
+<p>
+    <?php if ($_maxBalance = $this->getMaxPointBalance()): ?>
+        <strong><?php echo $this->__('Maximum of your balance') ?>:</strong>
+        <strong class="rewardpoints-money"><?php echo Mage::helper('rewardpoints/point')->format($_maxBalance) ?></strong>
+        <br/>
+    <?php endif ?>
+</p>
+
+<p>
+    <?php if ($_redeemablePoints = $this->getRedeemablePoints()): ?>
+    <strong>
+        <?php echo $this->__('Reach %s to start using your balance for your purchase.',
+            '<strong class="rewardpoints-money">' . Mage::helper('rewardpoints/point')->format($_redeemablePoints) . '</strong>'
+        ) ?>
+    </strong>
+    <br/>
+    <?php endif ?>
+    <?php if ($_maxPerOrder = $this->getMaxPerOrder()): ?>
+    <strong>
+        <?php echo $this->__('Maximum %s are allowed to spend for an order.',
+            '<strong class="rewardpoints-money">' . Mage::helper('rewardpoints/point')->format($_maxPerOrder) . '</strong>'
+        ) ?>
+    </strong>
+    <?php endif ?>
+</p>

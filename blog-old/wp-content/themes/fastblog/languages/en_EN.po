@@ -1,0 +1,675 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Fast Blog\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-24 12:19+0100\n"
+"PO-Revision-Date: 2013-06-24 12:19+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../comment.php:13
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../comment.php:19
+msgid "reply"
+msgstr ""
+
+#: ../comment.php:23
+msgid "edit"
+msgstr ""
+
+#: ../comments.php:33
+msgid "Leave a comment"
+msgstr ""
+
+#: ../comments.php:33
+#, php-format
+msgid "Leave a reply to %s"
+msgstr ""
+
+#: ../comments.php:35
+msgid "cancel"
+msgstr ""
+
+#: ../comments.php:37
+#, php-format
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>."
+msgstr ""
+
+#: ../comments.php:38
+msgid "Log out of this account"
+msgstr ""
+
+#: ../comments.php:38
+msgid "Log out &raquo;"
+msgstr ""
+
+#: ../comments.php:40
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: ../comments.php:46
+msgid "name"
+msgstr ""
+
+#: ../comments.php:47
+msgid "email"
+msgstr ""
+
+#: ../comments.php:48
+msgid "website"
+msgstr ""
+
+#: ../comments.php:51
+msgid "Submit comment"
+msgstr ""
+
+#: ../functions.php:225
+msgid "Main navigation menu"
+msgstr ""
+
+#: ../functions.php:226
+msgid "Footer navigation menu"
+msgstr ""
+
+#: ../functions.php:230
+msgid "Sidebar"
+msgstr ""
+
+#: ../functions.php:310 ../options.php:13
+msgid "Fast Blog Options"
+msgstr ""
+
+#: ../functions.php:310
+msgid "Theme Options"
+msgstr ""
+
+#: ../functions.php:379
+msgid ""
+"This post is password protected. To view it please enter your password below:"
+msgstr ""
+
+#: ../functions.php:402
+msgid "Please enter your name."
+msgstr ""
+
+#: ../functions.php:404
+msgid "Invalid email address."
+msgstr ""
+
+#: ../functions.php:406
+msgid "Please write your comment."
+msgstr ""
+
+#: ../functions.php:435
+msgid "Message sent."
+msgstr ""
+
+#: ../functions.php:437
+msgid "Error occured. Message couldn't be sent."
+msgstr ""
+
+#: ../header.php:46 ../header.php:116
+msgid "search"
+msgstr ""
+
+#: ../header.php:60
+msgid ""
+"Your browser (Internet Explorer 6) is <strong>out of date</strong>. It has "
+"known <strong>security flaws</strong> and may <strong>not display all "
+"features</strong> of this and other websites. <a href=\"http://www.browser-"
+"update.org/update.html\">Learn how to update your browser</a>."
+msgstr ""
+
+#: ../index.php:19
+msgid "Oops, the page you are trying to reach doesn't exist."
+msgstr ""
+
+#: ../index.php:21
+#, php-format
+msgid "Search results for &#8216;%1$s&#8217; keyword"
+msgstr ""
+
+#: ../index.php:23
+#, php-format
+msgid "Posts tagged &#8216;%1$s&#8217;"
+msgstr ""
+
+#: ../index.php:25 ../index.php:27 ../index.php:29
+#, php-format
+msgid "Archive for %1$s"
+msgstr ""
+
+#: ../index.php:39
+msgid "Older posts"
+msgstr ""
+
+#: ../index.php:40
+msgid "Newer posts"
+msgstr ""
+
+#: ../loop.php:25 ../loop.php:31 ../options.php:99
+msgid "Post"
+msgstr ""
+
+#: ../loop.php:31 ../meta.php:29
+#, php-format
+msgid "View all posts in %s"
+msgstr ""
+
+#: ../loop.php:61
+msgid "More"
+msgstr ""
+
+#: ../meta.php:20
+msgid "Today"
+msgstr ""
+
+#: ../meta.php:41 ../options.php:109 ../options.php:112
+msgid "Short URL"
+msgstr ""
+
+#: ../meta.php:43
+msgid "Edit"
+msgstr ""
+
+#: ../options.php:15
+msgid ""
+"<strong>WooTumblog</strong> plugin is not active, so Fast Blog theme's "
+"features are limited."
+msgstr ""
+
+#: ../options.php:18
+msgid "Settings saved."
+msgstr ""
+
+#: ../options.php:32
+msgid "Appearance"
+msgstr ""
+
+#: ../options.php:36
+msgid "Color scheme"
+msgstr ""
+
+#: ../options.php:37
+msgid "Favicon path"
+msgstr ""
+
+#: ../options.php:37 ../options.php:54
+msgid "empty = default"
+msgstr ""
+
+#: ../options.php:38
+msgid "Sidebar position"
+msgstr ""
+
+#: ../options.php:39
+msgid "Left"
+msgstr ""
+
+#: ../options.php:40
+msgid "Right"
+msgstr ""
+
+#: ../options.php:48
+msgid "Header"
+msgstr ""
+
+#: ../options.php:49
+msgid "Height"
+msgstr ""
+
+#: ../options.php:51
+msgid "default"
+msgstr ""
+
+#: ../options.php:53
+msgid "Logo text or image path"
+msgstr ""
+
+#: ../options.php:55
+msgid "Center logo"
+msgstr ""
+
+#: ../options.php:57 ../options.php:142
+msgid "Tagline"
+msgstr ""
+
+#: ../options.php:57
+msgid "Show tagline"
+msgstr ""
+
+#: ../options.php:58
+msgid "Contact information"
+msgstr ""
+
+#: ../options.php:65 ../options.php:143
+msgid "Menu"
+msgstr ""
+
+#: ../options.php:67
+msgid "Pages"
+msgstr ""
+
+#: ../options.php:68
+msgid "Categories"
+msgstr ""
+
+#: ../options.php:71
+msgid "Tumblogs"
+msgstr ""
+
+#: ../options.php:74
+msgid "Main navigation menu content"
+msgstr ""
+
+#: ../options.php:75
+msgid "Footer navigation menu content"
+msgstr ""
+
+#: ../options.php:77
+msgid ""
+"Matters only if you do not select another in <code>Appearance/Menus</code>."
+msgstr ""
+
+#: ../options.php:79
+msgid "Search"
+msgstr ""
+
+#: ../options.php:79
+msgid "Display search form in the main navigation menu"
+msgstr ""
+
+#: ../options.php:86
+msgid "Content"
+msgstr ""
+
+#: ../options.php:87
+msgid "Images"
+msgstr ""
+
+#: ../options.php:88
+msgid "Use Fancybox to show images"
+msgstr ""
+
+#: ../options.php:90
+msgid "Display image title"
+msgstr ""
+
+#: ../options.php:100 ../options.php:120 ../options.php:188
+msgid "Settings"
+msgstr ""
+
+#: ../options.php:101
+msgid "Don't display post titles on post pages"
+msgstr ""
+
+#: ../options.php:102
+msgid "Show author details below posts"
+msgstr ""
+
+#: ../options.php:104
+msgid "Post meta"
+msgstr ""
+
+#: ../options.php:105
+msgid "Date"
+msgstr ""
+
+#: ../options.php:106
+msgid "Post category"
+msgstr ""
+
+#: ../options.php:107 ../options.php:123
+msgid "Comments number"
+msgstr ""
+
+#: ../options.php:108
+msgid "Author"
+msgstr ""
+
+#: ../options.php:110 ../options.php:124
+msgid "Admin edit link"
+msgstr ""
+
+#: ../options.php:112
+msgid "Don't create short URLs if showing them is turned off"
+msgstr ""
+
+#: ../options.php:119
+msgid "Page"
+msgstr ""
+
+#: ../options.php:120
+msgid "Don't display page titles on pages"
+msgstr ""
+
+#: ../options.php:121
+msgid "Page meta"
+msgstr ""
+
+#: ../options.php:122
+msgid "Modification date"
+msgstr ""
+
+#: ../options.php:132
+msgid "Typography"
+msgstr ""
+
+#: ../options.php:133 ../widgets.php:298
+msgid "None"
+msgstr ""
+
+#: ../options.php:139
+msgid "Fonts"
+msgstr ""
+
+#: ../options.php:141
+msgid "Logo"
+msgstr ""
+
+#: ../options.php:144
+msgid "Post/page title"
+msgstr ""
+
+#: ../options.php:145
+msgid "Widget title"
+msgstr ""
+
+#: ../options.php:146
+msgid "Headlines"
+msgstr ""
+
+#: ../options.php:147
+msgid "Cufon shortcode"
+msgstr ""
+
+#: ../options.php:148
+msgid "Other elements"
+msgstr ""
+
+#: ../options.php:149
+msgid "Custom elements"
+msgstr ""
+
+#: ../options.php:158
+msgid ""
+"If you use more than one version of the Myriad font, select the biggest "
+"version you need for all of them."
+msgstr ""
+
+#: ../options.php:160
+msgid "Custom elements CSS selector(s)"
+msgstr ""
+
+#: ../options.php:167
+msgid "Contact form"
+msgstr ""
+
+#: ../options.php:168
+msgid "Recipient e-mail address"
+msgstr ""
+
+#: ../options.php:169
+msgid "E-mail subject"
+msgstr ""
+
+#: ../options.php:173
+msgid "Blog name"
+msgstr ""
+
+#: ../options.php:174
+msgid "Blog URL"
+msgstr ""
+
+#: ../options.php:175
+msgid "Name field"
+msgstr ""
+
+#: ../options.php:176
+msgid "E-mail field"
+msgstr ""
+
+#: ../options.php:177
+msgid "Subject field"
+msgstr ""
+
+#: ../options.php:188
+msgid "Override <code>From</code> header with <code>Name</code> field"
+msgstr ""
+
+#: ../options.php:195
+msgid "Advanced"
+msgstr ""
+
+#: ../options.php:196
+msgid "Custom CSS code"
+msgstr ""
+
+#: ../options.php:197
+msgid "Custom JavaScript code"
+msgstr ""
+
+#: ../options.php:198
+msgid "Bit.ly login"
+msgstr ""
+
+#: ../options.php:198 ../options.php:199
+msgid "empty = default built-in"
+msgstr ""
+
+#: ../options.php:199
+msgid "Bit.ly API key"
+msgstr ""
+
+#: ../options.php:206
+msgid "Other"
+msgstr ""
+
+#: ../options.php:207
+msgid "Footer text"
+msgstr ""
+
+#: ../options.php:207
+msgid "empty = auto"
+msgstr ""
+
+#: ../options.php:208
+msgid "Alternative feed URL"
+msgstr ""
+
+#: ../options.php:208
+msgid "E.g. FeedBurner."
+msgstr ""
+
+#: ../options.php:209
+msgid "Google Analytics code"
+msgstr ""
+
+#: ../options.php:209
+msgid "Or another tracking code."
+msgstr ""
+
+#: ../options.php:216 ../options.php:224
+msgid "Save Changes"
+msgstr ""
+
+#: ../options.php:222
+msgid "Expand all"
+msgstr ""
+
+#: ../options.php:223
+msgid "Collapse all"
+msgstr ""
+
+#: ../toolbox.php:1715
+#, php-format
+msgid "New version of %1$s is available!"
+msgstr ""
+
+#: ../toolbox.php:1716
+msgid "Current version"
+msgstr ""
+
+#: ../toolbox.php:1717
+msgid "Available version"
+msgstr ""
+
+#: ../toolbox.php:1719
+msgid "Important"
+msgstr ""
+
+#: ../toolbox.php:1722
+msgid "Go to download page"
+msgstr ""
+
+#: ../toolbox.php:1723
+msgid "Remind me in 5 days"
+msgstr ""
+
+#: ../toolbox.php:1724
+msgid "Hide this message"
+msgstr ""
+
+#: ../tpl-contact-form.php:29
+msgid "Name"
+msgstr ""
+
+#: ../tpl-contact-form.php:30
+msgid "Email"
+msgstr ""
+
+#: ../tpl-contact-form.php:31
+msgid "Subject"
+msgstr ""
+
+#: ../tpl-contact-form.php:33
+msgid "Send"
+msgstr ""
+
+#: ../widgets.php:19 ../widgets.php:56
+msgid "Twitter"
+msgstr ""
+
+#: ../widgets.php:21
+msgid "Twitter stream."
+msgstr ""
+
+#: ../widgets.php:56
+msgid "Follow me!"
+msgstr ""
+
+#: ../widgets.php:62
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#: ../widgets.php:105 ../widgets.php:207
+msgid "Username"
+msgstr ""
+
+#: ../widgets.php:106
+msgid "Tweets count"
+msgstr ""
+
+#: ../widgets.php:107 ../widgets.php:209
+msgid "Update interval"
+msgstr ""
+
+#: ../widgets.php:107
+msgid "Tweets receiving interval (in minutes)."
+msgstr ""
+
+#: ../widgets.php:108
+msgid "Include retweets"
+msgstr ""
+
+#: ../widgets.php:109
+msgid "Exclude replies"
+msgstr ""
+
+#: ../widgets.php:110
+msgid "Consumer key"
+msgstr ""
+
+#: ../widgets.php:111
+msgid "Consumer secret"
+msgstr ""
+
+#: ../widgets.php:112
+msgid "Access token"
+msgstr ""
+
+#: ../widgets.php:113
+msgid "Access token secret"
+msgstr ""
+
+#: ../widgets.php:130 ../widgets.php:173
+msgid "Flickr"
+msgstr ""
+
+#: ../widgets.php:132
+msgid "Flickr photo stream."
+msgstr ""
+
+#: ../widgets.php:173
+msgid "My photos"
+msgstr ""
+
+#: ../widgets.php:208
+msgid "Photos count"
+msgstr ""
+
+#: ../widgets.php:209
+msgid "Photos receiving interval (in minutes)."
+msgstr ""
+
+#: ../widgets.php:210 ../widgets.php:305
+msgid "Same window"
+msgstr ""
+
+#: ../widgets.php:210 ../widgets.php:305
+msgid "New window"
+msgstr ""
+
+#: ../widgets.php:210
+msgid "Open photos in"
+msgstr ""
+
+#: ../widgets.php:241
+msgid "Social media"
+msgstr ""
+
+#: ../widgets.php:243
+msgid "Social media icons."
+msgstr ""
+
+#: ../widgets.php:303 ../widgets.php:376
+msgid "Title"
+msgstr ""
+
+#: ../widgets.php:305
+msgid "Open links in"
+msgstr ""
+
+#: ../widgets.php:310
+msgid "Icon & URL"
+msgstr ""
+
+#: ../widgets.php:330
+msgid "Scheme switcher"
+msgstr ""
+
+#: ../widgets.php:332
+msgid "Allows visitors to change site's color scheme."
+msgstr ""

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+
+<!--
+Default layout, loads most of the pages
+-->
+
+    <default>
+    
+    	<!-- Dependencies -->
+    	<reference name="head">
+    		<action method="addJs"><script>newsletterpopup/simulate.js</script></action>
+            <action method="addJs"><script>newsletterpopup/leightbox.js</script></action>
+            <action method="addCss"><stylesheet>newsletterpopup/css/newsletterpopup.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/leightbox.css</stylesheet></action>
+    	</reference>
+        
+        <!-- Pop-up -->
+        <reference name="before_body_end">
+            <block type="newsletterpopup/subscribe" name="popup.newsletter" template="newsletterpopup/subscribe.phtml">
+            	<action method="displayNewsletterPopup" translate="label" module="newsletterpopup" />
+            </block>
+        </reference>
+
+    </default>
+
+</layout>

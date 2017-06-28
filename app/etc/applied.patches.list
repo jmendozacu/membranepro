@@ -1,0 +1,28 @@
+2015-04-21 21:50:22 UTC | SUPEE-5344 | EE_1.14.1.0 | v1 | a5c9abcb6a387aabd6b33ebcb79f6b7a97bbde77 | Thu Feb 5 19:14:49 2015 +0200 | v1.14.1.0..HEAD
+patching file app/code/core/Mage/Admin/Model/Observer.php
+patching file app/code/core/Mage/Core/Controller/Request/Http.php
+patching file app/code/core/Mage/Oauth/controllers/Adminhtml/Oauth/AuthorizeController.php
+patching file app/code/core/Mage/XmlConnect/Model/Observer.php
+patching file lib/Varien/Db/Adapter/Pdo/Mysql.php
+
+
+2015-05-15 03:44:23 UTC | SUPEE-6004 | EE_1.9.0.0 | v1 | 73197f338d60626b1c38c59467c109b57483e436 | Wed May 13 13:34:16 2015 +0300 | v1.9.0.0..HEAD
+patching file app/code/core/Mage/Core/Controller/Varien/Router/Admin.php
+Hunk #1 succeeded at 129 with fuzz 2 (offset 34 lines).
+patching file app/code/core/Mage/Core/Controller/Varien/Router/Standard.php
+Hunk #1 succeeded at 201 (offset -4 lines).
+Hunk #2 succeeded at 276 (offset -3 lines).
+Hunk #3 succeeded at 312 (offset -3 lines).
+patching file app/code/core/Mage/Customer/Model/Customer.php
+Hunk #1 succeeded at 273 (offset 58 lines).
+patching file app/code/core/Mage/Dataflow/Model/Convert/Parser/Csv.php
+Hunk #1 succeeded at 266 (offset 1 line).
+patching file app/code/core/Mage/Install/Controller/Router/Install.php
+patching file app/code/core/Mage/Install/etc/config.xml
+Hunk #1 succeeded at 48 with fuzz 1 (offset 3 lines).
+patching file app/code/core/Mage/Sales/controllers/Recurring/ProfileController.php
+patching file lib/PEAR/PEAR/PEAR.php
+patching file lib/PEAR/PEAR/PEAR5.php
+patching file lib/Varien/Io/File.php
+
+

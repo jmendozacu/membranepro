@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie1
+ * @copyright	Copyright (C) 2010 - 2011 Open Source Matters. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+ -->
+
+<config>
+	<tabs>
+		<mc translate="label">
+			<label>MageClub Extensions</label>
+			<sort_order>40</sort_order>
+		</mc>
+	</tabs>
+	<sections>
+		<eucookie1 translate="label" module="eucookie1">
+			<class>separator-top</class>
+			<label>Eucookie Alert V1</label>
+			<tab>mc</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>300</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<general translate="label">
+					<label>General</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enable translate="label">
+							<label>Enable Eucookie Alert V1</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable>
+						<jquery translate="label">
+							<label>Enable Jquery</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</jquery>
+						
+						
+						<consenttype translate="label">
+                            <label>Consent Type: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>eucookie1/config_style1</source_model>
+							<sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </consenttype>
+						
+						
+						<tagPosition translate="label">
+                            <label>Tag Position: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>eucookie1/config_style2</source_model>
+							<sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tagPosition>
+						
+						<bannerPosition translate="label">
+                            <label>Banner Position: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>eucookie1/config_style3</source_model>
+							<sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bannerPosition>
+						<style translate="label">
+                            <label>Style For Color: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>eucookie1/config_style4</source_model>
+							<sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </style>
+						<onlyshowbanneronce translate="label">
+							<label>Only ShowBanner Once</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</onlyshowbanneronce>
+						<useSSL translate="label">
+							<label>useSSL</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</useSSL>
+						<hideallsitesbutton translate="label">
+							<label>Hide All Sites Button</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</hideallsitesbutton>
+						<hideprivacysettingstab translate="label">
+							<label>Hide Privacy Settings Tab</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</hideprivacysettingstab>
+						
+						
+						
+					</fields>
+				</general>
+			</groups>
+		</eucookie1>
+	</sections>
+</config>

@@ -1,0 +1,337 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Mage
+ * @package     Mage_Catalog
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<widgets>
+    <pronav_catalog_category_link type="pronav/category_widget_link" translate="name description" module="pronav">
+        <name>ProNav Catalog Category Link Item</name>
+        <description>Link to a Specified Category</description>
+        <is_email_compatible>1</is_email_compatible>
+        <parameters>
+            <id_path translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Category</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_category_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Category...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>90</sort_order>
+            </id_path>
+            <anchor_text translate="label description">
+                <visible>1</visible>
+                <label>Anchor Custom Text</label>
+                <description>If empty, the Category Name will be used</description>
+                <type>text</type>
+            </anchor_text>
+             <icon_path translate="label description">
+                <visible>1</visible>
+                <required>0</required>
+                <label>Icon Image Path</label>
+                <description>Remember to select 'Category Icon Link Item' or 'Category Icon Link First Item' as template if providing an icon image</description>
+                <type>text</type>
+            </icon_path>
+            <title translate="label">
+                <visible>1</visible>
+                <label>Anchor Custom Title</label>
+                <type>text</type>
+            </title>
+            <template translate="label">
+                <label>Template</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>pronav/items/widget/link/category.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>pronav/items/widget/link/category.phtml</value>
+                        <label>Category Link Item</label>
+                    </default>
+                    <link_inline0 translate="label">
+                        <value>pronav/items/widget/link/category_icon.phtml</value>
+                        <label>Category Icon Link Item</label>
+                    </link_inline0>
+                    <link_inline1 translate="label">
+                        <value>pronav/items/widget/link/category_first.phtml</value>
+                        <label>Category Link First Item</label>
+                    </link_inline1>
+                    <link_inline2 translate="label">
+                        <value>pronav/items/widget/link/category_first_icon.phtml</value>
+                        <label>Category Icon Link First Item</label>
+                    </link_inline2>
+                </values>
+            </template>
+        </parameters>
+    </pronav_catalog_category_link>
+    
+    <pronav_catalog_category_href type="pronav/category_widget_href" translate="name description" module="pronav">
+        <name>ProNav Catalog Category Href Value</name>
+        <description>Href value of a Specified Category</description>
+        <is_email_compatible>1</is_email_compatible>
+        <parameters>
+            <id_path translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Category</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_category_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Category...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>100</sort_order>
+            </id_path>
+            <template translate="label">
+                <label>Template</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>pronav/items/widget/link/category_href.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>pronav/items/widget/link/category_href.phtml</value>
+                        <label>Category Href Item</label>
+                    </default>
+                </values>
+            </template>
+        </parameters>
+    </pronav_catalog_category_href>
+    
+    <pronav_catalog_category_image type="pronav/category_widget_image" translate="name description" module="pronav">
+        <name>ProNav Catalog Category Image Item</name>
+        <description>Image Link of a Specified Category</description>
+        <is_email_compatible>1</is_email_compatible>
+        <parameters>
+            <id_path translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Choose Category</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_category_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Category...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                
+                <sort_order>120</sort_order>
+            </id_path>
+            <img_path translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Item Image</label>
+                <type>Text</type>
+            </img_path>
+            <anchor_text translate="label description">
+                <visible>1</visible>
+                <label>Anchor Custom Text</label>
+                <description>If empty, the Product Name will be used</description>
+                <type>text</type>
+            </anchor_text>
+            <title translate="label">
+                <visible>1</visible>
+                <label>Anchor Custom Title</label>
+                <type>text</type>
+            </title>
+            <template translate="label">
+                <label>Template</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>pronav/items/widget/link/category_image.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>pronav/items/widget/link/category_image.phtml</value>
+                        <label>Category Image Item</label>
+                    </default>
+                </values>
+            </template>
+        </parameters>
+    </pronav_catalog_category_image>
+    
+    
+    <pronav_product_link type="pronav/product_widget_link" translate="name description" module="pronav">
+        <name>ProNav Catalog Product Link Item</name>
+        <description>Link to a Specified Product</description>
+        <is_email_compatible>1</is_email_compatible>
+        <parameters>
+            <id_path translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Choose Product</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_product_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Product...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>110</sort_order>
+            </id_path>
+             <icon_path translate="label description">
+                <visible>1</visible>
+                <required>0</required>
+                <label>Icon Image Path</label>
+                <description>Remember to select 'Product Icon Link Item' or 'Product Icon Link First Item' as template if providing an icon image</description>
+                <type>text</type>
+            </icon_path>
+            <anchor_text translate="label description">
+                <visible>1</visible>
+                <label>Anchor Custom Text</label>
+                <description>If empty, the Product Name will be used</description>
+                <type>text</type>
+            </anchor_text>
+            <title translate="label">
+                <visible>1</visible>
+                <label>Anchor Custom Title</label>
+                <type>text</type>
+            </title>
+            <template translate="label">
+                <label>Template</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>pronav/items/widget/link/product.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>pronav/items/widget/link/product.phtml</value>
+                        <label>Product Link Item</label>
+                    </default>
+                    <link_inline0 translate="label">
+                        <value>pronav/items/widget/link/product_icon.phtml</value>
+                        <label>Product Icon Link Item</label>
+                    </link_inline0>
+                    <link_inline1 translate="label">
+                        <value>pronav/items/widget/link/product_first.phtml</value>
+                        <label>Product Link First Item</label>
+                    </link_inline1>
+                    <link_inline2 translate="label">
+                        <value>pronav/items/widget/link/product_first_icon.phtml</value>
+                        <label>Product Icon Link First Item</label>
+                    </link_inline2>
+                </values>
+            </template>
+        </parameters>
+    </pronav_product_link>
+    
+    <pronav_catalog_product_href type="pronav/product_widget_href" translate="name description" module="pronav">
+        <name>ProNav Catalog Product Href Value</name>
+        <description>Href value of a Specified Product</description>
+        <is_email_compatible>1</is_email_compatible>
+        <parameters>
+            <id_path translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Choose Product</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_product_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Product...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>120</sort_order>
+            </id_path>
+            <template translate="label">
+                <label>Template</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>pronav/items/widget/link/product_href.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>pronav/items/widget/link/product_href.phtml</value>
+                        <label>Product Href Item</label>
+                    </default>
+                </values>
+            </template>
+        </parameters>
+    </pronav_catalog_product_href>
+    
+    
+    <pronav_catalog_product_image type="pronav/product_widget_image" translate="name description" module="pronav">
+        <name>ProNav Catalog Product Image Item</name>
+        <description>Image Link of a Specified Product</description>
+        <is_email_compatible>1</is_email_compatible>
+        <parameters>
+            <id_path translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Choose Product</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_product_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Product...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                
+                <sort_order>120</sort_order>
+            </id_path>
+            <img_path translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Image</label>
+                <type>Text</type>
+            </img_path>
+            <anchor_text translate="label description">
+                <visible>1</visible>
+                <label>Anchor Custom Text</label>
+                <description>If empty, the Product Name will be used</description>
+                <type>text</type>
+            </anchor_text>
+            <title translate="label">
+                <visible>1</visible>
+                <label>Anchor Custom Title</label>
+                <type>text</type>
+            </title>
+            <template translate="label">
+                <label>Template</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>pronav/items/widget/link/product_image.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>pronav/items/widget/link/product_image.phtml</value>
+                        <label>Product Image Item</label>
+                    </default>
+                </values>
+            </template>
+        </parameters>
+    </pronav_catalog_product_image>
+    
+</widgets>

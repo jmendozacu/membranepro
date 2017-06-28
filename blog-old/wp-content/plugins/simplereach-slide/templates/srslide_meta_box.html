@@ -1,0 +1,21 @@
+<div id="srslide_meta_box">
+<input value='srslide_edit' type='hidden' name='srslide_edit' />
+    <table>
+        <tr>
+            <th>{{title_text}}</th>
+            <td><input value="{{title}}" type="text" name="srslide_title" size="60" /></td>
+        </tr>
+        <tr>
+            <th scope="row">{{article_icon_text}}</th>
+            <td><input value="{{article_icon}}" type="text" name="srslide_article_icon" size="60" /></td>
+        </tr>
+        <tr>
+            <th scope="row">{{tags_text}}</th>
+            <td><input value="{{tags}}" type="text" name="srslide_tags" size="60" /></td>
+        </tr>
+        <tr>
+            <th scope="row">{{disable_slide_text}}</th>
+            <td><input name="srslide_disable_on_post" id="srslide_disable_on_post" type="checkbox" {{#disable_slide_on_post}}CHECKED=CHECKED{{/disable_slide_on_post}} /></td>
+        </tr>
+    </table>
+</div>

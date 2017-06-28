@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<magestore translate="label">
+			<label>Magestore Extension</label>
+			<sort_order>400</sort_order>
+		</magestore>
+	</tabs>
+	<sections>
+		<dailydeal translate="label" module="dailydeal">
+			<class>separator-top</class>
+			<label>Daily deal</label>
+			<tab>magestore</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>299</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<general translate="label">
+					<label>General Configuration</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+                                                <limit translate="label">
+							<label>Maximum purchase quantity of each order for each deal</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Leave blank if unlimited</comment>
+						</limit>
+					</fields>				
+				</general>
+                                
+				<sidebar translate="label">
+					
+					<label>Display On Sidebar Blocks</label>
+					
+					<frontend_type>text</frontend_type>
+
+                    <sort_order>10</sort_order>
+
+                    <show_in_default>1</show_in_default>
+
+                    <show_in_website>1</show_in_website>
+
+                    <show_in_store>0</show_in_store>
+
+                    <fields>
+					
+						<is_display translate="label">
+						
+							<label>Display deal(s) on sidebar</label>
+
+                            <frontend_type>select</frontend_type>                            
+
+                            <sort_order>1</sort_order>
+
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+								
+                            <show_in_default>1</show_in_default>
+
+                            <show_in_website>1</show_in_website>
+
+                            <show_in_store>1</show_in_store>
+							
+							<comment>Enable to show deal blocks on sidebar</comment>
+							
+						</is_display>
+					
+						<display_on_left_right_sidebar translate="label">
+						
+							<label>Display deal(s) on the</label>
+
+                            <frontend_type>select</frontend_type>                            
+
+                            <sort_order>2</sort_order>
+
+							<source_model>dailydeal/Leftrightsidebar</source_model>
+								
+                            <show_in_default>1</show_in_default>
+
+                            <show_in_website>1</show_in_website>
+
+                            <show_in_store>1</show_in_store>
+							
+							<comment>Show deal list on the left (or the right) sidebar</comment>
+							
+						</display_on_left_right_sidebar>
+					
+						
+						<number_deal translate="label">
+						
+                            <label>Maximun number of deals</label>
+
+                            <frontend_type>text</frontend_type>                            
+
+                            <sort_order>15</sort_order>
+
+							<show_in_default>1</show_in_default>
+
+                            <show_in_website>1</show_in_website>
+
+                            <show_in_store>1</show_in_store>
+							
+							<comment>Maximun number of deals shown on sidebar</comment>
+							
+                        </number_deal>
+					
+					</fields>
+					
+				</sidebar>
+			</groups>
+		</dailydeal>
+	</sections>
+</config>

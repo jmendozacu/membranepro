@@ -1,0 +1,8 @@
+<config>
+	<modules>
+		<Cybertech_Selfpickup>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Cybertech_Selfpickup>
+	</modules>
+</config> 

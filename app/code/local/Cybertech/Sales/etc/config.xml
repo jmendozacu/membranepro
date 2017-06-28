@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Cybertech_Sales>
+			<version>0.1.0</version>
+			<depends>
+				<Mage_Sales />
+			</depends>
+		</Cybertech_Sales>
+	</modules>
+	<global>
+		<models>
+			<sales>
+				<rewrite>
+					<service_order>Cybertech_Sales_Model_Service_Order</service_order>
+					<order_invoice>Cybertech_Sales_Model_Order_Invoice</order_invoice>
+					<order_invoice_item>Cybertech_Sales_Model_Order_Invoice_Item</order_invoice_item>
+				</rewrite>
+			</sales>
+		</models>
+	</global>
+</config> 

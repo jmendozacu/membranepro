@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Busteco_AjaxLogin>
+            <version>1.0.0</version>
+        </Busteco_AjaxLogin>
+    </modules>
+    <frontend>
+        <routers>
+            <ajaxlogin>
+                <use>standard</use>
+                <args>
+                    <module>Busteco_AjaxLogin</module>
+                    <frontName>ajaxlogin</frontName>
+                </args>
+            </ajaxlogin>
+            <customer>
+                <args>
+                    <modules>
+                        <busteco_ajaxlogin before="Mage_Customer_AccountController">Busteco_AjaxLogin</busteco_ajaxlogin>
+                    </modules>
+                </args>
+            </customer>
+        </routers>
+    </frontend>
+    <global>
+        <helpers>
+            <ajaxlogin>
+                <class>Busteco_AjaxLogin_Helper</class>
+            </ajaxlogin>
+        </helpers>
+    </global>
+</config>

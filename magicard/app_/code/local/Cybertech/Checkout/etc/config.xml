@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<config>
+ 
+    <modules>
+        <Cybertech_Carttotals>
+            <version>0.1.0</version>
+        </Cybertech_Carttotals>
+    </modules>
+	
+	<global>
+		<blocks>
+			<checkout>
+				<rewrite>
+					<cart_totals>Cybertech_Checkout_Block_Cart_Totals</cart_totals>
+				</rewrite>
+			</checkout>
+		</blocks>
+	</global>
+	
+</config>

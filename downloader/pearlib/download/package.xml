@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.7.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+ <name>Ebizmarts_MailChimp</name>
+ <channel>connect.magentocommerce.com/community</channel>
+ <summary>Mail Chimp module</summary>
+ <description>Mail Chimp module connect your Magento store with the Mail Chimp email marketing system.</description>
+ <lead>
+  <name>Jorge Bejar</name>
+  <user>ebizmarts</user>
+  <email>magento_support@b4before.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2009-10-27</date>
+ <time>17:18:07</time>
+ <version>
+  <release>1.4.3</release>
+  <api>1.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license>GPL</license>
+ <notes>Release 1.4.3
+------------------
+
+- Bugs fixed in code at unsubscribing.
+
+Release 1.4.1
+------------------
+
+- Bugs fixed in code.
+
+Release 1.4
+------------------
+
+- Renewed code according to new API specs, in which Username and Password are not needed anymore, just the API key.
+
+- Fixed code error in Admin Panel.
+
+Release 1.3.8
+------------------
+
+- Code fixed.
+
+Release 1.3.7
+------------------
+
+- Can’t save customer bug fixed.
+
+Release 1.3.5
+------------------
+
+- admin config. Mailchimp list id drop down selector.
+
+Release 1.3.4
+------------------
+
+- admin config. section bug fixed.
+
+Release 1.3.3
+------------------
+
+- Bug pack fixed.
+
+Release 1.3.2
+------------------
+
+- Bug pack fixed.
+
+Release 1.3.1
+------------------
+
+- List id display on error
+
+Release 1.3
+------------------
+
+- Newsletter integration
+You can choose a List Id  for each store
+
+Release 1.2
+------------------
+
+- Newsletter integration
+When customers subscribe/unsubscribe from Magento newsletter, they automatically are added/removed from Mail Chimp.
+
+- Batch Subscribe
+The first time you could use the Batch Subscribe tool to import all your newsletter subscribers to Mail Chimp.
+This option is in &quot;Newsletter / Subscribers&quot;
+ </notes>
+ <contents>
+  <dir name="/">
+   <dir name="">
+    <dir name="Ebizmarts">
+     <dir name="Mailchimp">
+      <dir name="Block">
+       <dir name="Adminhtml">
+        <dir name="Newsletter">
+         <file md5sum="1f2dd41ead3664c87a3a85cdfcb10d76" name="Subscriber.php" role="magelocal" />
+        </dir> <!-- //Ebizmarts/Mailchimp/Block/Adminhtml/Newsletter -->
+       </dir> <!-- //Ebizmarts/Mailchimp/Block/Adminhtml -->
+      </dir> <!-- //Ebizmarts/Mailchimp/Block -->
+      <dir name="controllers">
+       <file md5sum="d09048ec7621088876762c3bf5a6bb7b" name="AccountController.php" role="magelocal" />
+       <file md5sum="642952a70572a08c84ffbb15a7d881e1" name="IndexController.php" role="magelocal" />
+      </dir> <!-- //Ebizmarts/Mailchimp/controllers -->
+      <dir name="etc">
+       <file md5sum="506ff44d501b8d39a97e840356aa18d0" name="config.xml" role="magelocal" />
+       <file md5sum="6908cf162fa8fd94b6c4f4888184489d" name="system.xml" role="magelocal" />
+      </dir> <!-- //Ebizmarts/Mailchimp/etc -->
+      <dir name="Helper">
+       <file md5sum="315f0ed55ce23619e54db8bdae6cd855" name="Data.php" role="magelocal" />
+      </dir> <!-- //Ebizmarts/Mailchimp/Helper -->
+      <dir name="Model">
+       <dir name="Mailchimp">
+        <file md5sum="fdb48853a55f2a617129814fa0454aa1" name="Emailtype.php" role="magelocal" />
+        <file md5sum="edab97cc472adda85f1f100a67b89962" name="Listids.php" role="magelocal" />
+        <file md5sum="2a28abbb0432ddfbe549dd3b37d2a320" name="Mailchimp.php" role="magelocal" />
+       </dir> <!-- //Ebizmarts/Mailchimp/Model/Mailchimp -->
+       <dir name="Newsletter">
+        <file md5sum="6b1ebf001f236315b28ae9d2150b364b" name="Subscriber.php" role="magelocal" />
+       </dir> <!-- //Ebizmarts/Mailchimp/Model/Newsletter -->
+      </dir> <!-- //Ebizmarts/Mailchimp/Model -->
+     </dir> <!-- //Ebizmarts/Mailchimp -->
+    </dir> <!-- //Ebizmarts -->
+   </dir> <!-- / -->
+   <dir name="adminhtml">
+    <dir name="default">
+     <dir name="default">
+      <dir name="template">
+       <dir name="newsletter">
+        <dir name="subscriber">
+         <file md5sum="15f8d36cf1334fb6642a3f95d8f581fe" name="list_mailchimp.phtml" role="magedesign" />
+        </dir> <!-- /adminhtml/default/default/template/newsletter/subscriber -->
+       </dir> <!-- /adminhtml/default/default/template/newsletter -->
+      </dir> <!-- /adminhtml/default/default/template -->
+     </dir> <!-- /adminhtml/default/default -->
+    </dir> <!-- /adminhtml/default -->
+   </dir> <!-- /adminhtml -->
+   <dir name="modules">
+    <file md5sum="e6b6e8204de7a4bdc51704f31db20a05" name="Ebizmarts_Mailchimp.xml" role="mageetc" />
+   </dir> <!-- /modules -->
+  </dir> <!-- / -->
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+    <max>6.0.0</max>
+    <exclude>6.0.0</exclude>
+   </php>
+   <pearinstaller>
+    <min>1.6.2</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease />
+</package>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Cybertech_Newslettersubscribe>
+            <version>0.1.0</version>
+        </Cybertech_Newslettersubscribe>
+    </modules>
+ 
+    <frontend>
+        <routers>
+            <newsletter>
+                <args>
+                    <modules>
+                        <Cybertech_Newslettersubscribe before="Mage_Newsletter">Cybertech_Newslettersubscribe</Cybertech_Newslettersubscribe>
+                    </modules>
+                </args>
+            </newsletter>
+        </routers>
+    </frontend>
+</config>

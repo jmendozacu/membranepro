@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Mage_Page> //relates to file structure
+			<active>true</active> //set to active
+			<codePool>local</codePool> //tell which folder to look in
+			<depends> //requires the mage core
+				<Mage_Core/>
+			</depends>
+		</Mage_Page>
+	</modules>
+</config>

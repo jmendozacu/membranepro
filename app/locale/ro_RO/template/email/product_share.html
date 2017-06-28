@@ -1,0 +1,22 @@
+{* This is a comment block
+
+Available vars in this template:
+  - nume                       Numele recipientului
+  - email                      Adresa de email a recipientului
+  - nume_produs                Nume produs
+  - url_produs                 Url pentru produs
+  - imagine_produs             Url pentru imaginea mica a produsului (75 px)
+  - mesaj                      mesajul custom al trimitatorului
+  - numele_trimitatorului      numele trimitatorului
+  - email-ul_trimitatoruliu    email-ul trimitatorului
+
+Variabila utilizatorului: {{var var_name}}
+*}<!--@subject Bun venit, {{var name}} @-->
+<!--@vars
+{"htmlescape var=$name":"Recipient Name",
+"var product_url":"Url for Product",
+"var product_name":"Product Name",
+"var message":"Sender Message"}
+@-->
+
+Bine ati venit, {{htmlescape var=$name}}<br /><br />Va rugam sa va uitati la <a href="{{var product_url}}">{{var product_name}}</a><br /><br />Aici este mesajul: <br />{{var message}}<br /><br />

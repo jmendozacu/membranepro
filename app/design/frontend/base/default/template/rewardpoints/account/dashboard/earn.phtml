@@ -1,0 +1,39 @@
+<?php 
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_RewardPoints
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+/**
+ * Rewardpoints Account Dashboard
+ * 
+ * @see Magestore_RewardPoints_Block_Account_Dashboard
+ */
+?>
+
+<?php if ($this->getCanShow()): ?>
+    <strong><?php echo $this->__('How you can earn points') ?></strong>
+    <?php $rate = $this->getEarningRate() ?>
+    <?php if ($rate && $rate->getId()): ?>
+        <br/>
+        <?php echo $this->__('Each %s spent for your order will earn %s.',
+            '<strong class="rewardpoints-money">' . $this->getCurrentMoney($rate) . '</strong>',
+            '<strong class="rewardpoints-money">' . Mage::helper('rewardpoints/point')->format($rate->getPoints()) . '</strong>'
+        ) ?>
+    <?php endif ?>
+<?php endif ?>

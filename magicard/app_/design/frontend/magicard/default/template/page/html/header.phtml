@@ -1,0 +1,40 @@
+<?php
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>    
+    <div id="header">
+    	<?php echo $this->getChildHtml('topContainer'); ?>
+    	
+    	<?php if ($this->getIsHomePage()):?>
+    	<div class="logo fleft">
+	        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong>
+	        	<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+	        		<img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+	        	</a>
+	        </h1>
+        </div>
+        <?php else:?>
+        	<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <?php endif?>
+        
+        <div class="header-menu fright">
+            <?php echo $this->getChildHtml('topLinks') ?>
+            <div class="fclear"></div>
+        </div>
+        <div style="clear:right;"></div>
+        <div class="search-container fright">
+			<?php echo $this->getChildHtml('topSearch') ?>
+		</div>
+        
+        <?php //echo $this->getChildHtml('store_language') ?>
+        
+        <div class="fclear"></div>
+        
+	</div>
+        
+	<div id="menu-container">
+		<ul id="menu">
+			<?php echo $this->getChildHtml('topMenu') ?>
+        </ul>
+	</div>

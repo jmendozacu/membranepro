@@ -1,0 +1,13 @@
+a:9:{s:7:"attribs";a:2:{s:5:"xmlns";s:36:"http://pear.php.net/dtd/rest.package";s:18:"xsi:schemaLocation";s:80:"http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd";}s:1:"n";s:26:"magento_classic_theme_free";s:1:"c";s:37:"connect.magentocommerce.com/community";s:2:"ca";a:2:{s:7:"attribs";a:1:{s:10:"xlink:href";s:34:"/Chiara_PEAR_Server_REST/c/Default";}s:8:"_content";s:7:"Default";}s:1:"l";s:32:"GNU General Public License (GPL)";s:2:"lu";s:50:"http://www.opensource.org/licenses/gpl-license.php";s:1:"s";s:26:"Magento Classic Free Theme";s:1:"d";s:1765:"<p>We are proud to introduce first free professional Magento theme. More info and updates at our <a href="http://blog.templates-master.com/free-magento-classic-theme/">Magento theme blog</a>.</p>
+<p>* Magento 1.4 compatable<br /> * CSS3 Powered!<br /> * Easy color changes<br /> * Easy to upgrade, easy to customise<br /> * Supports all main browsers (IE6,IE7,IE8,FF2,FF3,Opera,Safari<br /> * Free updates included</p>
+<p>Installation instructions and psd file available at <a href="http://freedemo.templates-master.com/downloads/f002.classic.zip">our server</a>. You can also check theme demo at our <a href="http://freedemo.templates-master.com/f002">demo store</a>. Additional colors can be also downloaded at <a href="http://freedemo.templates-master.com/downloads/f002.classic.9.colors.zip">our server</a>.</p>
+<p>Changelog:</p>
+<p><br /> Version 1.4.1.2<br /> &mdash; Duplicate description bug fixed.</p>
+<p><br /> Version 1.4.1.0<br /> &mdash; Magento 1.4.1 update.</p>
+<p><br /> Version 1.4.0.1<br /> &mdash; Magento 1.4 complete multicolor package.</p>
+<p><br /> Version 1.2<br /> &mdash; Magento 1.4 support added. Additional colors not available yet.</p>
+<p>&nbsp;</p>
+<h3>Support</h3>
+<p>Join discussion and ask your questions at <a href="http://magentocommerce.com/group/join/350">Templates Master Magento group</a> and our <a href="http://blog.templates-master.com/">Magento Blog</a>. Please contact us at <a href="http://templates-master.com/contacts/">Templates Master contact form</a> for support.</p>
+<h3>More Magento theme and Magento extensions</h3>
+<p>More Magento Themes and Extensions at <a href="../../../developer/TemplatesMaster#mcDeveloperHead">Magento Connect</a> and <a href="http://templates-master.com">Templates Master Store</a>.</p>";s:1:"r";a:1:{s:7:"attribs";a:1:{s:10:"xlink:href";s:53:"/Chiara_PEAR_Server_REST/r/magento_classic_theme_free";}}}

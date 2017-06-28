@@ -1,0 +1,162 @@
+<?php 
+
+	$categoryIds = array(3,24,29);		// Categories from which to take all products by brand and model - Printers Category
+	$attributeCode = 'consumable_type';	// Attribute to filter results by - Consumable type (Card / Ribbon / Cleaning Kit)
+	
+	
+	
+// ----- Get attribute values ---------------------------------------------------------------------------------------------
+	$attributeInfo = Mage::getResourceModel('eav/entity_attribute_collection')
+                        ->setCodeFilter($attributeCode)
+                        ->getFirstItem();
+	$attributeInfoArr = $attributeInfo->getData();
+	$attributeOptions = $attributeInfo->getSource()->getAllOptions(false);
+	
+	foreach ($attributeOptions as $id=>$attributeOptionArr)
+	{
+		//$value = $attributeOptionArr['value'];
+		$value = urlencode($attributeOptionArr['label']);
+		$label = $attributeOptionArr['label'];
+		$attributeOptionsArr[$value] = $label;
+	}
+	$attributeId = $attributeInfoArr['attribute_id'];
+	//$attributeCode is already defined
+	
+	
+	
+// ----- Build Manufacturers / Models arrays ------------------------------------------------------------------------------
+	$category = new Mage_Catalog_Model_Category();
+	foreach($categoryIds as $categoryId)
+	{
+		$category->load($categoryId);
+	    $collection = $category->getProductCollection()
+	    				->addAttributeToFilter('visibility', array('neq'=>array('1')));	// visibility not equal to 1 ['Not visible individually'];
+	    foreach ($collection as $product)
+	    {
+	        $productIdArr[] = $product->getId();
+	    }
+	}
+    
+    $_product = new Mage_Catalog_Model_Product();
+	foreach ($productIdArr as $_productId)
+	{
+		$_product->load($_productId);
+		
+		$manufacturerId = $_product->getManufacturer();
+		$manufacturers[$manufacturerId] = $_product->getAttributeText('manufacturer');
+		
+		$products[$manufacturerId][$_productId]['name'] = $_product->getName();
+		$products[$manufacturerId][$_productId]['sku'] = $_product->getSku();
+	}
+?>
+<form name="consumablesConfiguratorForm" action="<?php echo Mage::getURL('configurator-consumabile') ?>" method="get" onsubmit="submitConsumablesConfiguratorForm(); return false;">
+	<h3>Consumabile Magicard</h3>
+	<div class="manufacturer-container" style="position:absolute; top:-9999px;">
+	<select name="brand" id="brand" onchange="updateModels(this.options[this.selectedIndex].value)">
+		<option value="0">Alegeti Producatorul</option>
+<?php 
+		foreach($manufacturers as $manufacurerId=>$manufacturerName)
+		{
+			if($manufacurerId)
+				echo '<option value="'.$manufacurerId.'">'.$manufacturerName.'</option>';
+		}
+?>
+	</select>
+	</div>
+	<div class="model-container">
+	<select name="sku" id="sku" onchange="updateTypes(this.options[this.selectedIndex].value)">
+		<option value="0">Alegeti intai Producatorul</option>
+	</select>
+	</div>
+	<div class="type-container">
+	<select name="type" id="type">
+		<option value="0">Alegeti intai Modelul</option>
+	</select>
+	<button type="submit" title="<?php echo $this->__('Search') ?>" class="button small-button fright" onclick="return submitConsumablesConfiguratorForm();"><span><span><?php echo $this->__('Search') ?></span></span></button>
+	</div>
+</form>
+
+<script language="javascript" type="text/javascript">
+
+	document.observe('dom:loaded', function(){
+		updateModels('53'); // Magicard
+	});
+
+	function submitConsumablesConfiguratorForm()
+	{
+		var valid = validateForm();
+
+		if(valid==false)
+			return false;
+		
+		var sku  = document.consumablesConfiguratorForm.sku.value;
+		var type = document.consumablesConfiguratorForm.type.value;
+		
+		window.location.href = '<?php echo Mage::getURL('configurator-consumabile') ?>' + '?sku=' + sku + '&type=' + type;
+		return false;
+	}
+
+
+
+	function updateModels(manufacturerId)
+	{
+		document.consumablesConfiguratorForm.sku.options.length = 0;
+		
+		switch (manufacturerId)
+		{
+<?php
+			foreach($products as $manufacturerId=>$productArr):
+				if(!$manufacturerId) continue;
+				$i=0;
+?>
+			case "<?php echo $manufacturerId ?>" :
+				document.consumablesConfiguratorForm.sku.options[0]=new Option("Alegeti Modelul","");
+<?php
+				foreach($products[$manufacturerId] as $productId=>$productArr):
+					if(!$manufacturerId) continue;
+					$i++;
+?>
+				document.consumablesConfiguratorForm.sku.options[<?php echo $i ?>]=new Option("<?php echo $productArr['name'] ?>","<?php echo $productArr['sku'] ?>");
+<?php
+				endforeach;
+?>
+				//document.consumablesConfiguratorForm.sku.focus();
+			break;
+				
+<?php
+			endforeach;
+?>
+			
+			default: document.consumablesConfiguratorForm.sku.options[0]=new Option("Alegeti Producatorul","");
+			}
+			return true;
+		}
+
+
+
+		function updateTypes(manufacturerId)
+		{
+			document.consumablesConfiguratorForm.type.options[0]=new Option("Toate consumabilele","0");
+<?php 
+			$i = 0;
+			foreach($attributeOptionsArr as $optionId=>$optionLabel)
+			{ 
+				if(!$optionId) continue;
+				echo 'document.consumablesConfiguratorForm.type.options['.++$i.']=new Option("'.$optionLabel.'","'.$optionId.'");';
+			}
+?>
+			document.consumablesConfiguratorForm.type.focus();
+		}
+
+		function validateForm(form)
+		{
+			var form = document.consumablesConfiguratorForm;
+			
+			if(form.sku.options[form.sku.selectedIndex].value==0) {
+				alert('Alegeti modelul imprimantei!');
+				return false;
+			}
+
+			return true;
+		}
+</script>

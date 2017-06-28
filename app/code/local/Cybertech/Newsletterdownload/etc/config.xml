@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Cybertech_Newsletterdownload>
+            <version>0.1.0</version>
+        </Cybertech_Newsletterdownload>
+    </modules>
+    <global>
+        <helpers>
+            <Cybertech_Newsletterdownload>
+                <class>Cybertech_Newsletterdownload_Helper</class>
+            </Cybertech_Newsletterdownload>
+        </helpers>
+        <template>
+            <email>
+                <newsletter_download_template translate="label" module="Cybertech_Newsletterdownload">
+                    <label>Newsletter Subscription Download</label>
+                    <file>newsletter_subscr_download.html</file>
+                    <type>html</type>
+                </newsletter_download_template>
+            </email>
+        </template>
+    </global>
+    <frontend>
+        <events>
+        	<newsletter_subscriber_save_before>
+                <observers>
+                    <Cybertech_Newsletterdownload_Model_Observer>
+                        <type>singleton</type>
+                        <class>Cybertech_Newsletterdownload_Model_Observer</class>
+                        <method>alreadySubscribed</method>
+                    </Cybertech_Newsletterdownload_Model_Observer>
+                </observers>
+            </newsletter_subscriber_save_before> 
+            <newsletter_subscriber_save_after>
+                <observers>
+                    <Cybertech_Newsletterdownload_Model_Observer>
+                        <type>singleton</type>
+                        <class>Cybertech_Newsletterdownload_Model_Observer</class>
+                        <method>newsletterDownload</method>
+                    </Cybertech_Newsletterdownload_Model_Observer>
+                </observers>
+            </newsletter_subscriber_save_after>
+        </events>
+    </frontend>
+</config>

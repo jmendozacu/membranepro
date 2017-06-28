@@ -1,0 +1,187 @@
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_RewardPoints
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+/* ============ Reward Points Stylesheets ============ */
+
+/* Cart Sidebar - MiniCart */
+.rewardpoints-cart-sidebar {min-height: 22px; text-align: left; clear: both; margin-top: 5px;}
+.rewardpoints-cart-sidebar img {margin-right: 3px;}
+
+
+/* ============ Reward Points Slider ============ */
+#rewardpoints-slider-container {}
+#rewardpoints-slider { position: relative; z-index: 9; height: 18px; margin: 12px auto 18px; padding: 0 24px; cursor: pointer; width: 209px; float: left;}
+#rewardpoints-slider-zoom-out { position: absolute; left: 1px; top: 0px;}
+#rewardpoints-track { position: relative; height: 18px; background: url('images/reward_rule.gif') -1px 0px repeat-x;}
+#rewardpoints-handle { position: absolute; top: -1px; width: 9px; height: 22px; background: url('images/magnifier_handle.gif') 0 0 no-repeat;}
+#rewardpoints-slider-zoom-in { position: absolute; right: 1px; top: 0px;}
+.rewardpoints-slider-label { margin: 12px 0 0 5px; float: left;}
+
+#rewardpoints-login-msg, #rewardpoints-needmore-msg { clear:both; min-height:13px; margin:3px 0 0; padding-left:17px;line-height:13px; background:url('images/validation_advice_bg.gif') 2px 0 no-repeat; color:#eb340a;}
+
+#rewardpoints-needmore-points { font-size: 1.4em; font-weight: bold;}
+#rewardpoints-settings { font-size: 1.4em; }
+
+/* ============ Cart Page ============ */
+.rewards-sales-rules dt {margin-top: 7px;}
+.rewards-sales-rules dt label {font-weight: bold; color: #666;}
+.rewards-sales-rules #rewardpoints-slider {margin-bottom: 10px;}
+.rewards-sales-rules #reward_sales_rule {width: 157px; margin-left: 3px;}
+.rewardpoints-slider-input .input-point {text-align: center;}
+.rewardpoints-slider-input .input-max {margin-top: 5px;}
+#reward_sales_point {width: 49px;}
+#reward_ajax_loading {margin: 10px; text-align: center; font-style: italic;}
+
+.rule_refreshing_label {color: #666; font-style: italic;}
+
+/* ============ Checkout Page ============ */
+.sp-methods #cart-rewards-form {width: 280px;}
+.sp-methods #cart-rewards-form .rewards-sales-rules label {float: none;}
+.sp-methods .rewards-sales-rules dd label {font-weight: normal; color: #000;}
+
+/* ============ One Step Checkout Page ============ */
+#cart-rewards-form dd.rewards-slider {margin-left: 17px;}
+
+
+/* ============ Rewards Points Summary ============ */
+.rewardpoints-money {color: #3182be; }
+
+.dashboard .box-rewardpoints-summary, .box-rewardpoints-summary{ color:#333; }
+.dashboard .box-rewardpoints-summary .box-head h2, .box-rewardpoints-summary .box-head h2 {/*background: url("images/rewards.png") no-repeat scroll 0 0 transparent;*/ padding-top:5px;}
+
+.box-rewardpoints-history .box-head h2 {background: url("images/transactions.png") no-repeat scroll 0 6px transparent;padding: 5px 0 5px 25px;}
+.box-rewardpoints-history .box-head a {  }
+
+/* ============ Header Link - Fix for IE ============ */
+.links span.rewardpoints-name {position: relative\9; padding-right: 18px\9;}
+.links span.rewardpoints-name img {position: absolute\9;}
+
+ul li strong,
+p strong a,
+ul li a {
+    position: relative;
+}
+
+ul li.strong img.rewardpoints-img,
+p strong a.rewardpoints-name-img img,
+ul li img.rewardpoints-img {
+    position: absolute;
+    top: 0;
+    right: -24px;
+}
+
+.rewardpoints-product-view-earning {
+    clear: none;
+    float: left;
+    font-size: 1.4em;
+    padding: 10px 5px 0;
+    width: auto;
+}
+
+.rewardpoints-product-view-earning a.rewardpoints-name-img {
+    position: relative
+}
+
+.rewardpoints-product-view-earning a.rewardpoints-name-img img {
+    position: relative;
+    left: 0;
+    top: 5px;
+}
+
+.box-rewardpoints-history {
+    float: left;
+    /*font-size: 1.4em;*/
+    width: 100%;
+}
+
+.box-rewardpoints-history table,
+.rewardpoints-index-transactions table {
+    margin: 2em 0;
+    font-size: 1.4em;
+}
+
+.box-rewardpoints-history .data-table th,
+.box-rewardpoints-history .data-table td,
+.rewardpoints-index-transactions .data-table th,
+.rewardpoints-index-transactions .data-table td {
+    border-bottom: 1px solid rgba(221, 221, 221, 0.25);
+    font-size: 0.14rem;
+    line-height: 1;
+    padding: 1em 2em;
+}
+
+.box-rewardpoints-history .data-table th,
+.rewardpoints-index-transactions .data-table th {
+    border-top: 1px solid #ddd;
+    padding: 0.6em 0;
+    text-align: center;
+}
+
+.box-rewardpoints-history  .data-table .odd,
+.rewardpoints-index-transactions .data-table .odd {
+    background: none repeat scroll 0 0 #f7f7f7;
+}
+
+.rewardpoints-index-transactions .pager {
+    background: none repeat scroll 0 0 #cbccd1;
+    float: left;
+    padding: 0;
+    width: 100%;
+}
+.rewardpoints-index-transactions  p.amount {
+    display: none;
+}
+
+.rewardpoints-index-transactions .limiter {
+    float: left;
+    padding: 0.5em 1em;
+    width: auto;
+}
+.rewardpoints-index-transactions .pages {
+    float: right;
+}
+
+.rewardpoints-index-transactions .pager .pages {
+    clear: none;
+    float: right;
+    width: auto;
+}
+
+.rewardpoints-index-settings .input-box {
+    width: auto;
+}
+
+.rewardpoints-index-settings label {
+    margin: 1px 0;
+}
+
+.rewardpoints-index-settings .form-list {
+    float: left;
+    width: 100%;
+    margin: 1em 0;
+}
+
+.rewardpoints-index-settings .block-account .block-content li {
+    padding: 0.4em 0;
+}
+
+
+
+

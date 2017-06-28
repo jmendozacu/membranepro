@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Cybertech_Selfpickup>
+            <version>0.1.0</version>
+            <depends>
+              <Mage_Shipping />
+            </depends>
+        </Cybertech_Selfpickup>
+    </modules>
+    <global>
+        <models>
+           <selfshipping>
+                <class>Cybertech_Selfpickup</class>
+            </selfshipping>
+        </models>
+        <resources>
+            <selfshipping_setup>
+               <setup>
+                    <module>Cybertech_Selfpickup</module>
+                </setup>
+                <connection>
+                    <use>directory_setup</use>
+                </connection>
+           </selfshipping_setup>
+            <selfshipping_read>
+                <connection>
+                    <use>local_read</use>
+                </connection>
+            </selfshipping_read>
+       </resources>
+        <sales>
+            <shipping>
+                <carriers>
+                    <pickup>
+                        <class>Cybertech_Selfpickup_Model_Carrier_Pickup</class>
+                    </pickup>
+                </carriers>
+            </shipping>
+        </sales>
+    </global>
+    <default>
+        <carriers>
+            <pickup>
+                <active>0</active>
+                <model>cybertech_selfpickup_model_carrier_pickup</model>
+                <name>Pickup</name>
+                <title>Pickup</title>
+                <handling_fee>0</handling_fee>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+            </pickup>
+        </carriers>
+    </default>
+</config> 

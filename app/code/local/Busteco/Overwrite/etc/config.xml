@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Busteco_Overwrite>
+            <version>0.1.0</version>
+        </Busteco_Overwrite>
+    </modules>
+    <frontend>
+        <routers>
+            <overwrite>
+                <use>standard</use>
+                <args>
+                    <module>Busteco_Overwrite</module>
+                    <frontName>overwrite</frontName>
+                </args>
+            </overwrite>
+        </routers>
+    </frontend>
+    <global>
+        <blocks>
+            <overwrite>
+                <class>Busteco_Overwrite_Block</class>
+            </overwrite>
+            <catalog>              
+               <rewrite>
+                    <product_view>Busteco_Overwrite_Block_Catalog_Product_View</product_view>
+               </rewrite>
+            </catalog>
+            <customer>              
+               <rewrite>
+                    <account_navigation>Busteco_Overwrite_Block_Account_Navigation</account_navigation>
+               </rewrite>
+            </customer>
+        </blocks>
+    </global>
+</config>

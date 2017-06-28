@@ -1,0 +1,76 @@
+
+
+.tabbed-area {
+    margin: 0;
+}
+
+.input-box .styled-select select {
+    background: none repeat scroll 0 0 transparent !important;
+    max-width: 330px !important;
+    width: 110% !important;
+}
+
+.input-box .styled-select {
+    background: url("../images/arrow-select.png") no-repeat scroll right center #f7f7f7;
+    border: 1px solid #ccc;
+    max-width: 320px;
+    overflow: hidden;
+    width: 73%;
+}
+
+.cms-configurator-consumabile .products-grid li.item,
+.cautarerapida-consumabile-rezultate .products-grid li.item {
+    /*border-right: 1px solid #dadde0;
+    clear: none;
+    display: inline-block;
+    float: left;
+    margin: 0 0 3em;
+    min-height: 344px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 20%;*/
+}
+
+.block-layered-nav dd ol li {
+    text-align: left;
+}
+
+/*** DailyDeal ***/
+
+.block-dailydeal {
+    
+}
+
+.block-dailydeal .item {
+    
+}
+
+.block-dailydeal .sidebar-product-image {
+    
+}
+
+.block-dailydeal .dailydeal-sidebar-product-name a {
+    
+}
+
+.block-dailydeal .dailydeal-price {
+    
+}
+
+.dailydeal-price .special-price .price {
+    
+}
+
+.dailydeal-price .old-price .price {
+    
+}
+
+.block-dailydeal .btn-dailydeal {
+    
+}
+
+/*** FireCheckout ***/
+.firecheckout-set div {
+    clear: none;
+}

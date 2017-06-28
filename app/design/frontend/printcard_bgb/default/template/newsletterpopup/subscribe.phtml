@@ -1,0 +1,98 @@
+
+<?php if($this->status): ?>
+	<div id="newsletter-popup" class="leightbox">
+	
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('newsletter_popup_text')->toHtml() ?>
+	    
+	    <div class="right-section">
+	    	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('newsletter_popup_text_right')->toHtml() ?>
+	    	
+		    <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail-form">
+		        <div class="input-area" style="text-align:center;">
+		            <input type="text" name="email" id="newsletter-input" title="<?php echo $this->__('Sign up for our newsletter') ?>" value="<?php echo $this->__('enter your e-mail address') ?>" onclick="if(this.value=='<?php echo $this->__('enter your e-mail address') ?>') this.value=''" class="input-text required-entry validate-email" />
+		            <button class="download-button button" type="submit" title="<?php echo $this->__('Subscribe') ?>"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+		            <br/>
+		            <br style="line-height:5px;"/>
+		            
+		        </div>
+		    </form>
+
+		    <script type="text/javascript">
+		    //<![CDATA[
+		        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail-form');
+		    //]]>
+		    </script>
+		    
+		    <div class="lock">Informa&#355;iile furnizate nu vor fi transmise c&#259;tre ter&#355;i.</div>
+		    
+		    <a href="#" class="f-left lbAction" rel="" title="Nu, multumesc">Nu, mul&#355;umesc</a>
+		    <a class="f-right" href="<?php echo $this->getUrl('termeni-si-conditii/') ?>" target="_blank">Termeni &#351;i conditii</a>
+	    </div>
+	    
+	    <a href="#" class="lbAction close" rel="">Close</a>
+	</div>
+	
+	
+	
+	
+	<div style="display:none;">
+		<a id="openNewsletterPopup" href="#newsletter-popup" rel="" class="lbOn">Open Newsletter Popup</a>
+	</div>
+	
+	
+	<script type="text/javascript">
+
+		function createCookie(name,value,days) {
+			if (days) {
+				var date = new Date();
+				date.setTime(date.getTime()+(days*24*60*60*1000));
+				var expires = "; expires="+date.toGMTString();
+			}
+			else var expires = "";
+			document.cookie = name+"="+value+expires+"; path=/";
+		}
+		 
+		function readCookie(name) {
+			var nameEQ = name + "=";
+			var ca = document.cookie.split(";");
+			for(var i=0;i < ca.length;i++) {
+				var c = ca[i];
+				while (c.charAt(0)==" ") c = c.substring(1,c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			}
+			return null;
+		}
+	
+		function showPopup() {
+			$('openNewsletterPopup').simulate('click');
+			createCookie("<?php echo $this->COOKIE_NAME ?>-d","1","<?php echo $this->COOKIE_PERIOD ?>");
+		}
+	
+	Event.observe(window, 'load', function() {
+		
+		var viewport = document.viewport.getDimensions(); // Gets the viewport as an object literal
+		var windowWidth = viewport.width; // Usable window width
+		var windowHeight = viewport.height; // Usable window height
+		
+		var popupWidth = parseInt($('newsletter-popup').getStyle('width')) + parseInt($('newsletter-popup').getStyle('padding-right')) + parseInt($('newsletter-popup').getStyle('padding-left'));
+		var leftOffset = (windowWidth-popupWidth)/2;
+		$('newsletter-popup').style.left = leftOffset + "px";
+		
+		var popupHeight = $('newsletter-popup').getStyle('height');
+	  	var topOffset = (windowHeight-popupHeight)/2;
+	  	if(topOffset > 20) {
+			$('newsletter-popup').style.top = topOffset + "px";
+	  	}
+			
+		<?php //if($this->action == $this::actionDisplayPopup): ?>
+			//showPopup();
+		<?php //elseif($this->action == $this::actionDisplayDelayedPopup): ?>
+			//showPopup.delay(<?php echo $this->delay_time ?>);
+		<?php //endif; ?>
+		
+	},false);
+	
+	
+	
+	</script>
+<?php endif; ?>

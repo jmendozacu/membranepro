@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Cybertech_ProductPrint>
+            <version>0.1.0</version>
+        </Cybertech_ProductPrint>
+    </modules>
+    <frontend>
+        <routers>
+            <productprint>
+                <use>standard</use>
+                <args>
+                    <module>Cybertech_ProductPrint</module>
+                    <frontName>productprint</frontName>
+                </args>
+            </productprint>
+        </routers>
+		
+		<layout>
+			<updates>
+				<mymodule>
+					<file>productprint.xml</file>
+				</mymodule>
+			</updates>
+		</layout>
+    </frontend>  
+</config> 

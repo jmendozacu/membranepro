@@ -1,0 +1,377 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+
+<?php $currentPage = Mage::app()->getFrontController()->getRequest(); ?>
+
+<!-- <div class="header-language-background">
+    <div class="header-language-container">
+        <div class="store-language-container">
+            <?php echo $this->getChildHtml('store_language') ?>
+        </div>
+
+        <?php echo $this->getChildHtml('currency_switcher') ?>
+        
+        <p class="welcome-msg"><?php echo $this->getChildHtml('welcome') ?> <?php echo $this->getAdditionalHtml() ?></p>
+    </div>
+</div> -->
+<div class="menu-overlay"></div>
+<header id="header" class="page-header">
+    <div class="page-header-container">
+        <div class="left-fixed-cont">
+            <a class="logo" href="<?php echo $this->getUrl('') ?>">
+                <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large" />
+                <img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="small" />
+            </a>
+
+            <!-- <?php // In order for the language switcher to display next to logo on smaller viewports, it will be moved here.
+                  // See app.js for details ?>
+            <div class="store-language-container"></div> -->
+
+            <!-- Navigation -->
+
+            <div id="header-nav" class="skip-content">
+                <a class="catalog ion-arrow-down-b" href="#0" title="Vezi Catalog"><span><?php echo $this->__('Meniu') ?></span></a>
+                <?php echo $this->getChildHtml('topMenu') ?>
+            </div>
+
+            <!-- Search -->
+
+            <div id="header-search" class="skip-content">
+                <?php echo $this->getChildHtml('topSearch') ?>
+            </div>
+        </div>
+
+        <div class="top-bar">
+            <div class="responsive-menu">
+                <div id="responsive-nav-button"></div>
+                <div id="header-nav-responsive" class="header-nav-responsive">
+                    <?php echo $this->getChildHtml('topMenu') ?>
+                </div>
+            </div>
+            <script type="text/javascript">
+                jQuery(document).on('click', '#responsive-nav-button', function(){
+                    
+                    jQuery("html, body").animate({ scrollTop: jQuery('#header-nav-responsive').offset().top}, 100);
+                    jQuery('#header-nav-responsive, .menu-overlay').toggleClass('visible');
+                    
+                });
+                jQuery(document).on('click', '.menu-overlay, .close-menu', function(){
+                    //jQuery('#header-nav-responsive, .menu-overlay').toggleClass('visible');
+                    jQuery("html, body").animate({ scrollTop: jQuery('.top-bar').offset().top}, 100);
+                    jQuery('#header-nav-responsive, .menu-overlay').toggleClass('visible');
+                    
+                });
+                jQuery(document).on('click', '.more-subcats', function(e){
+                    e.preventDefault();
+                    jQuery(this).closest('li.parent').find('.subMenu').addClass('visible-submenu');
+                });
+                jQuery(document).on('click', '.close-submenu', function(e){
+                    jQuery(this).parent().removeClass('visible-submenu');
+                });
+            </script>
+            
+            <span class="oferte-link">
+                <?php echo $this->__('Oferte de pret si consultanta: ') ?>
+                <a href="mailto:<?php echo Mage::getStoreConfig('trans_email/ident_custom1/email'); ?>"><?php echo Mage::getStoreConfig('trans_email/ident_custom1/email'); ?></a>
+            </span>
+            <!-- Cart -->
+            <div class="header-minicart">
+                <?php $cart = $this->helper('checkout/cart'); ?>
+                <?php $cartQty = $cart->getSummaryCount(); ?>
+                <a href="<?php echo $this->getBaseUrl() ?>checkout/cart/">
+                <!-- <a href="javascript:void(0)"> -->
+                    <?php echo $this->__('Cart') ?>
+                    <?php if ($cartQty): ?>
+                        <span class="cart-qty"><?php echo $cartQty ?></span>
+                    <?php endif ?>
+                </a>
+                <div class="mini-cart">
+                    <ul class="cart-items">
+                        <?php if ($cartQty): ?>
+                            <?php $cartItems = $cart->getQuote()->getAllVisibleItems(); ?>
+                            <?php $subtotal = 0; ?>
+                            <?php $itemsCount = 0; ?>
+                            <?php  foreach ($cartItems as $item): ?>
+                                <?php $_product = $item->getProduct() ?>
+                                <li class="cart-item">
+                                    <div class="product-image">
+                                        <img src="<?php echo Mage::helper('catalog/image')->init($_product, 'small_image')->resize(50) ?>" alt="<?php echo $item->getName() ?>" />
+                                    </div>
+                                    <div class="cart-details">
+                                        <div class="item-name">
+                                            <a href="<?php echo Mage::getUrl('checkout/cart/configure', array('id' => $item->getId())); ?>" title="<?php echo $this->__('Modifica articol') ?>">
+                                                <?php echo $item->getName() ?>
+                                            </a>
+                                        </div>
+                                        <div class="item-qty">
+                                            <?php echo $item->getQty(); ?>
+                                            <?php echo $this->__(' x ') ?>
+                                            <?php $price = Mage::helper('tax')->getPrice($_product, $_product->getFinalPrice()); ?>
+                                            <?php echo Mage::helper('core')->currency($price, true, false); ?></div>
+                                            <?php $subtotal += $price; ?>
+                                    </div>
+                                    <div class="item-remove">
+                                        <a href="<?php echo Mage::getUrl('checkout/cart/delete', array('id' => $item->getId())); ?>"title="<?php echo $this->__('Sterge articol') ?>"></a>
+                                    </div>
+                                </li>
+                            <?php $itemsCount++; ?>
+                            <?php endforeach; ?> 
+                            <div class="cart-bottom">
+                                <?php echo $this->__('Subtotal ') .  Mage::helper('core')->currency($subtotal, true, false); ?>
+                                <div class="cart-actions">
+                                    <button class="button view-cart" onclick="goToLocation('<?php echo Mage::getUrl('checkout/cart/'); ?>')">
+                                        <?php echo $this->__('Vezi cos') ?>
+                                    </button>
+                                    <button class="button checkout" onclick="goToLocation('<?php echo Mage::helper('checkout/url')->getCheckoutUrl(); ?>')">
+                                        <?php echo $this->__('Finalizare comanda') ?>
+                                    </button>
+                                </div>
+                            </div>
+                        <?php else: ?>      
+                            <li>     
+                                <p class="empty-cart"><?php echo $this->__('Cosul de cumparaturi este gol.') ?></p>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Account -->
+            <div id="header-login">
+                <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+                    <p id="login-link" class="account" onclick="showAccountWrapper('account-dropdown')">
+                        <?php echo $this->__('Login') ?>
+                    </p>
+                    <div id="customer-forms" class="account-dropdown">
+                        <div class="close-button" onclick="hideAccountWrapper('account-dropdown')"></div>
+                        <div id="response" style="display:none;"></div>
+                        <div class="login-form">
+                            <?php echo $this->getChildHtml('customer_form_mini_login'); ?>
+                        </div>
+                        <div class="remember-form">
+                            <?php echo $this->getChildHtml('forgotPassword'); ?>
+                        </div>
+                        <p><?php echo $this->__('Nu ai un cont?') ?> 
+                            <a id="register-link" class="register-link" href="<?php echo $this->getBaseUrl() ?>customer/account/create"><?php echo $this->__('Inregistreaza-te') ?></a>
+                        </p>
+                    </div>
+                <?php else: ?>
+                    <p id="myaccount-link" class="myaccount-link" onclick="showAccountWrapper('account-dropdown')"><?php echo $this->__('My Account') ?></p>
+                    <div id="customer-account-links" class="account-dropdown">
+                        <div class="close-button" onclick="hideAccountWrapper('account-dropdown')"></div>
+                        <div class="customer-top-links">
+                            <ul>
+                                <li class="first">
+                                    <a href="<?php echo $this->helper('customer')->getDashboardUrl() ?>"><?php echo $this->__('Informatii cont') ?></a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->getUrl('customer/address/', array('_secure' => true)) ?>"><?php echo $this->__('Address Book') ?></a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->getUrl('sales/order/history/', array('_secure' => true)) ?>"><?php echo $this->__('My Orders') ?></a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->getUrl('review/customer/', array('_secure' => true)) ?>"><?php echo $this->__('Recomandari') ?></a>
+                                </li>
+                                <?php if ($this->helper('wishlist')->isAllow()): ?>
+                                    <li><a href="<?php echo $this->getUrl('wishlist', array('_secure' => true)) ?>"><?php echo $this->__('My Wishlist') ?></a></li>
+                                <?php endif; ?>
+                                <li>
+                                    <a href="<?php echo $this->getUrl('newsletter/manage/', array('_secure' => true)) ?>"><?php echo $this->__('Abonare newsletter') ?></a>
+                                </li>
+                                <?php if (Mage::helper('core')->isModuleEnabled('Magestore_RewardPoints')): ?>
+                                    <li>
+                                        <a href="<?php echo $this->getUrl('rewardpoints/', array('_secure' => true)) ?>"><?php echo $this->__('Recompensele Mele') ?></a>
+                                    </li>
+                                <?php endif; ?>
+                                <li class="last">
+                                    <a href="<?php echo $this->helper('customer')->getLogoutUrl() ?>"><?php echo $this->__('Log Out') ?></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <!-- Secondary Menu -->    
+            <div id="header-secondary-nav">
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('secondaryMenu')->toHtml(); ?>
+            </div>
+        </div>
+        
+        <div class="info-social">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header-social')->toHtml(); ?> 
+        </div>
+        
+        <?php if(Mage::getSingleton('cms/page')->getIdentifier() == 'home' && $currentPage->getRouteName() == 'cms'): ?>
+            
+            <div class="cautare-rapida ion-android-search">
+                <?php echo $this->getChildHtml('home-quick-search') ?> 
+            </div>
+            <a class="btn btn-cautare cauta-rapid" href="javascript:void(0);"><?php echo $this->__('Cautare Rapida Consumabile') ?></a>
+
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header-slider')->toHtml(); ?> 
+            
+        <?php elseif ($_category = Mage::registry('current_category')): ?>
+            
+            <?php if ($currentPage->getControllerName() == 'category'): ?>
+                <div class="slideshow-container category">
+                    <?php $level = $_category->getParentCategory()->getLevel(); ?>
+                    <!-- <div class="page-title category-title">
+                        <?php if ($level > 1): // current category is a child ?>
+                            <h1><?php echo $_category->getParentCategory()->getName(); ?></h1>
+                        <?php else: // current category is parent ?>
+                            <h1><?php echo $this->__('Catalog') ?></h1>
+                        <?php endif; ?>
+                    </div> -->
+                    <div class="sub-section">
+                        <div class="page-title subcategory-title">
+                            <h2><?php echo $_category->getName(); ?></h2>
+                        </div>
+                        <div class="subcategory-description">
+                            <p><?php echo $_category->getDescription(); ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php elseif ($currentPage->getControllerName() == 'product'): ?>
+                <div class="slideshow-container category">
+                    <div class="page-title category-title"></div>
+                </div>
+            <?php endif; ?>
+        <?php elseif ($currentPage->getControllerName() == 'page'): ?>
+            <div class="slideshow-container category">
+                <div class="page-title category-title"><h1><?php echo $this->getLayout()->getBlock('head')->getTitle(); ?></h1></div>
+            </div>
+        <?php else: ?>
+            <?php /*
+            <div class="slideshow-container category">
+                <div class="page-title category-title"><h1><?php echo $this->getLayout()->getBlock('head')->getTitle(); ?></h1></div>
+            </div>
+            */ ?>
+        <?php endif; ?>
+
+        <!-- Cart -->
+        <?php /*
+        <div id="header-cart" class="skip-content">
+            <div class="mini-cart">
+                <div class="menu-wrapper">
+                    <div class="menu cart-menu">
+                        <div class="empty">Your cart is empty.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        */ ?>
+    </div>
+    <div class="overlay"></div>
+</header>
+
+
+<?php echo $this->getChildHtml('topContainer'); ?>
+
+
+<script type="text/javascript">
+    //<![CDATA[
+        // ajax submit forms
+        jQuery('.submit-button').click(function()
+        {
+            var form = jQuery(this).closest('form');
+            var responseContainer = jQuery('#response');
+            responseContainer.text('').hide();
+            
+            jQuery(form).submit(function(e){
+                e.preventDefault();
+                doAjax(form);
+            });
+        });
+        
+        function doAjax(form)
+        {
+            var formId = form.attr('id');
+            var myForm = new VarienForm(formId, true);
+            var postUrl = form.attr('action');
+            
+            if (myForm.validator.validate()) {
+                //form.find('.loading').show();
+                new Ajax.Updater(
+                    { success: 'response' }, postUrl, {
+                        method:'post',
+                        asynchronous:false,
+                        evalScripts:false,
+                        onComplete:function(transport) {
+                            //form.find('.loading').hide();
+                            if(transport.responseText == ''){
+                                window.location.href = '<?php echo $this->getBaseUrl() ?>customer/account/';
+                            } else {
+                                form.closest('.account-dropdown').find('#response').show();
+                                return false;
+                            }
+                        },
+                        parameters: jQuery(form).serialize(true),
+                    }
+                );
+            } else {
+                return false;
+            }
+        }
+        
+        jQuery(document).ready(function(){
+            jQuery('#nav a.level1 span').click(function(){
+                goToLocation(jQuery(this).closest('a').attr('href'));
+            });
+        });
+        
+        function showAccountWrapper(el)
+        {
+            jQuery('.' + el).css('top', '44px');
+        }
+        
+        function hideAccountWrapper(el)
+        {
+            jQuery('.' + el).css('top', '-11144px');
+        }
+        
+        function goToLocation(url)
+        {
+            window.location = url;
+        }
+        // jQuery("body").delegate(".cc-cookies", "load", function(){
+            // var ccCookies = jQuery('.cc-cookies');
+            // alert('test');
+            // if (ccCookies.length && ccCookies.is(':visible')) {
+                // jQuery('#header, #header-nav').css('top', '42px');
+            // }
+        // })
+    //]]>
+</script>
+
+
+
+

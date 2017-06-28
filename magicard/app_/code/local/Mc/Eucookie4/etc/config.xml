@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie4
+ * @copyright	Copyright (C) 2013 - 2014 Qubesys Technologies Pvt.Ltd. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+ -->
+
+<config>
+	<modules>
+		<Mc_Eucookie4>
+			<version>0.1.0</version>
+		</Mc_Eucookie4>
+	</modules>
+
+	<frontend>
+		<layout>
+			<updates>
+				<eucookie4>
+					<file>eucookie4.xml</file>
+				</eucookie4>
+			</updates>
+		</layout>
+	</frontend>
+
+	<global>
+		<models>
+			<eucookie4>
+				<class>Mc_Eucookie4_Model</class>
+			</eucookie4>
+		</models>
+
+		<blocks>
+			<eucookie4>
+				<class>Mc_Eucookie4_Block</class>
+			</eucookie4>
+		</blocks>
+
+		<helpers>
+			<eucookie4>
+				<class>Mc_Eucookie4_Helper</class>
+			</eucookie4>
+		</helpers>
+	</global>
+
+	<default>
+		<eucookie4>
+			<general>
+				<enable>1</enable>
+				<cookie_introtext>On 26 May 2011, the rules about cookies on websites changed. This site uses cookies. We have already set cookies which are essential for the operation of this site</cookie_introtext>
+				<cookie_accepttext>I accept additional cookies from this site used to support optional features of the site or to gather anonymous usage statistics we use to improve the site</cookie_accepttext>
+				<cookie_infotext>Cookie Information Text</cookie_infotext>
+				<cookie_infolink>http://cookieok.eu/cookie-rules-regulations</cookie_infolink>
+				<cookie_infolink_open></cookie_infolink_open>
+				<cookie_bgcolor>#000</cookie_bgcolor>
+				<cookie_textcolor>#fff</cookie_textcolor>
+				<cookie_textsize>14</cookie_textsize>
+				<cookie_textfont></cookie_textfont>
+				<cookie_linkcolor>#ccc</cookie_linkcolor>
+				<cookie_linksize>14</cookie_linksize>
+				<cookie_linkfont></cookie_linkfont>
+				
+			</general>
+		</eucookie4>
+	</default>
+</config>

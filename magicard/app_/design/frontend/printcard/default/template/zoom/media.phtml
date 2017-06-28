@@ -1,0 +1,125 @@
+<?php
+/**
+ * Package :- CueBlocks_Zoom-1.5.tgz
+ * Version :- 1.5
+ * Edition :- Community
+ * Developed By :- CueBlocks.com
+ *
+ * This file has been modified by CueBlocks.com for the Zoom function on the product page. 
+ * If you have a custom media.phtml file, 
+ * you will need to copy your custom code and paste it in this file. 
+ * For help, please get in touch with us at cueblocks.com
+ */
+?>
+
+<?php
+	$_product = $this->getProduct();
+	$_helper = $this->helper('catalog/output');
+	$_zoomConfig = Mage::getStoreConfig('zoom/general');
+?>
+<div id="imageShowcase">
+
+	<p class="product-image-zoom">
+<?php 
+	if ($_product->getImage() != 'no_selection' && $_product->getImage()): 
+  	
+		$_img = '<a href="'.$this->helper('catalog/image')->init($_product, 'image').'" class="jqzoom" title="" id="anchorproductImgDefault"><img border="0" id="productImgDefault" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(250).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'"/></a>';
+	  	echo $_helper->productAttribute($_product, $_img, 'image');
+  	
+	else:
+ 
+        	$_img = '<a href="'.$this->helper('catalog/image')->init($_product, 'image').'" class="jqzoom"><img border="0" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(250).'" alt="'.$this->htmlEscape($_product->getImageLabel()).'" id="productImgDefault"/></a>';
+        	echo $_helper->productAttribute($_product, $_img, 'image');
+    
+	endif;
+
+	
+	 if (count($this->getGalleryImages()) > 0): 
+		foreach ($this->getGalleryImages() as $_image):
+		
+			// Find out image name from image URL
+	
+			$img_name =  ExtractImageName($this->helper('catalog/image')->init($this->getProduct(), 'image',$_image->getFile()));
+			$_img = '<a href="'.$this->helper('catalog/image')->init($this->getProduct(), 'image',$_image->getFile()).'" id="anchorproductImg'.$img_name.'"><img border="0" id="productImg'.$img_name.'" src="'.$this->helper('catalog/image')->init($this->getProduct(), 'image',$_image->getFile())->resize(250).'" alt="'.$this->htmlEscape($_image->getLabel()).'" title="'.$this->htmlEscape($_image->getLabel()).'"/></a>';  
+		
+			  echo $_helper->productAttribute($this->getProduct(), $_img, 'image');
+		
+		endforeach; 
+	 endif; 
+	
+?>
+  
+      	</p>
+	<span id="roll_on">Roll on to zoom in</span>
+</div>
+
+<?php if (count($this->getGalleryImages()) > 0): ?>
+
+<div class="more-views">
+    <ul>
+	    <?php foreach ($this->getGalleryImages() as $_image): 			
+		$moreImg = ExtractImageName($this->helper('catalog/image')->init($this->getProduct(), 'image',$_image->getFile()));	
+	    ?>
+		<li><img border="0" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(56); ?>" onclick="switchmore('<?php echo $moreImg;?>');" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />		
+		</li>
+       
+	    <?php endforeach; ?>
+    </ul>
+</div>
+
+<?php endif; ?>
+
+<?php
+// PHP FUNCTION
+
+function ExtractImageName($fullImagePath)
+{
+			$img_extract = explode("/",$fullImagePath);
+			$img_Len = count($img_extract);
+			$fullImgName = $img_extract[$img_Len-1]; // Image name from full path
+			$fullImgName_extract = explode(".",$fullImgName);
+			$ImgName = $fullImgName_extract[0];
+			return $ImgName;
+}
+
+?><script type="text/javascript">
+
+       	 jQuery(document).ready(function(){
+
+            var options = {
+
+                zoomWidth: 250,
+
+                zoomHeight: 250,
+				
+                showEffect: 'show',
+
+                hideEffect: 'fadeout',
+
+                fadeoutSpeed: 'slow',
+				
+                title: false,
+		
+		zoomtype:'innerzoom',
+		
+		showPreload: false,
+		
+		yOffset: 70
+
+            }
+
+            jQuery(".jqzoom").jqzoom(options);
+
+        });
+
+</script>
+<script type="text/javascript">
+		// show main image
+          jQuery(document).ready(function() {
+
+            // On document ready hide all images first
+            jQuery("#imageShowcase img").hide();
+            jQuery("#productImgDefault").show();
+				
+        });
+</script>

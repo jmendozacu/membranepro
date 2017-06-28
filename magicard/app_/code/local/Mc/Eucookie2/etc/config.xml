@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie2
+ * @copyright	Copyright (C) 2013 - 2014 Qubesys Technologies Pvt.Ltd. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+ -->
+
+<config>
+	<modules>
+		<Mc_Eucookie2>
+			<version>0.1.0</version>
+		</Mc_Eucookie2>
+	</modules>
+
+	<frontend>
+		<layout>
+			<updates>
+				<eucookie2>
+					<file>eucookie2.xml</file>
+				</eucookie2>
+			</updates>
+		</layout>
+	</frontend>
+
+	<global>
+		<models>
+			<eucookie2>
+				<class>Mc_Eucookie2_Model</class>
+			</eucookie2>
+		</models>
+
+		<blocks>
+			<eucookie2>
+				<class>Mc_Eucookie2_Block</class>
+			</eucookie2>
+		</blocks>
+
+		<helpers>
+			<eucookie2>
+				<class>Mc_Eucookie2_Helper</class>
+			</eucookie2>
+		</helpers>
+	</global>
+
+	<default>
+		<eucookie2>
+			<general>
+				<enable>1</enable>
+				<jquery>1</jquery>
+				<cookieMessage>We use cookies on this website, To use the website as intended please.</cookieMessage>
+				<cookieResetButton>1</cookieResetButton>
+				<cookieOverlayEnabled>0</cookieOverlayEnabled>
+				<cookieNotificationLocationBottom></cookieNotificationLocationBottom>
+				<cookieExpires>365</cookieExpires>
+				<cookieAnalyticsMessage>We use cookies, just to track visits to our website, we store no personal details.</cookieAnalyticsMessage>
+				<cookiePolicyPageMessage>Please read the information below and then choose from the following options.</cookiePolicyPageMessage>
+				<cookieWhatAreTheyLink>http://www.allaboutcookies.org/</cookieWhatAreTheyLink>
+				<cookieErrorMessage>We are sorry, this feature places cookies in your browser and has been disabled.To continue using this functionality, please</cookieErrorMessage>
+				<cookieAcceptButtonText>ACCEPT COOKIES</cookieAcceptButtonText>
+				<cookieDeclineButtonText>DECLINE COOKIES</cookieDeclineButtonText>
+				<cookieResetButtonText>RESET COOKIES FOR THIS WEBSITE</cookieResetButtonText>
+				<cookieWhatAreLinkText>What are cookies?</cookieWhatAreLinkText>
+				<cookieDomain>qubesys.com</cookieDomain>
+				
+			</general>
+		</eucookie2>
+	</default>
+</config>

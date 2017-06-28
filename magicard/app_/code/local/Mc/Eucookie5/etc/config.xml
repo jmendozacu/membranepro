@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie5
+ * @copyright	Copyright (C) 2013 - 2014 Qubesys Technologies Pvt.Ltd. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+ -->
+
+<config>
+	<modules>
+		<Mc_Eucookie5>
+			<version>0.1.0</version>
+		</Mc_Eucookie5>
+	</modules>
+
+	<frontend>
+		<layout>
+			<updates>
+				<eucookie5>
+					<file>eucookie5.xml</file>
+				</eucookie5>
+			</updates>
+		</layout>
+	</frontend>
+
+	<global>
+		<models>
+			<eucookie5>
+				<class>Mc_Eucookie5_Model</class>
+			</eucookie5>
+		</models>
+
+		<blocks>
+			<eucookie5>
+				<class>Mc_Eucookie5_Block</class>
+			</eucookie5>
+		</blocks>
+
+		<helpers>
+			<eucookie5>
+				<class>Mc_Eucookie5_Helper</class>
+			</eucookie5>
+		</helpers>
+	</global>
+
+	<default>
+		<eucookie5>
+			<general>
+				<enable>1</enable>
+				<cookie_domain>qubesys.com</cookie_domain>
+				
+				<cookie_bgcolor>000</cookie_bgcolor>
+				<cookie_textcolor>fff</cookie_textcolor>
+				<cookie_textsize>14</cookie_textsize>
+				<cookie_textfont></cookie_textfont>
+				
+				
+			</general>
+		</eucookie5>
+	</default>
+</config>

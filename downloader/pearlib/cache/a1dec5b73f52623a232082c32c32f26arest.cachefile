@@ -1,0 +1,34 @@
+a:9:{s:7:"attribs";a:2:{s:5:"xmlns";s:36:"http://pear.php.net/dtd/rest.package";s:18:"xsi:schemaLocation";s:80:"http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd";}s:1:"n";s:7:"PfpjRom";s:1:"c";s:37:"connect.magentocommerce.com/community";s:2:"ca";a:2:{s:7:"attribs";a:1:{s:10:"xlink:href";s:34:"/Chiara_PEAR_Server_REST/c/Default";}s:8:"_content";s:7:"Default";}s:1:"l";s:27:"Open Software License (OSL)";s:2:"lu";s:42:"http://opensource.org/licenses/osl-3.0.php";s:1:"s";s:253:"Adds to default address model another 5 - 6 romanian required fields and the option to choose between 'legal entity'(persoana juridica) and 'natural person'(persoana fizica). Also insert in database romanian regions (judete), if aren't already inserted.";s:1:"d";s:2891:"<p>&nbsp;</p>
+<p><strong style="color: #e34500; font-size: 14px;">Important: Upgrade from  0.3.2 to 0.4.0 won't keep your data from db for now. The order model was  changed for versions of Magento greater than 1.4.0.1.</strong></p>
+<p><br /> <strong style="color: #e34500; font-size: 16px;">Description</strong></p>
+<p>The address model used at checkout and customer edit consists of two types: 'legal entity' (persoana juridica) and 'natural person' (persoana fizica).  By default both types include field <strong style="color: #e34500;">Personal Identification Code (CNP)</strong>, although is not an required field by default. 'ID Paper Serie/Number' is disabled starting with 0.3.0. Check the legislation in <a href="http://codfiscal.net/art-155-facturarea/" target="_blank">Codul Fiscal 2008 2009 2010, art 155</a> Thanks to Laurentiu for pointing this out.</p>
+<p>In addition 'Legal entity' has another 4 fields:</p>
+<p style="text-decoration: line-through;">1) Tax Registration Number (CUI);</p>
+<p>1) Tax Identification Number (CIF) - Note: includes Tax Registration Number (CUI);</p>
+<p>2) Number in Trade Register Office (Reg. Com.);</p>
+<p>3) Bank (Bancă);</p>
+<p>4) IBAN;</p>
+<p>5) Is For Billing - apears at MyAccount -&gt; Edit Address and display above fields only for `Legal entity`.</p>
+<p><span style="color: #e13327;">New: </span>added validation for Personal Identification Code (CNP) and Tax Identification Number (CIF).</p>
+<p>&nbsp;</p>
+<p>Currently is created with files from:</p>
+<p><strong style="color: #e34500; font-size: 12px;">* Interface_Adminhtml_Default (stable)</strong></p>
+<p><strong style="color: #e34500; font-size: 12px;">* Interface_Frontend_Default (stable)</strong></p>
+<p><strong style="color: #e34500; font-size: 12px; text-decoration: line-through;">* Interface_Frontend_Default_Modern  1.3.2.2 (stable)</strong></p>
+<p><strong style="color: #e34500; font-size: 12px; text-decoration: line-through;">* Interface_Frontend_Default_Blank  1.3.2.2 (stable)</strong></p>
+<p>&nbsp;</p>
+<p><strong style="color: #e34500; font-size: 16px;">Most stable versions<br /></strong></p>
+<ul>
+<li>Magento 1.3.2.4&nbsp; ...&nbsp; Extension: 0.2.3</li>
+<li>Magento 1.4.0.1&nbsp; ...&nbsp; Extension: 0.3.2</li>
+<li>Magento 1.4.1.0&nbsp; ...&nbsp; Extension 0.4.1</li>
+<li>Magento 1.4.1.1&nbsp; ...&nbsp; Extension 0.4.4</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong style="color: #e34500; font-size: 16px;">Instalation guide &amp; hints to customize</strong></p>
+<p>Please check Discuss Extension</p>
+<p>&nbsp;</p>
+<p><strong style="color: #e34500; font-size: 16px;">Notes</strong></p>
+<p>* The extension will have at least one stable release for every new version of Magento templates.&nbsp;<strong style="color: #e34500; font-size: 16px;">&nbsp;</strong><span style="color: #e13327;">&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #e13327;">Thank you. </span></p>";s:1:"r";a:1:{s:7:"attribs";a:1:{s:10:"xlink:href";s:34:"/Chiara_PEAR_Server_REST/r/PfpjRom";}}}

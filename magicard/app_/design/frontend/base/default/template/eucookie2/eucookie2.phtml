@@ -1,0 +1,133 @@
+<?php
+/**
+
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie2
+ * @copyright	Copyright (C) 2013 - 2014 Qubesys Technologies Pvt.Ltd. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+
+$enable				= $this->getConfigData('enable');
+$jquery				= $this->getConfigData('jquery');
+
+if (!$enable) {
+	return;
+}
+?>
+<?php if ($jquery==1) { ?>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'skin/frontend/default/default/mageclub/js/jquery.js'; ?>"></script>
+<?php } ?>
+<link type="text/css" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'skin/frontend/default/default/mageclub/css/cookiecuttr.css?v=3'?>" rel="stylesheet" />
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'skin/frontend/default/default/mageclub/js/jquery.cookie.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'skin/frontend/default/default/mageclub/js/jquery.cookiecuttr.js'; ?>"></script>
+
+
+
+
+<?php
+$cookieMessage			= $this->getConfigData('cookieMessage');
+$cookieResetButton			= $this->getConfigData('cookieResetButton');
+$cookieOverlayEnabled			= $this->getConfigData('cookieOverlayEnabled');
+$cookieNotificationLocationBottom			= $this->getConfigData('cookieNotificationLocationBottom');
+$cookieExpires			= $this->getConfigData('cookieExpires');
+$cookieAnalyticsMessage			= $this->getConfigData('cookieAnalyticsMessage');
+$cookiePolicyPageMessage			= $this->getConfigData('cookiePolicyPageMessage');
+$cookieWhatAreTheyLink			= $this->getConfigData('cookieWhatAreTheyLink');
+$cookieErrorMessage			= $this->getConfigData('cookieErrorMessage');
+$cookieAcceptButtonText			= $this->getConfigData('cookieAcceptButtonText');
+$cookieDeclineButtonText			= $this->getConfigData('cookieDeclineButtonText');
+$cookieResetButtonText			= $this->getConfigData('cookieResetButtonText');
+$cookieWhatAreLinkText			= $this->getConfigData('cookieWhatAreLinkText');
+$cookieDomain			= $this->getConfigData('cookieDomain');
+
+?>
+
+<script>
+jQuery.noConflict();
+jQuery(document).ready(function () {
+	// activate cookie cutter
+   jQuery.cookieCuttr({
+	
+	
+
+    cookieExpires: <?php echo $cookieExpires; ?>,
+   
+	
+	<?php if($cookieOverlayEnabled==1){ ?>
+	cookieOverlayEnabled: true,
+	<?php } else { ?>
+	cookieOverlayEnabled: false,
+	<?php } ?>
+
+
+
+	cookieAnalytics: true,
+	
+	
+    cookieMessage: '<?php echo $cookieMessage; ?>',
+	
+	cookieAnalyticsMessage: '<?php echo $cookieAnalyticsMessage; ?>',
+	cookieWhatAreTheyLink: '<?php echo $cookieWhatAreTheyLink; ?>' ,
+	cookieErrorMessage: "<?php echo $cookieErrorMessage; ?>",
+	cookiePolicyPageMessage:'<?php echo $cookiePolicyPageMessage; ?>',
+	
+	<?php if($cookieNotificationLocationBottom==1){ ?>
+	cookieNotificationLocationBottom: true, // top or bottom - they are your only options, so true for bottom, false for top          
+	<?php } else { ?>
+	cookieNotificationLocationBottom: false, // top or bottom - they are your only options, so true for bottom, false for top          
+	<?php } ?>
+	  
+	cookieDisable: '', //list elements comma separated in here that you want to disable, this will only work if cookieCutter is set to true. 
+	
+
+	cookieDeclineButton: false,
+	
+	cookieAcceptButton: true,
+
+	
+	
+	
+	
+	<?php if($cookieResetButton==1){ ?>
+	cookieResetButton: true,
+	<?php } else { ?>
+    cookieResetButton: false,
+	<?php } ?>
+	
+	 cookieAcceptButtonText: "<?php echo $cookieAcceptButtonText;?>",
+     cookieDeclineButtonText: "<?php echo $cookieDeclineButtonText;?>",
+     cookieResetButtonText: "<?php echo $cookieResetButtonText;?>",
+	
+	
+	
+    cookieWhatAreLinkText: "<?php echo $cookieWhatAreLinkText; ?>",
+
+	cookiePolicyPage: true,
+	
+	
+	cookieDomain: "<?php echo $cookieDomain;?>",
+	
+	
+	
+    cookieAnalyticsMessage: "<?php echo $cookieAnalyticsMessage;?>"
+    });
+});      
+
+
+if (jQuery.cookie('cc_cookie_decline') == "cc_cookie_decline") {
+} else {
+var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31602378-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+  
+  
+</script>

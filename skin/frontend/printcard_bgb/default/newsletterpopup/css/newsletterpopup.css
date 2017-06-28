@@ -1,0 +1,23 @@
+#newsletter-popup.leightbox { overflow:visible; background:url(../images/modal-bg.png); width:879px; height:445px; box-shadow:0 0 35px #000000; }
+#newsletter-popup.leightbox .motto { width:490px; margin:38px 0 25px 0; padding:0 0 0 65px; font-family:'Myriad Pro',sans-serif; font-size:32px; line-height:28px; /*letter-spacing:-1px;*/ color:#BA0000; text-align:left; text-shadow:1px 1px 0 #FFFFFF; }
+#newsletter-popup.leightbox .motto span { display:block; font-size:20px; line-height:23px; }
+#newsletter-popup.leightbox .promo { width:322px; min-height:255px; padding:0 0 0 235px; font-family:Georgia,serif; font-size:12px; color:#000000; line-height:20px; font-weight:normal; background:url(../images/promo-image.png) no-repeat top left;  text-shadow:1px 1px 0 #FFFFFF; text-align:justify; }
+#newsletter-popup.leightbox .promo i { color:#4866B0; font-style:normal; font-weight:bold; }
+#newsletter-popup.leightbox .promo span { font-family:Georgia,serif; color:#BB0000; font-weight:bold; font-style:italic; }
+#newsletter-popup.leightbox .promo ul { margin:12px 0 0 0; }
+#newsletter-popup.leightbox .promo ul li { padding-left:40px; background:url(../images/bullet.png) no-repeat 10px 3px; }
+
+#newsletter-popup.leightbox .right-section { position:absolute; top:-7px; right:-15px; width:274px; height:420px; padding:25px 19px; background:url(../images/modal-overlay.png) no-repeat center; box-shadow:0 0 13px #000000; color:#FFFFFF; }
+#newsletter-popup.leightbox .right-section .heading { margin:40px 0 20px 0; font-family:'Myriad Pro',sans-serif; font-size:24px; line-height:28px; text-shadow:1px 1px 0 #000000; text-align:center; }
+#newsletter-popup.leightbox .right-section .details { font-family:Georgia,serif; font-size:12px; text-shadow:1px 1px 0 #000000; text-align:justify; }
+#newsletter-popup.leightbox .right-section form { margin-top:40px; }
+#newsletter-popup.leightbox .right-section form .input-area { margin:30px auto 0 auto; }
+#newsletter-popup.leightbox .right-section form .input-area .validation-advice { margin:0 40px; color:#FFFFFF; font-weight:normal; }
+#newsletter-popup.leightbox .right-section form input { width:150px; height:30px; padding:5px 45px 5px 10px; border:none; font-size:14px; color:#555555; background:url(../images/input-email.png) no-repeat center #FFFFFF; }
+#newsletter-popup.leightbox .right-section form input:focus { background-color:#F5E3E3; }
+#newsletter-popup.leightbox .right-section form button.download-button { width:205px; height:46px; margin-top:5px; padding:0 35px 0 0; line-height:46px; border:none; background:url(../images/button-download.png) no-repeat top center transparent; font-family:'Myriad Pro',sans-serif; font-size:14px; color:#FFFFFF; text-transform:uppercase; text-align:center; }
+#newsletter-popup.leightbox .right-section form button.download-button:hover { cursor:pointer; }
+#newsletter-popup.leightbox .right-section .lock { margin:30px 0 40px 0; background:url(../images/lock.png) no-repeat top left; padding-left:20px; font-family:Georgia,serif; font-size:12px; text-shadow:1px 1px 0 #000000; text-align:justify; }
+#newsletter-popup.leightbox .right-section a { font-family:Georgia,serif; font-size:12px; text-shadow:1px 1px 0 #000000; color:#FFFFFF; }
+
+#newsletter-popup.leightbox a.close { position:absolute; top:-5px; right:-12px; margin-top:-25px; margin-right:-25px; display:block; width:45px; height:46px; font-size:0; line-height:0; background:url(../images/modal-close.png) top left no-repeat; z-index:100000; }

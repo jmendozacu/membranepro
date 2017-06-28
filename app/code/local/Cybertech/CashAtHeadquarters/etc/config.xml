@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config>
+    <global>
+<!-- declare model group for new module -->
+        <models>
+<!-- model group alias to be used in Mage::getModel('CashAtHeadquarters/...') -->
+            <CashAtHeadquarters>
+<!-- base class name for the model group -->
+                <class>Cybertech_CashAtHeadquarters_Model</class>
+            </CashAtHeadquarters>
+        </models>
+ 
+<!-- declare resource setup for new module -->
+        <resources>
+<!-- resource identifier -->
+            <CashAtHeadquarters_setup>
+<!-- specify that this resource is a setup resource and used for upgrades -->
+                <setup>
+<!-- which module to look for install/upgrade files in -->
+                    <module>Cybertech_CashAtHeadquarters</module>
+                </setup>
+<!-- specify database connection for this resource -->
+                <connection>
+<!-- do not create new connection, use predefined core setup connection -->
+                    <use>core_setup</use>
+                </connection>
+            </CashAtHeadquarters_setup>
+            <CashAtHeadquarters_write>
+                <use>core_write</use>
+            </CashAtHeadquarters_write>
+            <CashAtHeadquarters_read>
+                <use>core_read</use>
+            </CashAtHeadquarters_read>
+        </resources>
+    </global>
+ 
+<!-- declare default configuration values for this module -->
+    <default>
+<!-- 'payment' configuration section (tab) -->
+        <payment>
+<!-- 'CashAtHeadquarters' configuration group (fieldset) -->
+            <CashAtHeadquarters>
+<!-- by default this payment method is inactive -->
+                <active>1</active>
+<!-- model to handle logic for this payment method -->
+                <model>CashAtHeadquarters/paymentMethod</model>
+<!-- order status for new orders paid by this payment method -->
+                <order_status>1</order_status>
+<!-- default title for payment checkout page and order view page -->
+                <title>Cash At Headquarters</title>
+            </CashAtHeadquarters>
+         </payment>
+    </default>
+</config>

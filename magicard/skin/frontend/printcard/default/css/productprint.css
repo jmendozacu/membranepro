@@ -1,0 +1,23 @@
+.page-popup { margin:0; padding:3px; }
+
+p.print-page a { padding-left:20px; font-size:13px; font-weight:bold; background:url(../graphics/print/link-print.png) left center no-repeat; }
+
+#header-print { padding:0 20px 5px 20px; margin-bottom:10px; border-bottom:1px solid #CCCCCC; }
+
+.product-essential { padding:0 0 10px 0; }
+
+.product-view .product-shop { width:350px; }
+.product-view .product-shop .price-box span.price-label,
+.product-view .product-shop .price-box .special-price span.price-label,
+.product-view .product-shop .price-box .old-price span.price-label,
+.product-view .product-shop .availability span,
+.product-view .product-shop .product-options dl dt { width:140px; }
+.product-view .product-shop .price-box span.price-info,
+.product-view .product-shop .availability span.delivery-estimate { margin-left:145px; }
+
+.product-view .product-img-box { float:right; width:auto; }
+.product-view .product-img-box .product-image { margin:0 0 20px 40px; }
+.product-view .product-img-box .more-views { margin:0 0 0 40px; }
+.product-view .product-img-box .more-views { float:none; }
+.product-view .product-img-box .more-views ul { margin-left:0; width:auto; }
+.product-view .product-img-box .more-views li { margin-right:8px; }

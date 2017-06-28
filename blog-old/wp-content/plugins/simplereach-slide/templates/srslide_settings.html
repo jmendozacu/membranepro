@@ -1,0 +1,163 @@
+<div id="srslide" class="wrap">
+<div class="srslide_admin">
+{{#has_errors}}
+    <div class="error"><p><strong>{{has_errors}}</strong></p>
+    {{#errors}}
+        <p>{{{.}}}</p>
+    {{/errors}}
+</div>
+{{/has_errors}}
+{{#updated}}
+    <div class="updated"><p>{{{.}}}</p></div>
+{{/updated}}
+
+<div class="overview">
+    <h2><div class="branding">TheSlide</div>
+    <p><b>Help readers discover more of your content.</b> TheSlide enables custom flyouts at the bottom of each post that recommend related content on your site, helping visitors find more of what they want, and helping you keep readers around!</p></h2>
+</div>
+
+<div id="poststuff">
+<div id="post-body" class="metabox-holder columns-2">
+<div id="post-body-content">
+
+    <div id="sr-settings" class="postbox">
+        <h3 class="hndle"><span>{{display_settings_text}}</span></h3>
+        <div id="srslide_controls" class="inside">
+      
+            <form name="srslide_form" method="post" action="{{request_uri}}">
+                <input type="hidden" name="srslide_save_hidden" value="Y">
+                <table class="form-table">
+                    <tbody>
+                        <tr class="form-field">
+                            <th scope="row">
+                                <label>{{edit_header_text}}</label>
+                            </th>
+                            <td><input type="text" name="srslide_header_text" value='{{srslide_header_text}}' class="regular-text" />
+                                <span class="srslide_minitext">{{all_letters_text}}</span>
+                            </td>
+                        </tr>
+            
+                        <tr class="form-field colors">
+                            <th scope="row">
+                                <label>{{link_color_text}}</label>
+                            </th>
+                            
+                            <td>
+                            {{#srslide_default_link_colors}}
+                            <div class="link_color_selector">
+                                <input type="radio" name="srslide_style_link_color" value="{{color}}" {{#selected}}CHECKED{{/selected}}/>
+                                <div style="background-color: {{color}}" class="color"></div>
+                            </div>
+                            {{/srslide_default_link_colors}}
+                            
+                            <div class="link_color_selector">
+                            <input class="custom_color" type="radio" name="srslide_style_link_color" value="other"  {{custom_color_checked}} /> &nbsp;
+				            <input type="text" name="srslide_style_link_color_text" value="{{custom_color_value}}" class="customcolor" />
+          
+                            <div class="custom_color_label">{{hex_code_text}} <span>{{hex_code_example}}</span></div></div>
+                            </td>
+                        </tr>
+                             
+
+                        <tr class="form-field">
+                            <th scope="row">
+                                <label>{{shift_slide_text}}</label>
+                            </th>
+                
+                            <td>
+                                <select name='srslide_style_element_bottom'>
+                                    {{#srslide_style_element_bottom}}
+                                    <option value="{{value}}" {{#selected}}SELECTED{{/selected}}>{{value}} px</option>
+                                    {{/srslide_style_element_bottom}}
+                                </select>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <th scope="row">
+                                <label>Additional Options</label>
+                            </th>
+                            
+                            <td><input type="checkbox" value="1" name="srslide_show_logo" {{#srslide_show_logo}} CHECKED=CHECKED {{/srslide_show_logo}} />{{{show_logo_text}}}
+                                <span class="srslide_minitext">{{{default_logo_setting_text}}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td><input type="checkbox" value="1" name="srslide_use_pages" {{#srslide_use_pages}} CHECKED=CHECKED {{/srslide_use_pages}} />{{{also_show_text}}}
+                                <span class="srslide_minitext">{{{default_setting_text}}}</span>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            
+                <p class="submit"><input type="submit" class="button-primary" name="Submit" value="{{save_text}}" /></p>
+        </div><!-- close #srslide_controls -->
+    </div><!-- close postbox -->
+               
+
+    
+    <div id="sr-account" class="postbox"> 
+        <h3 class="hndl"><span>{{account_settings_text}}</span></h3>
+
+        <div id="srslide_account" class="inside">
+            <table class="form-table">
+                <tbody>
+                    <tr class="form-field">
+                        <th scope="row">
+                            <label>{{api_key_text}}</label>
+                        </th>
+                        <td><input type="text" name="srslide_api_key" value="{{srslide_api_key}}" />
+                            <span class="srslide_minitext">{{warning_text}}</span>
+                        </td>
+                    </tr>
+            
+                    <tr class="form-field">
+                        <th scope="row">
+                            <label>{{publisher_id_text}}</label>
+                        </th>
+                        <td><input type="text" name="srslide_pid" value="{{srslide_pid}}" />
+                            <span class="srslide_minitext">{{warning_text}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p class="submit"><input type="submit" class="button-primary" name="Submit" value="{{save_text}}" /></p>
+        </form>
+        </div>
+    </div>
+</div><!-- close #post-body-content -->
+
+
+<div id="postbox-container-1" class="postbox-container">
+    <div id="side-sortables" class="meta-box-sortables ui-sortable">
+        <div class="postbox">
+            <h3 class="hndle">{{support_label}}</h3>
+            <div class="inside">
+               <p>{{{third_paragraph_text}}}</p>
+            </div>
+        </div>
+        
+        <div class="postbox">
+            <h3 class="hndle">{{analytics_label}}</h3>
+            <div class="inside">
+                <p>{{{analytics_text}}}</p>
+            </div>
+        </div>
+        
+        <div class="postbox">
+            <h3 class="hndle">{{about_label}}</h3>
+            <div class="inside">
+                <p>{{{about_text}}}</p>
+                <p>{{{about_text_social}}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div><!-- close #post-body -->
+</div>
+
+</div><!-- close .wrap -->

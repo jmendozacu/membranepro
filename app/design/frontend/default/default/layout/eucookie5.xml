@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie5
+ * @copyright	Copyright (C) 2013 - 2014 Qubesys Technologies Pvt.Ltd. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+ -->
+<layout version="0.1.0">
+	<default>
+		<reference name="head">
+			
+				<block type="eucookie5/body" name="eucookie5.body" as="eucookie5body" template="eucookie5/eucookie5.phtml">
+					<action method="addToParentGroup"><group>detailed_info</group></action>
+				</block>
+			
+		</reference>
+	</default>
+</layout>

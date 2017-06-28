@@ -1,0 +1,173 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php
+
+	$attributesToFilterArr = array(
+									'full-bleed'		=> array('printing_covering_type'	=> '81'),
+									'duplex' 			=> array('printing_side_type'		=> '78'),
+									
+									'holokote' 			=> array('printing_security_type'	=> '27'),
+									'holokote-custom'	=> array('printing_security_type'	=> '79'),
+									'holokote-flex'		=> array('printing_security_type'	=> '80'),
+									'holopatch'			=> array('printing_security_type'	=> '29'),
+									'over-laminate'		=> array('printing_security_type'	=> '28'),
+									
+									'magnetic'			=> array('printing_encoding_type'	=> '70'),
+									'chip'				=> array('printing_encoding_type'	=> '71'),
+									'mifare'			=> array('printing_encoding_type'	=> '72'),
+									'hid-i-class'		=> array('printing_encoding_type'	=> '73'),
+	
+									//'ethernet'			=> array(''		=> '')
+	);
+	$filters = 0;
+	foreach($_GET as $attributeType=>$technologyName)
+	{
+		$filters++;
+		$technologyCode = $technologyName;
+		$attributeCode = array_shift(array_keys($attributesToFilterArr[$technologyName]));
+		$attributeValue = array_shift(array_values($attributesToFilterArr[$technologyName]));
+		$attributeToFilterArr[$attributeCode] = $attributeValue;
+	}
+	
+// if filters are set
+if($filters>0):
+	/*echo '<pre>';
+	print_r($attributeToFilterArr);
+	echo '</pre>';*/
+	
+	 // Get all products for specified attribute values
+	 $_productCollection = Mage::getModel('catalog/product')
+								->getCollection()
+								->addAttributeToSelect('*')
+	;
+	foreach($attributeToFilterArr as $attributeCode=>$attributeValue) {
+		//$_productCollection->addAttributeToFilter($attributeCode, $attributeValue);
+		$_productCollection->addAttributeToFilter($attributeCode, array('like'=>array('%'.$attributeValue.'%')));
+	}
+	 
+	$_productCollection->addAttributeToFilter('visibility', array('neq'=>array('1')));	// visibility not equal to 1 ['Not visible individually']
+	
+    $_helper = Mage::helper('catalog/output');
+//require_once('D:\webdev/printcard/krumo/class.krumo.php');
+//krumo::dump($_testproductCollection);
+?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<script type="text/javascript">
+document.observe("dom:loaded", function() {
+	
+	// hide all divs except for current technloogy
+	$$("#technologies h3").each( function (elem) { 
+		elem.setStyle({
+			  'display': 'none'
+			});
+	});
+	$$("#technologies hr").each( function (elem) { 
+		elem.setStyle({
+			  'display': 'none'
+			});
+	});
+	$$("#technologies p").each( function (elem) { 
+		elem.setStyle({
+			  'display': 'none'
+			});
+	});
+
+	// show all elements for this technology
+	$$("#technologies p.<?php echo $technologyCode ?>").each( function (elem) { 
+		elem.setStyle({
+			  'display': 'block'
+			});
+	});
+	$$("#technologies p.<?php echo $technologyCode ?> span.extra").each( function (elem) { 
+		elem.setStyle({
+			  'display': 'block'
+			});
+	});
+});
+</script>
+<div class="category-products">
+    <?php echo $this->getToolbarHtml() ?>
+    
+    <?php // Only Grid Mode ?>
+
+    <?php $_collectionSize = $_productCollection->count() ?>
+    <?php $_columnCount = $this->getColumnCount(); ?>
+    <?php $i=0; foreach ($_productCollection as $_product): ?>
+    	<?php $priceOnDemand = Mage::getModel('catalog/product')->load($_product->getId())->getAttributeText('price_on_demand'); ?>
+        <?php if ($i++%$_columnCount==0): ?>
+        <ul class="products-grid">
+        <?php endif ?>
+
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+                <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+                <?php if($_product->getRatingSummary()): ?>
+                <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                <?php endif; ?>
+                <div class="desc std">
+                    <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                </div>
+                <?php echo $this->getPriceHtml($_product, true) ?>
+                <div class="actions">
+                    <?php if($priceOnDemand=='Da'): ?>
+                    	<p><button type="button" title="<?php echo $this->__('Ask for offer') ?>" class="button small-button" onclick="setLocation('<?php echo $this->getUrl('contact/vanzari/').'?sku='.$_product->getSku() ?>')"><span><span><?php echo $this->__('Ask for offer') ?></span></span></button></p>
+                    <?php elseif($_product->isSaleable()): ?>
+                        <p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button small-button" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+                    <?php else: ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                    <?php endif; ?>
+                    <ul class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                        <?php endif; ?>
+                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </li>
+        <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+        <?php endif ?>
+        <?php endforeach ?>
+        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+
+    <div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+</div>
+<?php endif; ?>
+<?php endif; // if $filters>0 ?>

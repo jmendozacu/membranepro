@@ -1,0 +1,169 @@
+<?php 
+
+	// Attributes to filter results by - No. of sides, Printing volume, Card visual security, Card encoding
+	$attributeCodeArr = array(	'printing_side_type'		=> 'Printare fata sau fata-verso',
+								'printing_volume'			=> 'Numarul de carduri printate lunar',
+								'printing_security_type'	=> 'Securitatea vizuala a cardurilor',
+								'printing_encoding_type'	=> 'Codare carduri'
+	);
+	$valueDetailsArr = array(	'printing_side_type'		=> array(
+																		1 => 'Imprimare pe <span>O SINGURA FATA</span>',
+																		2 => 'Imprimare pe <span>AMBELE FETE</span>'
+																),
+								'printing_volume'			=> array(
+																		1 => '<span>VOLUM REDUS</span> de carduri printate',
+																		2 => '<span>VOLUM MEDIU</span> de carduri printate',
+																		3 => '<span>VOLUM MEDIU / MARE</span> de carduri printate'
+																),
+								'printing_security_type'	=> array(
+																		1 => 'Carduri simple nesecurizate',
+																		2 => 'Filigran standard',
+																		3 => 'Filigran personalizat',
+																		4 => 'Filigran personalizat flexibil',
+																		5 => 'Laminare standard sau holografica',
+																		6 => 'Imprimare UV'
+																),
+								'printing_encoding_type'	=> array(
+																		1 => 'imprimare pe card obisnuit',
+																		2 => 'Pe banda magnetica pot fi stocate informatii',
+																		3 => 'Poate stoca si transfera o mare cantitate de informatii, inclusiv biometrice.',
+																		4 => 'Utilizate in special in sisteme de control acces'
+																)
+	);
+	
+	
+// ----- Get attribute values ---------------------------------------------------------------------------------------------
+	foreach($attributeCodeArr as $attributeCode=>$attributeLabel) 
+	{
+		$attributeId = Mage::getResourceModel('eav/entity_attribute')
+							->getIdByCode('catalog_product',$attributeCode);
+							
+		// Get attribute options
+		$attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attributeId);
+		$attributeOptions = $attribute ->getSource()->getAllOptions();
+		
+		foreach ($attributeOptions as $id=>$attributeOptionArr)
+		{
+			if(empty($attributeOptionArr['value']))
+				continue;
+			//$value = $attributeOptionArr['value'];
+			$value = urlencode($attributeOptionArr['label']);
+			$label = $attributeOptionArr['label'];
+			$attributeOptionsArr[$attributeCode][$value] = $label;
+		}
+	}
+	
+	/*echo '<pre>'.$attributeCode.':<br/>';
+	print_r($attributeOptionsArr);
+	echo '</pre>';*/
+	
+	$counter = array();
+	
+?>
+<div id="configurator-container">
+<form name="configuratorForm" action="<?php echo Mage::getURL('configurator-imprimante') ?>" method="get" onsubmit="submitConfiguratorForm(); return false;">
+	<?php foreach($attributeCodeArr as $attributeCode=>$attributeLabel): ?>
+		<div class="attribute-group-label">
+			<h1><?php echo $attributeLabel ?></h1>
+		</div>
+		<div id="<?php echo $attributeCode ?>" class="attribute-group">
+			<?php $numberOfOptions = count($attributeOptionsArr[$attributeCode]); ?>
+			<?php 
+				$containerWidth = 938;	//px
+				$styleMargin = 3; 		//px
+				$stylePadding = 4; 		//px
+				$styleBorder = 1; 		//px
+				$styleWidth = floor( ($containerWidth - $numberOfOptions*2*($styleMargin+$stylePadding+$styleBorder)) / $numberOfOptions ); 
+			?>
+			<?php foreach($attributeOptionsArr[$attributeCode] as $value=>$label): ?>
+				<?php $isLast = ( ++$counter[$attributeCode] == $numberOfOptions ) ? true : false;  ?>
+				<div id="<?php echo $attributeCode.'_'.$value ?>" class="attribute-value<?php echo $isLast ? ' last' : '' ?>" onclick="selectOption(this.id,'<?php echo $attributeCode ?>')" style="width:<?php echo $styleWidth ?>px;">
+					<input type="radio" class="radio-btn" name="<?php echo $attributeCode ?>" value="<?php echo $value ?>" />
+					<div class="label-container <?php echo $attributeCode.'-'.str_replace(array("+","%2F","%28","%29"),array("-","-","",""),$value) ?>">
+						<div class="label"><?php echo $valueDetailsArr[$attributeCode][$counter[$attributeCode]] ?></div>
+					</div>
+					<div class="text layout-<?php echo $numberOfOptions ?>-boxes"><?php echo $attributeOptionsArr[$attributeCode][$value] ?></div>
+				</div>
+				<?php if($isLast): ?>
+				<div class="fclear"></div>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</div>
+	<?php endforeach; ?>
+	<hr class="horizontal-separator" />
+	<center>
+		<button type="submit" title="Cauta imprimanta" class="button small-button" onclick="submitConfiguratorForm(); return false;"><span><span>Cauta imprimanta</span></span></button>
+	</center>
+	<div class="fclear"></div>
+</form>
+</div>
+
+<script type="text/javascript">
+
+	function selectOption(id,parentId)
+	{
+		radioGroup = parentId; 	// radio group name is same as container div's id
+		newValue = id;			// the value to be set is same as id
+
+		// remove ID from value [currently value = ID_value]
+		charsToRemove = radioGroup.length + 1;
+		newValue = newValue.substring(charsToRemove);
+
+		$$("#"+parentId+" .selected").each( function (seldiv) { 
+			seldiv.removeClassName("selected"); 
+		});
+		$(id).addClassName("selected");
+
+
+		setCheckedValue(document.configuratorForm[radioGroup], newValue);
+	}
+
+	function submitConfiguratorForm()
+	{
+		<?php foreach($attributeCodeArr as $attributeCode=>$attributeLabel): ?>
+			var <?php echo $attributeCode ?> = getCheckedValue(document.configuratorForm.<?php echo $attributeCode ?>);
+		<?php endforeach; ?>
+		
+		window.location.href = '<?php echo Mage::getURL('configurator-imprimante') ?>' + '?type=printer'
+		<?php foreach($attributeCodeArr as $attributeCode=>$attributeLabel): ?>
+			+ '&<?php echo $attributeCode ?>=' + <?php echo $attributeCode ?>
+		<?php endforeach; ?>;
+		return false;
+	}
+
+
+	
+	function getCheckedValue(radioObj) {
+		if(!radioObj)
+			return "";
+		var radioLength = radioObj.length;
+		if(radioLength == undefined)
+			if(radioObj.checked)
+				return radioObj.value;
+			else
+				return "";
+		for(var i = 0; i < radioLength; i++) {
+			if(radioObj[i].checked) {
+				return radioObj[i].value;
+			}
+		}
+		return "";
+	}
+
+	function setCheckedValue(radioObj, newValue) {
+		if(!radioObj)
+			return;
+		var radioLength = radioObj.length;
+		if(radioLength == undefined) {
+			radioObj.checked = (radioObj.value == newValue.toString());
+			return;
+		}
+		for(var i = 0; i < radioLength; i++) {
+			radioObj[i].checked = false;
+			if(radioObj[i].value == newValue.toString()) {
+				radioObj[i].checked = true;
+			}
+		}
+	}
+
+</script>

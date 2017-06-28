@@ -1,0 +1,9 @@
+<config>
+   <Magestore_Sociallogin>
+      <name>SocialLogin</name>
+      <type>commercial</type>
+      <activation_date>May 7, 2015</activation_date>
+      <expiration_date/>
+      <order_number>100054149</order_number>
+   </Magestore_Sociallogin>
+</config>

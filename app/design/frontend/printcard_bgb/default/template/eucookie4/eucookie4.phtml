@@ -1,0 +1,340 @@
+<?php
+/**
+
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie4
+ * @copyright	Copyright (C) 2013 - 2014 Qubesys Technologies Pvt.Ltd. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+
+$enable				= $this->getConfigData('enable');
+
+
+if (!$enable) {
+	return;
+}
+?>
+
+
+<link type="text/css" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'skin/frontend/default/default/mageclub/css/cookiecompliancy.css'?>" rel="stylesheet" />
+
+
+
+<?php
+$cookie_introtext			= $this->getConfigData('cookie_introtext');
+$cookie_accepttext			= $this->getConfigData('cookie_accepttext');
+$cookie_infotext			= $this->getConfigData('cookie_infotext');
+$cookie_infolink			= $this->getConfigData('cookie_infolink');
+$cookie_infolink_open			= $this->getConfigData('cookie_infolink_open');
+$cookie_bgcolor			= $this->getConfigData('cookie_bgcolor');
+$cookie_textcolor			= $this->getConfigData('cookie_textcolor');
+$cookie_textsize			= $this->getConfigData('cookie_textsize');
+$cookie_textfont			= $this->getConfigData('cookie_textfont');
+$cookie_linkcolor			= $this->getConfigData('cookie_linkcolor');
+$cookie_linksize			= $this->getConfigData('cookie_linksize');
+$cookie_linkfont			= $this->getConfigData('cookie_linkfont');
+
+?>
+
+<style>
+#cookieok_bar {
+	position:fixed;
+	_position: absolute;
+	top:0;
+	left:0;
+	padding:0px;
+	width:100%;
+	
+	
+	z-index:9999;
+	
+	background: <?php echo $cookie_bgcolor; ?> !important;
+	
+}
+#cookieok_bar .cookieok_intro {
+	margin:0;
+	margin-right:120px;
+	<?php if($cookie_textfont==1) {?>
+font-family: 'Droid Sans', sans-serif !important;
+<?php } if($cookie_textfont==2) {?>
+font-family: 'Jockey One', sans-serif !important;
+<?php } if($cookie_textfont==3) {?>
+font-family: 'Lato', sans-serif !important;
+<?php } if($cookie_textfont==4) {?>
+font-family: 'Ubuntu', sans-serif !important;
+<?php } if($cookie_textfont==5) {?>
+font-family: 'Lobster', cursive !important;
+<?php } if($cookie_textfont==6) {?>
+font-family: 'Satisfy', cursive !important;
+<?php } if($cookie_textfont==7) {?>
+font-family: 'Sansita One', cursive !important;
+<?php } if($cookie_textfont==8) {?>
+font-family: 'Damion', cursive !important;
+<?php } if($cookie_textfont==9) {?>
+font-family: 'Carter One', sans-serif !important;
+<?php } if($cookie_textfont==10) {?>
+font-family: 'Bangers', cursive !important;
+<?php } if($cookie_textfont==11) {?>
+font-family: 'Pacifico', cursive !important;
+<?php } if($cookie_textfont==12) {?>
+font-family: 'Open Sans', sans-serif !important;
+<?php } if($cookie_textfont==13) {?>
+font-family: 'Nunito', sans-serif !important;
+<?php } if($cookie_textfont==14) {?>
+font-family: 'Terminal Dosis', sans-serif !important;
+<?php } if($cookie_textfont==15) {?>
+font-family: 'Merriweather', serif !important;
+<?php } if($cookie_textfont==0) { ?>
+font-family: inherit !important;
+<?php }  ?>
+	color: <?php  echo $cookie_textcolor; ?> !important;
+	font-size:<?php  echo $cookie_textsize; ?>px !important;
+}
+
+#cookieok_bar .cookieok_accept,#cookieok_bar .cookieok_decline {
+	font-size: 12px;
+	padding: 0 8px 8px;
+	margin-left: 10px;
+		<?php if($cookie_textfont==1) {?>
+font-family: 'Droid Sans', sans-serif !important;
+<?php } if($cookie_textfont==2) {?>
+font-family: 'Jockey One', sans-serif !important;
+<?php } if($cookie_textfont==3) {?>
+font-family: 'Lato', sans-serif !important;
+<?php } if($cookie_textfont==4) {?>
+font-family: 'Ubuntu', sans-serif !important;
+<?php } if($cookie_textfont==5) {?>
+font-family: 'Lobster', cursive !important;
+<?php } if($cookie_textfont==6) {?>
+font-family: 'Satisfy', cursive !important;
+<?php } if($cookie_textfont==7) {?>
+font-family: 'Sansita One', cursive !important;
+<?php } if($cookie_textfont==8) {?>
+font-family: 'Damion', cursive !important;
+<?php } if($cookie_textfont==9) {?>
+font-family: 'Carter One', sans-serif !important;
+<?php } if($cookie_textfont==10) {?>
+font-family: 'Bangers', cursive !important;
+<?php } if($cookie_textfont==11) {?>
+font-family: 'Pacifico', cursive !important;
+<?php } if($cookie_textfont==12) {?>
+font-family: 'Open Sans', sans-serif !important;
+<?php } if($cookie_textfont==13) {?>
+font-family: 'Nunito', sans-serif !important;
+<?php } if($cookie_textfont==14) {?>
+font-family: 'Terminal Dosis', sans-serif !important;
+<?php } if($cookie_textfont==15) {?>
+font-family: 'Merriweather', serif !important;
+<?php } if($cookie_textfont==0) { ?>
+font-family: inherit !important;
+<?php }  ?>
+	color: <?php  echo $cookie_textcolor; ?> !important;
+	font-size:<?php  echo $cookie_textsize; ?>px !important;
+}
+#cookieok_bar a {
+		<?php if($cookie_linkfont==1) {?>
+font-family: 'Droid Sans', sans-serif !important;
+<?php } if($cookie_linkfont==2) {?>
+font-family: 'Jockey One', sans-serif !important;
+<?php } if($cookie_linkfont==3) {?>
+font-family: 'Lato', sans-serif !important;
+<?php } if($cookie_linkfont==4) {?>
+font-family: 'Ubuntu', sans-serif !important;
+<?php } if($cookie_linkfont==5) {?>
+font-family: 'Lobster', cursive !important;
+<?php } if($cookie_linkfont==6) {?>
+font-family: 'Satisfy', cursive !important;
+<?php } if($cookie_linkfont==7) {?>
+font-family: 'Sansita One', cursive !important;
+<?php } if($cookie_linkfont==8) {?>
+font-family: 'Damion', cursive !important;
+<?php } if($cookie_linkfont==9) {?>
+font-family: 'Carter One', sans-serif !important;
+<?php } if($cookie_linkfont==10) {?>
+font-family: 'Bangers', cursive !important;
+<?php } if($cookie_linkfont==11) {?>
+font-family: 'Pacifico', cursive !important;
+<?php } if($cookie_linkfont==12) {?>
+font-family: 'Open Sans', sans-serif !important;
+<?php } if($cookie_linkfont==13) {?>
+font-family: 'Nunito', sans-serif !important;
+<?php } if($cookie_linkfont==14) {?>
+font-family: 'Terminal Dosis', sans-serif !important;
+<?php } if($cookie_linkfont==15) {?>
+font-family: 'Merriweather', serif !important;
+<?php } if($cookie_linkfont==0) { ?>
+font-family: inherit !important;
+<?php }  ?>
+	color: <?php  echo $cookie_linkcolor; ?> !important;
+	font-size:<?php  echo $cookie_linksize; ?>px !important;
+	text-decoration: underline;
+	background:none;
+}
+#cookieok_bar a:hover {
+		<?php if($cookie_linkfont==1) {?>
+font-family: 'Droid Sans', sans-serif !important;
+<?php } if($cookie_linkfont==2) {?>
+font-family: 'Jockey One', sans-serif !important;
+<?php } if($cookie_linkfont==3) {?>
+font-family: 'Lato', sans-serif !important;
+<?php } if($cookie_linkfont==4) {?>
+font-family: 'Ubuntu', sans-serif !important;
+<?php } if($cookie_linkfont==5) {?>
+font-family: 'Lobster', cursive !important;
+<?php } if($cookie_linkfont==6) {?>
+font-family: 'Satisfy', cursive !important;
+<?php } if($cookie_linkfont==7) {?>
+font-family: 'Sansita One', cursive !important;
+<?php } if($cookie_linkfont==8) {?>
+font-family: 'Damion', cursive !important;
+<?php } if($cookie_linkfont==9) {?>
+font-family: 'Carter One', sans-serif !important;
+<?php } if($cookie_linkfont==10) {?>
+font-family: 'Bangers', cursive !important;
+<?php } if($cookie_linkfont==11) {?>
+font-family: 'Pacifico', cursive !important;
+<?php } if($cookie_linkfont==12) {?>
+font-family: 'Open Sans', sans-serif !important;
+<?php } if($cookie_linkfont==13) {?>
+font-family: 'Nunito', sans-serif !important;
+<?php } if($cookie_linkfont==14) {?>
+font-family: 'Terminal Dosis', sans-serif !important;
+<?php } if($cookie_linkfont==15) {?>
+font-family: 'Merriweather', serif !important;
+<?php } if($cookie_linkfont==0) { ?>
+font-family: inherit !important;
+<?php }  ?>
+	color: <?php  echo $cookie_linkcolor; ?> !important;
+	font-size:<?php  echo $cookie_linksize; ?>px !important ;
+	background:none;
+}
+</style>
+<script>
+
+var _cookieOKJQ = jQuery.noConflict();
+
+(function(jQuery) { 
+	/**
+	 * Cookie plugin
+	 *
+	 * Copyright (c) 2006 Klaus Hartl (stilbuero.de)
+	 * Dual licensed under the MIT and GPL licenses:
+	 * http://www.opensource.org/licenses/mit-license.php
+	 * http://www.gnu.org/licenses/gpl.html
+	 *
+	 */
+	jQuery.cookie = function(name, value, options) {
+	    if (typeof value != 'undefined') { // name and value given, set cookie
+		options = options || {};
+		if (value === null) {
+		    value = '';
+		    options.expires = -1;
+		}
+		var expires = '';
+		if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+		    var date;
+		    if (typeof options.expires == 'number') {
+		        date = new Date();
+		        date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
+		    } else {
+		        date = options.expires;
+		    }
+		    expires = '; expires=' + date.toUTCString(); // use expires attribute, max-age is not supported by IE
+		}
+		// CAUTION: Needed to parenthesize options.path and options.domain
+		// in the following expressions, otherwise they evaluate to undefined
+		// in the packed version for some reason...
+		var path = options.path ? '; path=' + (options.path) : '';
+		var domain = options.domain ? '; domain=' + (options.domain) : '';
+		var secure = options.secure ? '; secure' : '';
+		document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
+	    } else { // only name given, get cookie
+		var cookieValue = null;
+		if (document.cookie && document.cookie != '') {
+		    var cookies = document.cookie.split(';');
+		    for (var i = 0; i < cookies.length; i++) {
+		        var cookie = jQuery.trim(cookies[i]);
+		        // Does this cookie string begin with the name we want?
+		        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+		            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		            break;
+		        }
+		    }
+		}
+		return cookieValue;
+	    }
+	};
+})(_cookieOKJQ);
+
+var _cookieOK = {accepted:false, showDecline:false, declined:false};
+
+(function($){
+	if (typeof cookieOKOptions != 'undefined'){
+		$.extend(_cookieOK, cookieOKOptions);
+	}
+	var bodyMargin = null;
+	var cookie = $.cookie("_cookieok");
+	if (cookie && cookie == "1"){
+		_cookieOK.accepted = true;
+	}
+
+	if (cookie && cookie == "0"){
+		_cookieOK.declined = true;
+	}
+
+	function adjustBodyMargin() {
+		// increase the body margin-top by height of the bar.
+		if (bodyMargin == null){
+			bodyMargin = parseInt($("body").css("margin-top"), 10);
+		}
+
+		var barHeight = $("#cookieok_bar").height();
+		var newMargin = bodyMargin + barHeight;
+		$("body").css("margin-top", newMargin);
+	}
+
+	$('<link />',{href:"<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'skin/frontend/default/default/mageclub/css/cookieok.css'?>",media:'screen',rel:'stylesheet',type:'text/css'}).appendTo('head');
+	$(document).ready (function (){
+		if (_cookieOK.accepted || _cookieOK.declined){
+			return;
+		}
+		var introText = "<?php echo $cookie_introtext; ?>";
+		var barHTML = "<div id='cookieok_bar'>"
+		+ "<p class='cookieok_intro'>" + introText + " <a href='<?php echo $cookie_infolink; ?>' class='more' <?php if($cookie_infolink_open==1) { ?> target='_blank' <?php } ?>><?php echo $cookie_infotext; ?></a></p>"
+		+ "<p class='cookieok_accept'><input type='hidden' id='cookieok_check'/><label for='cookieok_check'><?php echo $cookie_accepttext; ?></label></p>";
+		if (_cookieOK.showDecline){
+			barHTML += "<p class='cookieok_decline'><input type='checkbox' id='cookieok_decline'/><label for='cookieok_decline'>I do not wish you to set additional cookies on this visit and I understand that this may affect my experience of the site or the features available to me</label></p>";
+		}
+		barHTML += "";
+
+		$("body").append(barHTML);
+		
+
+		$('#cookieok_check').change(function(){
+			if ($(this).prop("checked")){
+				$.cookie("_cookieok", "1", {path:'/', expires: 365*2 });
+				window.location.href = window.location.href;
+			}
+		});
+
+		$('#cookieok_decline').change(function(){
+			if ($(this).prop("checked")){
+				$.cookie("_cookieok", "0");
+				window.location.href = window.location.href;
+			}
+		});
+		window.setTimeout(adjustBodyMargin,100);
+		$(window).resize(function(){
+			window.setTimeout(adjustBodyMargin,100);
+		});
+	});
+})(_cookieOKJQ);
+
+
+
+
+
+
+</script>

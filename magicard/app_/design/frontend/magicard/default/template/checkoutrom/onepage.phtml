@@ -1,0 +1,113 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     PfpjRom
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Overrides opc block
+ * - it just changes an js add declaration (js/pfpjrom/opcheckout.js).
+ *
+ * @see Mage_Checkout_Block_Onepage
+ * @uses Interface_Frontend_Default 1.4.1.0 (stable)
+ */
+?>
+<?php
+/* [start] PfpjRom add */
+echo $this->helper('customerrom/js')->getTranslatorScript();
+/* [end] PfpjRom add */
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Checkout') ?></h1>
+</div>
+<script type="text/javascript" src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
+
+<?php /* [start] PfpjRom edit */ ?>
+
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
+<script type="text/javascript">
+//<![CDATA[
+	Shipping.prototype.syncWithBilling = function () {
+        $('billing-address-select') && this.newAddress(!$('billing-address-select').value);
+        $('shipping:same_as_billing').checked = true;
+        if (!$('billing-address-select') || !$('billing-address-select').value) {
+            arrElements = Form.getElements(this.form);
+            for (var elemIndex in arrElements) {
+                if (arrElements[elemIndex].id) {
+                    var sourceField = $(arrElements[elemIndex].id.replace(/^shipping:/, 'billing:'));
+                    if (sourceField){
+                        arrElements[elemIndex].value = sourceField.value;
+                    }
+                }
+            }
+            //$('shipping:country_id').value = $('billing:country_id').value;
+            shippingRegionUpdater.update();
+            $('shipping:region_id').value = $('billing:region_id').value;
+            $('shipping:region').value = $('billing:region').value;
+            //shippingForm.elementChildLoad($('shipping:country_id'), this.setRegionValue.bind(this));
+        } else {
+            $('shipping-address-select').value = $('billing-address-select').value;
+        }
+
+        /* [start] PfpjRom add */
+
+        this.opcShippingAddressTippersBehaviour.setFieldsValues(this.opcShippingAddressTippersBehaviour, this.opcBillingAddressTippersBehaviour, 'billing:', 'shipping:');
+
+        /* [end] PfpjRom add */
+    }
+//]]>
+</script>
+
+<?php /* [end] PfpjRom edit */ ?>
+
+<script type="text/javascript">countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?></script>
+<ol class="opc" id="checkoutSteps">
+<?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
+<?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
+    <li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
+        <div class="step-title">
+            <span class="number"><?php echo $i ?></span>
+            <h2><?php echo $_stepInfo['label'] ?></h2>
+            <a href="#"><?php echo $this->__('Edit') ?></a>
+        </div>
+        <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none;">
+            <?php echo $this->getChildHtml($_stepId) ?>
+        </div>
+    </li>
+<?php endforeach ?>
+</ol>
+<script type="text/javascript">
+//<![CDATA[
+    var accordion = new Accordion('checkoutSteps', '.step-title', true);
+    <?php if($this->getActiveStep()): ?>
+    accordion.openSection('opc-<?php echo $this->getActiveStep() ?>');
+    <?php endif ?>
+    var checkout = new Checkout(accordion,{
+        progress: '<?php echo $this->getUrl('checkout/onepage/progress') ?>',
+        review: '<?php echo $this->getUrl('checkout/onepage/review') ?>',
+        saveMethod: '<?php echo $this->getUrl('checkout/onepage/saveMethod') ?>',
+        failure: '<?php echo $this->getUrl('checkout/cart') ?>'}
+    );
+//]]>
+</script>

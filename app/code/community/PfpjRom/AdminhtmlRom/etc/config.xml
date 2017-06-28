@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category   PfpjRom
+ * @package    PfpjRom_AdminhtmlRom
+ * @author     Daniel Ifrim
+ * @copyright  Copyright (c) Daniel Ifrim
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+	<modules>
+		<PfpjRom_AdminhtmlRom>
+			<version>0.1.1</version>
+			<depends>
+                <Mage_Adminhtml />
+            </depends>
+		</PfpjRom_AdminhtmlRom>
+    </modules>
+    
+    <adminhtml>
+        <translate>
+            <modules>
+                <PfpjRom_AdminhtmlRom>
+                    <files>
+                        <default>PfpjRom_All.csv</default>
+                    </files>
+                </PfpjRom_AdminhtmlRom>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <adminhtmlrom>
+                    <file>adminhtmlrom.xml</file>
+                </adminhtmlrom>
+            </updates>
+        </layout>
+    </adminhtml>
+    
+    <!--<admin>
+    	<routers>
+            <adminhtml>                
+                <use>admin</use>
+                <args>
+                    <module>PfpjRom_AdminhtmlRom</module>
+                    <frontName>adminhtmlrom</frontName>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>-->
+    
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <PfpjRom_AdminhtmlRom before="Mage_Adminhtml">PfpjRom_AdminhtmlRom</PfpjRom_AdminhtmlRom>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    
+    <global>
+    	<!--<rewrite>
+    		<pfpjrom_adminhtmlrom_customer_save>
+                <from><![CDATA[#^/adminhtmlrom/customer/$#]]></from>
+                <to>/admin/customer/</to>
+            </pfpjrom_adminhtmlrom_customer_save>
+            
+    		<pfpjrom_adminhtmlrom_customer_save>
+                <from><![CDATA[#^/admin/customer/save/$#]]></from>
+                <to>/adminhtmlrom/customer/save/</to>
+            </pfpjrom_adminhtmlrom_customer_save> 
+            
+    	</rewrite>-->
+    	
+		<models>
+			<adminhtmlrom>
+				<class>PfpjRom_AdminhtmlRom_Model</class>
+				<rewrite>
+					<customerrom_renderer_tippers>PfpjRom_AdminhtmlRom_Model_CustomerRom_Renderer_Tippers</customerrom_renderer_tippers>
+					<customerrom_renderer_forbilling>PfpjRom_AdminhtmlRom_Model_CustomerRom_Renderer_Forbilling</customerrom_renderer_forbilling>
+					<customerrom_renderer_forshipping>PfpjRom_AdminhtmlRom_Model_CustomerRom_Renderer_Forshipping</customerrom_renderer_forshipping>
+				</rewrite>
+			</adminhtmlrom>
+		</models>
+
+        <blocks>
+        	<adminhtmlrom>
+                <class>PfpjRom_AdminhtmlRom_Block</class>
+			</adminhtmlrom>
+        	
+			<!-- customer -->
+			<adminhtml>
+        		<rewrite>
+        			<!--<widget_form>PfpjRom_AdminhtmlRom_Block_Widget_Form</widget_form>-->
+        			<customer_edit_tab_addresses>PfpjRom_AdminhtmlRom_Block_CustomerRom_Edit_Tab_Addresses</customer_edit_tab_addresses>
+        		</rewrite>
+        	</adminhtml>
+        	
+        	<!-- sales -->
+        	<adminhtml>
+        		<rewrite>
+        			<sales_order_create_form_address>PfpjRom_AdminhtmlRom_Block_SalesRom_Order_Create_Form_Address</sales_order_create_form_address>
+        			<sales_order_create_billing_address>PfpjRom_AdminhtmlRom_Block_SalesRom_Order_Create_Billing_Address</sales_order_create_billing_address>
+        			<sales_order_create_shipping_address>PfpjRom_AdminhtmlRom_Block_SalesRom_Order_Create_Shipping_Address</sales_order_create_shipping_address>
+        		</rewrite>
+        	</adminhtml>
+        </blocks>
+    </global>
+</config>

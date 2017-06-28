@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie1
+ * @copyright	Copyright (C) 2010 - 2011 Open Source Matters. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+ -->
+
+<config>
+	<modules>
+		<Mc_Eucookie1>
+			<version>0.1.0</version>
+		</Mc_Eucookie1>
+	</modules>
+
+	<frontend>
+		<layout>
+			<updates>
+				<eucookie1>
+					<file>eucookie1.xml</file>
+				</eucookie1>
+			</updates>
+		</layout>
+	</frontend>
+
+	<global>
+		<models>
+			<eucookie1>
+				<class>Mc_Eucookie1_Model</class>
+			</eucookie1>
+		</models>
+
+		<blocks>
+			<eucookie1>
+				<class>Mc_Eucookie1_Block</class>
+			</eucookie1>
+		</blocks>
+
+		<helpers>
+			<eucookie1>
+				<class>Mc_Eucookie1_Helper</class>
+			</eucookie1>
+		</helpers>
+	</global>
+
+	<default>
+		<eucookie1>
+			<general>
+				<enable>1</enable>
+				<jquery>1</jquery>
+				<consenttype></consenttype>
+				<tagPosition></tagPosition>
+				<bannerPosition></bannerPosition>
+				<style></style>
+				<onlyshowbanneronce>0</onlyshowbanneronce>
+				<useSSL>1</useSSL>
+				<hideallsitesbutton>1</hideallsitesbutton>
+				<hideprivacysettingstab>1</hideprivacysettingstab>
+				
+				
+			</general>
+		</eucookie1>
+	</default>
+</config>

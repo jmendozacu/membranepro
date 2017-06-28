@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Busteco_CategoryAttribute>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Busteco_CategoryAttribute>
+    </modules>
+</config>

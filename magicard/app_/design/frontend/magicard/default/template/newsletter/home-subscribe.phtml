@@ -1,0 +1,12 @@
+<span class="title"><?php echo $this->__('Newsletter') ?></span>
+<form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
+		<input type="text" name="email" id="newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email" />
+		<span class="small-text">Inscrie-te la acest newsletter pentru a primi periodic informatii utile</span>
+		<button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button small-button fright"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+</form>
+<div class="fclear"></div>
+<script type="text/javascript">
+//<![CDATA[
+	var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+//]]>
+</script>

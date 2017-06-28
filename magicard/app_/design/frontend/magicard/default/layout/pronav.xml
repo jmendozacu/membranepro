@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="head">
+			<!-- Remove this, by commenting it out, if jQuery library has already been included BEFORE ProNav inclusion-->
+			<!-- Otherwise comment out jQuery inclusions in extensions that load it AFTER  -->
+			<action method="addJs">
+				<js>pronav/jquery.min.js</js>
+			</action>
+			
+			<action method="addJs">
+				<js>pronav/jquery.hover.intent.js</js>
+			</action>
+			<action method="addCss">
+				<stylesheet>pronav/css/pronav.default.css</stylesheet>
+			</action>
+			<action method="addItem"><type>skin_css</type><name>pronav/css/pronav.patches.ie7.css</name><params/><if>lt IE 7</if></action>
+			<action method="addItem"><type>skin_css</type><name>pronav/css/pronav.patches.ie8.css</name><params/><if>lt IE 8</if></action>
+			<action method="addItem"><type>skin_css</type><name>pronav/css/pronav.patches.ie9.css</name><params/><if>lt IE 9</if></action>
+		</reference>
+		<reference name="catalog.topnav">
+            <action method="setTemplate" ifconfig="pronav/pronavconfig/pronav_status">
+                <template>pronav/navigation_top.phtml</template>
+            </action>
+        </reference>
+	</default>
+	<pronav_index_index>
+		<reference name="content">
+			<block type="pronav/pronav" name="pronav" template="pronav/pronav.phtml"/>
+		</reference>
+	</pronav_index_index>
+</layout>

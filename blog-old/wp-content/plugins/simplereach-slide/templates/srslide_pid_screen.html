@@ -1,0 +1,36 @@
+<div id="srslide_register">
+    {{#errors}}
+    <div id="message" class="error below-h2">
+        <p>{{errors}}</p>
+    </div>
+    {{/errors}}
+    {{#updated}}
+        <div class="updated"><p>{{{updated}}}</p></div>
+    {{/updated}}
+    <h2>{{header_text}}</h2>
+    <form id="srslide_form" name="srslide_form" method="post" action="{{request_uri}}">
+          <input type="hidden" name="srslide_validate_hidden" value="Y">
+        <p>STATUS:  {{current_status}}</p>
+        <table>
+            <tr>
+                <td valign="top" style="padding-top: 4px">
+                    {{api_key_text}}
+                </td>
+                <td colspan="2">
+                    <input type="textbox" name="srslide_api_key" value="{{srslide_api_key}}" /><br />
+                    <span class="srslide_minitext">{{warning_text}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="padding-top: 4px">
+                    {{publisher_id_text}}
+                </td>
+                <td colspan="2">
+                        <input type="textbox" name="srslide_pid" value="{{srslide_pid}}" /><br />
+                        <span class="srslide_minitext">{{warning_text}}</span>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" name="Submit" value="{{save}}" />
+    </form>
+</div>

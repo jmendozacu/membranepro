@@ -1,0 +1,67 @@
+/**
+ * @category    Mana
+ * @package     Mana_Filters
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+/*.m-filter-item-list .m-selected-filter-item { color: red; }*/
+.m-filter-popup .m-selected-ln-item > a {
+    font-weight: bold;
+    text-decoration: none;
+}
+.block-layered-nav .currently {
+    float: left;
+    margin: 10px 0 0 0;
+}
+.block-layered-nav .btn-remove {
+    margin-top: 3px;
+}
+.block-layered-nav .currently li {
+    /*position: relative;
+    padding: 6px 24px 6px 10px;*/
+    border-bottom: 1px dotted #cbccd1;
+    /*font-size: 1.4em;*/
+    height: auto;
+    margin: 5px 0;
+    padding: 0 0 10px;
+}
+.block-layered-nav .currently li span {
+    margin-top: 5px;
+    font-weight: 600;
+}
+.block-layered-nav .currently .btn-remove {
+    /*margin-top: 0;
+    position: absolute;
+    right: 4px;
+    top: 9px;
+    margin-left: 0;*/
+    background: none repeat scroll 0 0 #cbccd1;
+    color: #282828;
+    float: right;
+    font-size: 0.9em;
+    height: 1.7em;
+    line-height: 0.9em;
+    margin: 0 0 0 5px;
+    padding: 5px;
+}
+.mb-mana-catalog-leftnav .actions a {
+    background: none repeat scroll 0 0 #8a2020;
+    color: #fff;
+    float: left;
+    /*font-size: 1.4em;*/
+    height: 1.7em;
+    line-height: 1.4em;
+    margin: 10px 0 0 5px;
+    padding: 2px 10px;
+}
+.block-layered-nav dt {
+    position: relative;
+    zoom: 1;
+    left: 0;
+    top: 0;
+}
+
+.block-layered-nav dd {
+    float: left;
+    width: 100%;
+}

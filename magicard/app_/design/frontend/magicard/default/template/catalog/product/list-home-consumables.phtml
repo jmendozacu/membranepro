@@ -1,0 +1,79 @@
+<?php
+	$NO_OF_PRODUCTS = 4;
+	$skuArr = array('3649-0001','3633-9001X','3652-000X','Prima401');
+	$namesArr = array('Pronto','Enduro +','Rio Pro','Prima 4');
+
+	$relatedProducts = null;
+	foreach($skuArr as $name=>$sku) {
+		// Get all related products for SKU, and then filter by attribute value
+		$relatedProductsForSelectedSKU = Mage::getModel('catalog/product')
+											->loadByAttribute('sku',$sku)
+											->getRelatedProductCollection()
+											->addAttributeToSelect('*')
+											->addStoreFilter()
+											;
+		//$relatedProductsForSelectedSKU->getSelect()->order(new Zend_Db_Expr('RAND()'));
+		$relatedProductsForSelectedSKU->setOrder('position', 'asc');
+		$relatedProductsForSelectedSKU->setPage(1,$NO_OF_PRODUCTS)->load();
+		
+		$relatedProducts[$sku] = $relatedProductsForSelectedSKU;
+	}
+    
+    $_helper = Mage::helper('catalog/output');
+?>
+<ul id="tabs">
+<?php foreach($skuArr as $key=>$sku): ?>
+	<li <?php if ($key==0): ?>class="active"<?php endif; ?>><a href="#" rel="tab<?php echo $key ?>" class="tab-control"><?php echo $namesArr[$key] ?></a></li>
+<?php endforeach; ?>
+</ul>
+<div id="tab-container">
+	<?php foreach($skuArr as $key=>$sku): ?>
+	<div id="tab<?php echo $key ?>" class="tab-content<?php if ($key==0): ?> active<?php endif; ?>">
+		<?php $_productCollection = $relatedProducts[$sku]; ?>
+		<?php if(!$_productCollection->count()): ?>
+		<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+		<?php else: ?>
+		    <?php $_collectionSize = $_productCollection->count() ?>
+		    <ul class="tab-products-list">
+		    <?php $i=0; foreach ($_productCollection as $_product): ?>
+		    	<?php $priceOnDemand = Mage::getModel('catalog/product')->load($_product->getId())->getAttributeText('price_on_demand'); ?>
+		            <li class="item">
+		                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(60); ?>" width="60" height="60" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+		                <h3 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h3>
+		                <?php echo $this->getPriceHtml($_product, true) ?>
+		                <div class="actions">
+		                	<?php if($priceOnDemand=='Da'): ?>
+		                    	<p><button type="button" title="<?php echo $this->__('Ask for offer') ?>" class="button small-button" onclick="setLocation('<?php echo $this->getUrl('contact/vanzari/').'?sku='.$_product->getSku() ?>')"><span><span><?php echo $this->__('Ask for offer') ?></span></span></button></p>
+		                    <?php elseif($_product->isSaleable()): ?>
+		                        <p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button small-button" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+		                    <?php else: ?>
+		                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+		                    <?php endif; ?>
+		                </div>
+		                <div class="fclear"></div>
+		            </li>
+		        <?php endforeach ?>
+		    </ul>
+		<?php endif; ?>
+	</div>
+	<?php endforeach; ?>
+</div>
+						
+<script type="text/javascript">
+	$$('.tab-control').each(function (el) {
+		$(el).observe('click', function(event) {
+			Event.stop(event);
+			var divId = $(el).readAttribute('rel');
+
+			$$('.tab-content').each(function (el) {
+				$(el).removeClassName('active');
+			});
+			$$('.tab-control').each(function (el) {
+				$(el).up('li').removeClassName('active');
+			});
+			
+			$(divId).addClassName('active');
+			$(el).up('li').addClassName('active');
+		});
+	});
+</script>

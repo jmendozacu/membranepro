@@ -1,0 +1,226 @@
+<script type="text/javascript">
+//<![CDATA[
+	//var auctionTimeCounters = new Array();
+	var dailydealTimeCounters = new Array();
+	var i = 0;
+//]]>
+</script>
+
+<?php 
+if(!function_exists('getShortDescription2')){
+function getShortDescription2($string, $max_length){
+	if (strlen($string) > $max_length){
+		$string = substr($string, 0, $max_length);
+		$pos = strrpos($string, " ");
+		if($pos === false) {
+			return substr($string, 0, $max_length)."…";
+		}
+		return substr($string, 0, $pos)."…";
+	}else{
+		return $string;
+	}
+}
+}
+?>
+
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_coreHelper = $this->helper('core');
+    $_helper = $this->helper('catalog/output');
+?>
+
+<div class="page-title category-title">
+	<h1><?php echo $this->__('Daily Deal');?></h1>
+</div>
+
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<div class="category-products">
+    <?php echo $this->getToolbarHtml() ?>
+    <?php // List mode ?>
+    <?php if($this->getMode()!='grid'): ?>
+    <?php $_iterator = 0; ?>
+    <ol class="products-list dailydeal-list" id="products-list">
+    <?php foreach ($_productCollection as $_product): ?>
+        <?php $dailydeal=$this->getDailydealByProduct($_product->getEntityId());
+        ?>
+        <?php if(!$dailydeal->getId()) continue; ?>
+        <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+          <div class="wrap-productlist-li">  <?php // Product Image
+            if($dailydeal->getThumbnailImage()){
+                $image=Mage::getBaseUrl('media').$dailydeal->getThumbnailImage();
+            }else{
+                $image=$this->helper('catalog/image')->init($_product, 'small_image')->resize(340,190);
+            }
+            ?>
+            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->getImageLabel($_product, 'small_image') ?>" class="product-image">
+                <img src="<?php echo $image;  ?>" width="340" height="190" alt="<?php echo $this->getImageLabel($_product, 'small_image') ?>" />
+            </a>
+            <?php // Product description ?>
+            <div class="product-shop">
+                <div class="f-fix">
+                    <h2 class="product-name dailydeal-sidebar-product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_product->getName() ?>"><?php echo $dailydeal->getTitle() ?></a>
+                </h2>
+                       <ul class="dailydeal-price">                                
+							<li class="special-price">
+								<?php 
+									echo $_coreHelper->currency($dailydeal->getDealPrice());
+								?>
+							</li>
+							<li class="old-price" ><?php echo $_coreHelper->currency($_product->getPrice()) ?></li>
+					</ul>
+					
+						<div class="wrap-grid-action">
+							<?php if($_product->isSaleable()): ?>
+								<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="btn-dailydeal" onclick="setLocation('<?php echo Mage::getBlockSingleton('catalog/product_list')->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Buy Now') ?></span></span></button>
+							<?php else: ?>
+								<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+							<?php endif; ?>
+							<ul class="save-sold">
+                                <li class="special-price">
+                                    <?php 
+                                        echo $this->__('<label>You save </label>').$_coreHelper->currency($_product->getPrice()-$dailydeal->getDealPrice());
+                                    ?>
+                                </li>
+								<li class="special-price lastspecial">
+								<?php echo $this->__('<label>Bought </label><span class="price">');?>
+								<?php 
+                                        $limit=Mage::getStoreConfig('dailydeal/general/limit');
+										$items=$dailydeal->getQuantity();
+                                        if ($limit>0){
+                                            echo $dailydeal->getSold().' '.$this->__('/').$items; 
+                                        }else {
+                                            echo $dailydeal->getSold().' '.$this->__('/').$items;
+                                        }
+                                    ?>
+                            </ul> 
+						</div>
+							<ul class="time-left"> 
+                                <li><label><?php echo $this->__('Time left ')?></label></li>
+                                <?php $now_time = Mage::getModel('core/date')->timestamp(time()) ?>
+                                <?php 
+                                        $end_time = Mage::getModel('core/date')->timestamp(strtotime($dailydeal->getCloseTime()));
+                                 ?>
+                                <div class="timeleft" id="timeleft_<?php echo $_product->getId() ?>"> </div>
+    
+							</ul>
+					</div>
+				</div>
+				<div style="clear:both;"></div>
+            </div>
+        </li>
+        
+        
+        <script type="text/javascript">
+		//<![CDATA[
+			dailydealTimeCounters[i] = new DailydealTimeCounter('<?php echo $now_time ?>', '<?php echo $end_time ?>', '<?php echo $dailydeal->getId() ?>');
+			dailydealTimeCounters[i].setTimeleft('timeleft_<?php echo $_product->getId() ?>');
+		//]]>
+		</script>
+        
+        
+    <?php endforeach; ?>
+    </ol>
+    <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+
+    <?php else: ?>
+
+    <?php // Grid Mode ?>
+
+    <?php $_collectionSize = $_productCollection->count() ?>
+    <?php $_columnCount = 2; ?>
+    <?php $i=0; foreach ($_productCollection as $_product): ?>
+        <?php $dailydeal=$this->getDailydealByProduct($_product->getEntityId());
+        ?>
+		<?php if(!$dailydeal->getId()) continue; ?>
+        <?php if ($i++%$_columnCount==0): ?>
+        <ul class="products-grid dailydeal-grid">
+        <?php endif ?>
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+				<div class="dailydeal-wrap">
+                <?php // Product Image
+                        if($dailydeal->getThumbnailImage()){
+                            $image=Mage::getBaseUrl('media').$dailydeal->getThumbnailImage();
+                        }else{
+                            $image=$this->helper('catalog/image')->init($_product, 'thumbnail')->resize(340,190);
+                        }
+                ?>
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->getImageLabel($_product, 'small_image') ?>" class="product-image">
+                    <img src="<?php echo $image; ?>"  alt="<?php echo $this->getImageLabel($_product, 'small_image') ?>" />
+                </a>
+			<div class="bottom-grid-dailydeal">
+                <h2 class="product-name dailydeal-sidebar-product-name">
+					<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_product->getName() ?>">
+							<?php 								
+								$str2 = $dailydeal->getTitle();
+								echo getShortDescription2($str2,35);												
+							?>
+					
+					</a>
+                </h2>
+					<ul class="dailydeal-price">                                
+							<li class="special-price">
+								<?php 
+									echo $_coreHelper->currency($dailydeal->getDealPrice());
+								?>
+							</li>
+							<li class="old-price" ><?php echo $_coreHelper->currency($_product->getPrice()) ?></li>
+					</ul>
+					
+						<div class="wrap-grid-action">
+							<?php if($_product->isSaleable()): ?>
+								<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="btn-dailydeal" onclick="setLocation('<?php echo Mage::getBlockSingleton('catalog/product_list')->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Buy Now') ?></span></span></button>
+							<?php else: ?>
+								<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+							<?php endif; ?>
+							<ul class="save-sold">
+                                <li class="special-price">
+                                    <?php 
+                                        echo $this->__('<label>You save </label>').$_coreHelper->currency($_product->getPrice()-$dailydeal->getDealPrice());
+                                    ?>
+                                </li>
+								<li class="special-price lastspecial">
+								<?php echo $this->__('<label>Bought </label><span class="price">');?>
+								<?php 
+                                        $limit=Mage::getStoreConfig('dailydeal/general/limit');
+										$items=$dailydeal->getQuantity();
+                                        if ($limit>0){
+                                            echo $dailydeal->getSold().' '.$this->__('/').$items; 
+                                        }else {
+                                            echo $dailydeal->getSold().' '.$this->__('/').$items;
+                                        }
+                                    ?>
+                            </ul> 
+						</div>
+							<ul class="time-left"> 
+                                <li><label><?php echo $this->__('Time left ')?></label></li>
+                                <?php $now_time = Mage::getModel('core/date')->timestamp(time()) ?>
+                                <?php 
+                                        $end_time = Mage::getModel('core/date')->timestamp(strtotime($dailydeal->getCloseTime()));
+                                 ?>
+                                <div class="timeleft" id="timeleft_<?php echo $_product->getId() ?>"> </div>
+    
+							</ul>
+					</div>
+					<div class="bg-bottom-dailydeal">&nbsp;</div>
+					</div>
+            </li>
+            <script type="text/javascript">
+		//<![CDATA[
+			dailydealTimeCounters[i] = new DailydealTimeCounter('<?php echo $now_time ?>', '<?php echo $end_time ?>', '<?php echo $dailydeal->getId() ?>');
+			dailydealTimeCounters[i].setTimeleft('timeleft_<?php echo $_product->getId() ?>');
+		//]]>
+		</script>
+        <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+        <?php endif ?>
+        <?php endforeach; ?>
+        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+    <?php endif; ?>
+
+    <div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,91 @@
+<div class="container">
+	<div class="container-top">
+		<h1>Contact Departament Vanzare si Consultanta</h1>
+	</div>
+	
+	<div class="container-content">
+        
+        <h1>
+        <?php 
+        if($this->getData('productName') && $this->getData('productUrl')) 
+            echo $this->__('Ask for offer').' <a href="'.$this->getData('productUrl').'">'.$this->getData('productName').'</a>'; 
+        ?>
+        </h1>
+    
+		<div class="box simple-contact">
+		
+			<div class="contact-info vanzari fleft">
+				<div class="form-logo-vanzari"></div>
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('contact_form_sales')->toHtml() ?>
+			</div>
+		
+			<div class="contact-form fright">
+				<form id="contact_form_sales" class="contact_form half" name="simple_contact_form" action="<?php echo $this->getUrl('contact/vanzari/sendemail') ?>" method="post">
+                    
+                    <input name="sku" id="sku" title="SKU" value="<?php echo $this->getData('sku'); ?>" type="hidden" />
+				
+                    <input name="productName" id="productName" title="Product Name" value="<?php echo $this->getData('productName'); ?>" type="hidden" />
+				
+                    
+				    <div class="form-block">
+						<label class="input-label" for="name">Nume</label>
+						<input name="name" id="name" title="Nume" value="" class="input-text required-entry" type="text" />
+					</div>
+		
+					<div class="form-block">
+						<label class="input-label" for="company">Firma</label>
+						<input name="company" id="company" title="Firma" value="" class="input-text required-entry" type="text" />
+					</div>
+					
+					<div class="form-block">
+						<label class="input-label" for="phone">Telefon</label>
+						<input name="phone" id="phone" title="Telefon" value="" class="input-text required-entry validate-digits" type="text" />
+					</div>
+					
+					<div class="form-block">
+						<label class="input-label" for="email">E-mail</label>
+						<input name="email" id="email" title="Email" value="" class="input-text required-entry validate-email" type="text" />
+					</div>
+		
+					<div class="form-block">
+						<label class="input-label" style="vertical-align:top; padding-top:3px;">&nbsp;</label>
+						<div style="display:inline-block;" class="radio-container">
+							<input class="input-radio" type="radio" name="request" value="Doresc sa achizitionez un produs" id="request_acquisition" /> <label class="input-label-radio" for="request_acquisition">Doresc sa achizitionez un produs</label> <br/>
+							<input class="input-radio" type="radio" name="request" value="Doresc sa inchiriez un echipament" id="request_rent" /> <label class="input-label-radio" for="request_rent">Doresc sa inchiriez un echipament</label> <br/>
+							<input class="input-radio" type="radio" name="request" value="Doresc un sfat legat de un produs" id="request_advice" /> <label class="input-label-radio" for="request_advice">Doresc un sfat legat de un produs</label> <br/>
+							<input class="input-radio" type="radio" name="request" value="Doresc specificatii suplimentare" id="request_more_info" /> <label class="input-label-radio" for="request_more_info">Doresc specificatii suplimentare</label> <br/>
+							<input class="input-radio" type="radio" name="request" value="Doresc sa initializez un parteneriat sau colaborare" id="request_partnership" /> <label class="input-label-radio" for="request_partnership">Doresc sa initializez un parteneriat sau colaborare</label> <br/>
+							<input class="input-radio" type="radio" name="request" value="Doresc preturi de revanzator" id="request_reseller_prices" /> <label class="input-label-radio" for="request_reseller_prices">Doresc preturi de revanzator</label> <br/>
+							<input class="input-radio" type="radio" name="request" value="Produsul dorit nu se afla pe site" id="request_request_new_product" /> <label class="input-label-radio" for="request_request_new_product">Produsul dorit nu se afla pe site</label> <br/>
+							<input class="input-radio validate-one-required" type="radio" name="request" value="Doresc consultanta gratuita" id="request_free_consultancy" /> <label class="input-label-radio" for="request_free_consultancy">Doresc consultanta gratuita</label> <br/>
+						</div>
+					</div>
+		
+					<div class="form-block">
+						<label class="input-label top" for="message">Descriere</label>
+						<textarea name="message" id="message" title="Mesaj" class="input-text required-entry" style="height:100px;" cols="50" rows="3"></textarea>
+					</div>
+					
+				    <div class="button-set">
+				    	<label class="input-label">&nbsp;</label>
+				        <button class="button small-button" type="submit"><span><span>Trimite</span></span></button>
+				    </div>
+				</form>
+				
+				<br/><br/>
+				
+			</div>
+			
+			<div class="fclear"></div>
+			
+			<script type="text/javascript">
+				function formCallback(result, form) {
+					window.status = "valiation callback for form '" + form.id + "': result = " + result;
+				}
+				var valid = new Validation('contact_form_sales', {immediate : true, onFormValidate : formCallback});
+			</script>
+		 
+		</div>
+		
+	</div>
+</div>

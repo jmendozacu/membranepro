@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Willouhby Stewart
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    WS
+ * @package     WS_ShareThis
+ * @copyright   Copyright (c) 2010 Willoughby Stewart (http://www.wsa.net.uk)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+   <sections> 
+        <catalog translate="label" module="catalog">	            
+			<groups>
+        		<sharethis translate="label" module="catalog">
+                    <label>Share This Product</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                    	<links translate="label">
+                            <label>Share Links</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>sharethis/config_source_links</source_model>
+                            <backend_model>sharethis/config_source_links</backend_model>                           
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+							<comment>Select the links to include to share the product with friends</comment>
+                        </links>
+						<publisherkey translate="label">
+                            <label>Publisher key</label>
+                            <frontend_type>text</frontend_type>                                                       
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+							<comment>Your unique ShareThis publisher key http://sharethis.com/publishers/get-sharing-button. To use this extension, use the horizontal counters</comment>
+                        </publisherkey>
+                    </fields>
+        		</sharethis>
+        	</groups>
+        </catalog>
+	</sections>
+</config>

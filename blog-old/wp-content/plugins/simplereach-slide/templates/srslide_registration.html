@@ -1,0 +1,117 @@
+<script type="text/javascript">
+
+jQuery(function ($) {
+    $(".connect a").click(function(){
+	    $(".postbox").toggleClass("hidden");
+    });
+});
+
+    
+</script>
+
+<div id="srslide" class="wrap">
+<div class="srslide_admin">
+{{#has_errors}}
+	<div class="error"><p><strong>You have the following errors:</strong></p>
+	{{#errors}}
+    	<p>{{{.}}}</p>
+	{{/errors}}
+	</div>
+{{/has_errors}}
+{{#updated}}
+    <div class="updated"><p>{{{.}}}</p></div>
+{{/updated}}
+
+<div class="overview">
+    <h2><div class="branding">TheSlide</div>
+    <p><b>Help readers discover more of your content.</b> TheSlide enables custom flyouts at the bottom of each post that recommend related content on your site, helping visitors find more of what they want, and helping you keep readers around!</p></h2>
+</div>
+
+<div id="poststuff">
+<div id="post-body" class="metabox-holder columns-2">
+<div id="post-body-content">
+	
+	<div id="sr-signin" class="postbox signin hidden">
+        <h3 class="hndle">{{signin_text}}</h3>
+		<div id="srslide_controls" class="inside">
+			<form name="srslide_form" method="post" action="{{request_uri}}">
+  			<input type="hidden" name="srslide_register_hidden" value="Y">
+    		
+			<table class="form-table">
+                <tbody>
+                    <tr class="form-field">
+                        <th scope="row">
+                            <label>{{email_text}}</label>
+                        </th>
+                        <td><input type="text" name="srslide_sr_login" value="{{srslide_sr_login}}" size="35" />
+                            <span class="srslide_minitext">{{email_example_text}}</span>
+                        </td>
+                    </tr>
+
+					<tr class="form-field">
+                        <th scope="row">
+                            <label>{{password_text}}</label>
+                        </th>
+                        <td><input type="password" name="srslide_sr_pass" value="{{srslide_sr_pass}}" size="35" />
+                            <span class="srslide_minitext">{{password_example_text}}</span>
+                        </td>
+                    </tr>
+				</tbody>
+			</table>
+			
+			<p class="submit"><input type="submit" class="button-primary" name="Submit" value="{{signin_text}}" /></p>
+			</form>
+			<p class="connect signup">New to TheSlide? <a href="#">Sign up now &raquo;</a></p>
+		</div><!-- close srslide_controls -->
+	</div><!-- close sr-settings -->
+	
+	
+	<div id="sr-signup" class="postbox signup">
+        <h3 class="hndle">{{signup_text}}</h3>
+		<div id="srslide_controls" class="inside">
+			<form name="srslide_form" method="post" action="{{request_uri}}">
+  			<input type="hidden" name="srslide_register_hidden" value="Y">
+    		
+			<table class="form-table">
+                <tbody>
+                    <tr class="form-field">
+                        <th scope="row">
+                            <label>{{email_text}}</label>
+                        </th>
+                        <td><input type="text" name="srslide_sr_login" value="{{srslide_sr_login}}" size="35" />
+                            <span class="srslide_minitext">{{email_example_text}}</span>
+                        </td>
+                    </tr>
+
+					<tr class="form-field">
+                        <th scope="row">
+                            <label>{{password_text}}</label>
+                        </th>
+                        <td><input type="password" name="srslide_sr_pass" value="{{srslide_sr_pass}}" size="35" />
+                            <span class="srslide_minitext">{{password_example_text}}</span>
+                        </td>
+                    </tr>
+				</tbody>
+			</table>
+			
+			<p class="submit"><input type="submit" class="button-primary" name="Submit" value="{{signup_text}}" /></p>
+			</form>
+			<p class="connect signin">Already signed up on <a href="http://simplereach.com">simplereach.com</a>? Go ahead and <a href="#">Sign in &raquo;</a></p>
+		</div><!-- close srslide_controls -->
+	</div><!-- close sr-settings -->
+	
+	
+
+	
+
+
+
+
+
+
+
+</div><!-- close #post-body-content -->
+</div><!-- close #postbody -->
+</div><!-- close .poststuff -->
+</div><!-- close .srslide_admin -->
+</div><!-- close #srslide -->

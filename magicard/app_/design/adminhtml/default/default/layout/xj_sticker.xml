@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento backend layout
+ *
+ * @author Xj
+ */
+-->
+<layout>
+<!-- ADMIN STICKERS -->
+
+    <xj_sticker_adminhtml_sticker_index>
+        <reference name="content">
+            <block type="xj_sticker/adminhtml_sticker" name="sticker_sticker" />
+        </reference>
+    </xj_sticker_adminhtml_sticker_index>
+
+    <xj_sticker_adminhtml_sticker_grid>
+        <block type="xj_sticker/adminhtml_sticker_grid" name="root"/>
+    </xj_sticker_adminhtml_sticker_grid>
+
+    <xj_sticker_adminhtml_sticker_new>
+        <update handle="xj_sticker_adminhtml_sticker_edit" />
+    </xj_sticker_adminhtml_sticker_new>
+
+    <!-- STICKER EDIT PAGE -->
+    <xj_sticker_adminhtml_sticker_edit>
+        <update handle="editor"/>
+        <reference name="content">
+            <block type="xj_sticker/adminhtml_sticker_edit" name="sticker_sticker_edit" />
+        </reference>
+        <reference name="left">
+            <block type="xj_sticker/adminhtml_sticker_edit_tabs" name="sticker_edit_tabs">
+                <action method="addTab">
+                    <name>sticker_main_info</name>
+                    <block>xj_sticker/adminhtml_sticker_edit_tab_main</block>
+                </action>
+            </block>
+        </reference>
+    </xj_sticker_adminhtml_sticker_edit>
+    <!-- /STICKER EDIT PAGE -->
+
+
+    <!-- PRODUCT EDIT PAGE -->
+    <xj_sticker_adminhtml_sticker_stickergrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="xj_sticker/adminhtml_product_edit_tabs_sticker_grid" name="product.edit.tab.grid.sticker"/>
+            <block type="adminhtml/widget_grid_serializer" name="product_sticker_grid_serializer">
+                <reference name="product_sticker_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>product.edit.tab.grid.sticker</grid_block_name>
+                        <data_callback>getSelectedLinks</data_callback>
+                        <hidden_input_name>product[xj_stickers]</hidden_input_name>
+                        <reload_param_name>stickers_in_selected</reload_param_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </xj_sticker_adminhtml_sticker_stickergrid>
+    
+    <xj_sticker_adminhtml_sticker_stickergridonly>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="xj_sticker/adminhtml_product_edit_tabs_sticker_grid" name="product.edit.tab.grid.sticker"/>
+        </block>
+    </xj_sticker_adminhtml_sticker_stickergridonly>
+
+    <adminhtml_catalog_product_edit>
+        <reference name="product_tabs">
+            <action method="addTab">
+                <name>product_stickers</name>
+                <block>xj_sticker/adminhtml_product_edit_tabs_sticker</block>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_edit>
+    <!-- /PRODUCT EDIT PAGE -->
+
+
+<!-- /ADMIN STICKERS -->
+</layout>

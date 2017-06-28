@@ -1,0 +1,15 @@
+#container { width:30%; margin:0 auto; text-align:left; }
+
+
+
+.leightbox { color:#333; display:none; position:fixed; top:25%; left:35%; width:30%; height:50%; padding:6px; border:none;	background-color:#FFFFFF; text-align: left; z-index:1001; overflow: auto; }
+
+
+
+#overlay{ display:none; position:absolute; top:0; left:0; width:100%; height:100% !important; z-index:1000; background-color:#000; -moz-opacity: 0.8; opacity:.80; filter: alpha(opacity=80); }
+
+
+
+.lightbox[id]{ /* IE6 and below Can't See This */    position:fixed;    }
+
+#overlay[id]{ /* IE6 and below Can't See This */    position:fixed;    }

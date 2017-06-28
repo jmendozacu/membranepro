@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Cybertech_ContactsMultiple>
+            <version>0.0.1</version>
+        </Cybertech_ContactsMultiple>
+    </modules>
+    <frontend>
+        <routers>
+            <contacts>
+                <use>standard</use>
+                <args>
+                    <module>Cybertech_ContactsMultiple</module>
+                    <frontName>contacts</frontName>
+                </args>
+            </contacts>
+        </routers>
+    </frontend>
+</config>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie
+ * @copyright	Copyright (C) 2010 - 2011 Open Source Matters. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+ -->
+
+<config>
+	<tabs>
+		<mc translate="label">
+			<label>MageClub Extensions</label>
+			<sort_order>40</sort_order>
+		</mc>
+	</tabs>
+	<sections>
+		<eucookie3 translate="label" module="eucookie3">
+			<class>separator-top</class>
+			<label>Eucookie Alert V3</label>
+			<tab>mc</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>300</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<general translate="label">
+					<label>General</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enable translate="label">
+							<label>Enable Eucookie Alert V3</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable>
+						<jquery translate="label">
+							<label>Enable Jquery</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</jquery>
+						
+						
+						<cookie_pos translate="label">
+                            <label>Position: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>eucookie3/config_style1</source_model>
+							<sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_pos>
+						
+						
+						<cookie_loc translate="label">
+                            <label>Locarion: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>eucookie3/config_style2</source_model>
+							<sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_loc>
+						
+						<cookie_color translate="label">
+                            <label>Theme Color: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>eucookie3/config_style3</source_model>
+							<sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_color>
+						<cookie_mode translate="label">
+                            <label>Theme Style: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>eucookie3/config_style4</source_model>
+							<sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_mode>
+						
+						<modal_title translate="label">
+                            <label>Modal Title: </label>
+                            <frontend_type>text</frontend_type>
+                           
+							<sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </modal_title>
+						
+						<short_desc translate="label">
+                            <label>Short Description: </label>
+                            <frontend_type>textarea</frontend_type>
+                           
+							<sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </short_desc>
+						<long_desc translate="label">
+                            <label>Long Description: </label>
+                            <frontend_type>textarea</frontend_type>
+                           
+							<sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </long_desc>
+						<modal_acpt translate="label">
+                            <label>Text If User Accept Cookies: </label>
+                            <frontend_type>text</frontend_type>
+                           
+							<sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </modal_acpt>
+						<modal_dcln translate="label">
+                            <label>Text If User doesn't Accept Cookies: </label>
+                            <frontend_type>text</frontend_type>
+                           
+							<sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </modal_dcln>
+						<animation_time translate="label">
+                            <label>Modal Animation Time: </label>
+                            <frontend_type>text</frontend_type>
+                           
+							<sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </animation_time>
+						<cookie_expiry translate="label">
+                            <label>Cookie Expiry Time: </label>
+                            <frontend_type>text</frontend_type>
+                           
+							<sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_expiry>
+						
+					</fields>
+				</general>
+			</groups>
+		</eucookie3>
+	</sections>
+</config>

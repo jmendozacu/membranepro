@@ -1,0 +1,106 @@
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php
+    $params = $this->getRequest()->getParams();
+	$sku = $params['sku'];
+    
+	//$attributeValue = $_GET['type'];
+	$attributeLabel = urldecode($params['type']);
+	$attributeCode = 'consumable_type';
+	
+	/* Get all products for specified attribute value
+	 * $products = Mage::getModel('catalog/product')
+				->getCollection()
+				->addAttributeToFilter($attributeCode, $attributeId);
+	 */
+	
+	// Get attribute value ID by label
+	$attributeInfo = Mage::getResourceModel('eav/entity_attribute_collection')
+            ->setCodeFilter($attributeCode)
+            ->getFirstItem();
+                        
+	$attributeOptions = $attributeInfo->getSource()->getAllOptions(false);
+	
+	foreach ($attributeOptions as $id=>$attributeOptionArr) {
+		if($attributeLabel == $attributeOptionArr['label']) {
+			$attributeValue = $attributeOptionArr['value'];
+			break;
+		}
+	}
+	
+	// Get all related products for SKU, and then filter by attribute value
+	$relatedProductsForSelectedSKU = Mage::getModel('catalog/product')
+						->loadByAttribute('sku', $sku)
+						->getRelatedProductCollection()
+						->addAttributeToSelect('*')
+                        ->addAttributeToFilter('status', 1)
+						//->addAttributeToFilter($attributeCode, $attributeValue)
+						;
+	if ($attributeValue) {
+	    $relatedProductsForSelectedSKU->addAttributeToFilter($attributeCode, $attributeValue);
+	}
+    
+	$_productCollection = $relatedProductsForSelectedSKU;
+	$_helper = Mage::helper('catalog/output');
+	
+	// THIS BELOW also WORKS - gets a product - nothing under this code till the end of first php tag
+	/*$_testproductCollection = Mage::getResourceModel('catalog/product_collection')
+								->addAttributeToSelect('*')
+								->addAttributeToFilter('sku', array('like'=>array($sku)))
+								;
+	
+	$_productCollection = $_testproductCollection;*/
+?>
+
+<?php if(!$_productCollection->count()): ?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+    <div class="category-products">
+        <?php echo $this->getToolbarHtml() ?>
+        
+        <?php // Only Grid Mode ?>
+    
+        <?php $_collectionSize = $_productCollection->count() ?>
+        <?php $_columnCount = $this->getColumnCount();; ?>
+        <ul class="products-grid products-grid--max-<?php echo $_columnCount; ?>-col">
+            <?php $i=1; foreach ($_productCollection as $_product): ?>
+        	<?php $priceOnDemand = Mage::getModel('catalog/product')->load($_product->getId())->getAttributeText('price_on_demand'); ?>
+                <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount == 0 || $i == $_collectionSize): ?> last<?php endif; ?>">
+                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                        <?php $_imgSize = 210; ?>
+                        <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                             src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
+                             alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                    </a>
+                    <div class="product-info">
+                        <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+                        
+                        <?php echo $this->getPriceHtml($_product, true) ?>
+                        
+                        <div class="actions">
+                            <?php if($_product->isSaleable() && !$_product->canConfigure()): ?>
+                                <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                            <?php elseif($_product->isSaleable()): ?>
+                                <a title="<?php echo $this->__('View Details') ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                            <?php else: ?>
+                                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                            <?php endif; ?>
+                            
+                        </div>
+                    </div>
+                </li>
+            <?php $i++; endforeach; ?>
+        </ul>
+            
+        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+    
+        <div class="toolbar-bottom">
+            <?php echo $this->getToolbarHtml() ?>
+        </div>
+    </div>
+<?php endif; ?>

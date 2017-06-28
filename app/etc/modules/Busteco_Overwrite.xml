@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Busteco_Overwrite>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Busteco_Overwrite>
+    </modules>
+</config>

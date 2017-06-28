@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Cybertech_CourierGeneric>
+            <version>0.1.0</version>
+            <depends>
+              <Mage_Shipping />
+            </depends>
+        </Cybertech_CourierGeneric>
+    </modules>
+    <global>
+        <models>
+           <genericshipping>
+                <class>Cybertech_CourierGeneric</class>
+            </genericshipping>
+        </models>
+        <resources>
+            <genericshipping_setup>
+               <setup>
+                    <module>Cybertech_CourierGeneric</module>
+                </setup>
+                <connection>
+                    <use>directory_setup</use>
+                </connection>
+           </genericshipping_setup>
+            <genericshipping_read>
+                <connection>
+                    <use>local_read</use>
+                </connection>
+            </genericshipping_read>
+       </resources>
+        <sales>
+            <shipping>
+                <carriers>
+                    <generic>
+                        <class>Cybertech_CourierGeneric_Model_Carrier_Generic</class>
+                    </generic>
+                </carriers>
+            </shipping>
+        </sales>
+    </global>
+    <default>
+        <carriers>
+            <generic>
+                <active>0</active>
+                <model>cybertech_courierGeneric_model_carrier_generic</model>
+                <name>Generic</name>
+                <title>Generic</title>
+                <handling_fee>0</handling_fee>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+            </generic>
+        </carriers>
+    </default>
+</config> 

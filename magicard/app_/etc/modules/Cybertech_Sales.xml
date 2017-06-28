@@ -1,0 +1,8 @@
+<config>
+	<modules>
+		<Cybertech_Sales>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Cybertech_Sales>
+	</modules>
+</config> 

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+    <modules>
+        <Xj_Sticker>
+            <version>4.1.1</version>
+        </Xj_Sticker>
+    </modules>
+
+    <global>
+        <helpers>
+            <xj_sticker>
+                <class>Xj_Sticker_Helper</class>
+            </xj_sticker>
+        </helpers>
+
+        <blocks>
+            <xj_sticker>
+                <class>Xj_Sticker_Block</class>
+            </xj_sticker>
+        </blocks>
+
+        <models>
+            <xj_sticker>
+                <class>Xj_Sticker_Model</class>
+                <resourceModel>xj_sticker_resource</resourceModel>
+            </xj_sticker>
+            <xj_sticker_resource>
+                <class>Xj_Sticker_Model_Mysql4</class>
+                <entities>
+                    <sticker><table>xj_sticker_sticker</table></sticker>
+                    <sticker_product><table>xj_sticker_sticker_product</table></sticker_product>
+                </entities>
+            </xj_sticker_resource>
+        </models>
+
+        <resources>
+            <xj_sticker_setup>
+                <setup>
+                    <module>Xj_Sticker</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+            </xj_sticker_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <!-- OBSERVER EVENTS -->
+        <events>
+            <!-- PRODUCT EVENTS -->
+            <catalog_product_load_after>
+                <observers>
+                    <xj_sticker>
+                        <type>singleton</type>
+                        <class>xj_sticker/observer</class>
+                        <method>catalogProductLoadAfter</method>
+                    </xj_sticker>
+                </observers>
+            </catalog_product_load_after>
+            <catalog_product_collection_load_after>
+                <observers>
+                    <xj_sticker>
+                        <type>singleton</type>
+                        <class>xj_sticker/observer</class>
+                        <method>catalogProductCollectionLoadAfter</method>
+                    </xj_sticker>
+                </observers>
+            </catalog_product_collection_load_after>
+            <!--/PRODUCT EVENTS -->
+
+            <!-- CUSTOM EVENTS BY XJ -->
+            <catalog_product_prepare_image_output_before>
+                <observers>
+                    <xj_sticker>
+                        <type>singleton</type>
+                        <class>xj_sticker/observer</class>
+                        <method>catalogProductPrepareImageBefore</method>
+                    </xj_sticker>
+                </observers>
+            </catalog_product_prepare_image_output_before>
+            <catalog_product_prepare_image_output_after>
+                <observers>
+                    <xj_sticker>
+                        <type>singleton</type>
+                        <class>xj_sticker/observer</class>
+                        <method>catalogProductPrepareImageAfter</method>
+                    </xj_sticker>
+                </observers>
+            </catalog_product_prepare_image_output_after>
+            <!--/CUSTOM EVENTS BY XJ -->
+        </events>
+        <!--/OBSERVER EVENTS -->
+    </frontend>
+
+
+    <adminhtml>
+        <!-- OBSERVER EVENTS -->
+        <events>
+            <!-- PRODUCT EVENTS -->
+            <catalog_product_save_after>
+                <observers>
+                    <xj_sticker>
+                        <type>singleton</type>
+                        <class>xj_sticker/observer</class>
+                        <method>catalogProductSaveAfter</method>
+                    </xj_sticker>
+                </observers>
+            </catalog_product_save_after>
+            <!--/PRODUCT EVENTS -->
+            <!-- STICKER EVENTS -->
+            <xj_sticker_save_after>
+                <observers>
+                    <xj_premiumsticker>
+                        <type>singleton</type>
+                        <class>xj_sticker/observer</class>
+                        <method>stickerSaveAfter</method>
+                    </xj_premiumsticker>
+                </observers>
+            </xj_sticker_save_after>
+            <!--/STICKER EVENTS -->
+        </events>
+        <!--/OBSERVER EVENTS -->
+        <layout>
+            <updates>
+                <xj_sticker>
+                    <file>xj_sticker.xml</file>
+                </xj_sticker>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <admin>
+        <routers>
+            <xj_sticker>
+                <use>admin</use>
+                <args>
+                    <module>Xj_Sticker</module>
+                    <frontName>xj_sticker</frontName>
+                </args>
+            </xj_sticker>
+        </routers>
+    </admin>
+
+    <default>
+        <xj_sticker>
+            <!-- all image attributes -->
+            <attributes>
+                <image />
+                <small_image />
+                <thumbnail />
+                <media_gallery />
+            </attributes>
+            <!-- /all image attributes -->
+            <view>
+                <enabled>1</enabled>
+                <allowed_attributes>image,media_gallery,small_image,thumbnail</allowed_attributes>
+            </view>
+        </xj_sticker>
+    </default>
+</config>

@@ -1,0 +1,46 @@
+"Interaktingslider","Slide interactiv"
+
+"Add New Slide","Adauga Slide nou"
+"New Slide","slide nou"
+"Save Slide","Salveaza slide"
+"From Time","Data start"
+"To Time","Data sfarsit"
+
+"Manage Slides","Gestioneaza slideuri"
+"Interaktingslider Slides","Lista slideuri"
+"Edit Slide '%s'","Editeaza slide '%s'"
+"Preview in","Preview"
+"Delete Slide","Sterge slide"
+
+
+"Slides Positions","Pozitie slideuri"
+"Slides Positions in","Positie slideuri in"
+"Position","Pozitie"
+"Move to","Muta la"
+
+"Parameters","Parametrii"
+"Enable Interaktingslider","Permite slide interactiv"
+"Display when empty","Ecran cand este gol"
+"No Slide Message","Niciun mesaj pe slide"
+"Navigation mode","Mod navigare"
+"Auto","Automatic"
+"Manual","Manual"
+"Mixte","Automatic+Manual"
+"Max number of slides to display in front,"Numar maxim al slideurilor de expus in fata"
+
+"Style","Stil"
+"Skin","Piele"
+
+"Transitions","Tranzitii"
+"Delay between slides (s)","Intarziere intre slideuri"
+"(default 5 seconds)","(din oficiu 5 secunde)"
+"Effect","Efect"
+"Duration (ms)","Durata(ms)"
+"(default 500 milliseconds)","(Din oficiu 500 milisecunde)"
+"(default 10)","(din oficiu 10)"
+
+"No Effect","Niciun efect"
+"Cross Fade","Estompare incrucisata"
+"Blind Down new slide","Ascunde jos noul slide"
+"Blind Up previous slide","Ascunde sus penultimul slide"
+"You must set a date to value greater than the date from value","Trebuie sa setezi o data pentru a aprecia mai bine decat data din valoare"

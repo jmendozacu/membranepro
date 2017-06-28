@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+ 
+<config>
+    <modules>
+        <Cybertech_Contact>
+            <version>1.0.0</version>
+        </Cybertech_Contact>
+    </modules>  
+ 
+    <frontend>
+        <routers>
+            <CustomContactForm>
+                <use>standard</use>
+                <args>
+                    <module>Cybertech_Contact</module>
+                    <frontName>contact</frontName>
+                </args>
+            </CustomContactForm>
+        </routers>
+    </frontend>
+</config>

@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category   PfpjRom
+ * @package    PfpjRom_CustomerRom
+ * @author     Daniel Ifrim
+ * @copyright  Copyright (c) Daniel Ifrim
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+	<modules>
+		<PfpjRom_CustomerRom>
+			<version>0.3.1</version>
+			<depends>
+                <Mage_Customer />
+            </depends>
+		</PfpjRom_CustomerRom>
+    </modules>
+
+    <admin>
+        <fieldsets>
+            <customer_dataflow>
+                <!--Add fields-->
+                <pfpj_tip_pers><billing>1</billing><shipping>1</shipping></pfpj_tip_pers>
+                <pfpj_cui><billing>1</billing><shipping>1</shipping></pfpj_cui>
+                <pfpj_reg_com><billing>1</billing><shipping>1</shipping></pfpj_reg_com>
+                <pfpj_banca><billing>1</billing><shipping>1</shipping></pfpj_banca>
+                <pfpj_iban><billing>1</billing><shipping>1</shipping></pfpj_iban>
+                <pfpj_cnp><billing>1</billing><shipping>1</shipping></pfpj_cnp>
+                <pfpj_serienr_buletin><billing>1</billing><shipping>1</shipping></pfpj_serienr_buletin>
+                <pfpj_for_billing><billing>1</billing><shipping>1</shipping></pfpj_for_billing>
+                <pfpj_for_shipping><billing>1</billing><shipping>1</shipping></pfpj_for_shipping>
+            </customer_dataflow>
+        </fieldsets>
+    </admin>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <PfpjRom_CustomerRom>
+                    <files>
+                        <default>PfpjRom_All.csv</default>
+                    </files>
+                </PfpjRom_CustomerRom>
+            </modules>
+        </translate>
+    </adminhtml>
+
+     <frontend>
+        <translate>
+            <modules>
+                <PfpjRom_CustomerRom>
+                    <files>
+                        <default>PfpjRom_All.csv</default>
+                    </files>
+                </PfpjRom_CustomerRom>
+            </modules>
+        </translate>
+        <layout>
+			<updates>
+				<customerrom>
+					<file>customerrom.xml</file>
+				</customerrom>
+			</updates>
+		</layout>
+
+		<!--<routers>
+            <customerrom>
+            	<use>standard</use>
+                <args>
+                    <module>PfpjRom_CustomerRom</module>
+                    <frontName>customer</frontName>
+                </args>
+            </customerrom>
+        </routers>-->
+
+        <routers>
+            <customer>
+            	<use>standard</use>
+                <args>
+                    <modules>
+                        <pfpjrom_customerrom before="Mage_Customer">PfpjRom_CustomerRom</pfpjrom_customerrom>
+                    </modules>
+                </args>
+            </customer>
+        </routers>
+    </frontend>
+
+    <global>
+    	<customer>
+            <address>
+	    		<tippers>
+	    			<options>
+	    				<natural><const>natural_person</const><default>1</default></natural>
+	    				<legality><const>legal_entity</const></legality>
+	    			</options>
+	    			<fields>
+		    			<pfpj_tip_pers>
+		    				<natural>
+		    					<billing><show>1</show><required>1</required></billing>
+		    					<shipping><show>1</show><required>1</required></shipping>
+		    				</natural>
+		    				<legality>
+		    					<billing><show>1</show><required>1</required></billing>
+		    					<shipping><show>1</show><required>1</required></shipping>
+		    				</legality>
+		    			</pfpj_tip_pers>
+		    			<company>
+		    				<legality>
+		    					<billing><show>1</show><required>1</required></billing>
+		    					<shipping><show>1</show><required>1</required></shipping>
+		    				</legality>
+						</company>
+						<pfpj_cui>
+		    				<legality>
+		    					<billing><show>1</show><required>1</required></billing>
+		    					<shipping><show>0</show></shipping>
+		    				</legality>
+		    				<validation>1</validation>
+						</pfpj_cui>
+						<pfpj_reg_com>
+								<legality>
+		    					<billing><show>1</show><required>1</required></billing>
+		    					<shipping><show>0</show></shipping>
+		    				</legality>
+						</pfpj_reg_com>
+						<pfpj_banca>
+								<legality>
+		    					<billing><show>1</show><required>1</required></billing>
+		    					<shipping><show>0</show></shipping>
+		    				</legality>
+						</pfpj_banca>
+		                <pfpj_iban>
+		                	<legality>
+		    					<billing><show>1</show><required>1</required></billing>
+		    					<shipping><show>0</show></shipping>
+		    				</legality>
+		                </pfpj_iban>
+		                <pfpj_cnp>
+		                	<!--<disabled>1</disabled>-->
+		                	<!--<disabled>0</disabled>-->
+		                	<natural>
+		    					<billing><show>1</show><required>0</required></billing>
+		    					<shipping><show>1</show><required>0</required></shipping>
+		    				</natural>
+		    				<legality>
+		    					<billing><show>1</show><required>0</required></billing>
+		    					<shipping><show>1</show><required>0</required></shipping>
+		    				</legality>
+		    				<validation>1</validation>
+		                </pfpj_cnp>
+		                <pfpj_serienr_buletin>
+		                	<!--<disabled>0</disabled>-->
+		                	<disabled>1</disabled>
+		                	<natural>
+		    					<billing><show>1</show><required>0</required></billing>
+		    					<shipping><show>1</show><required>0</required></shipping>
+		    				</natural>
+		    				<legality>
+		    					<billing><show>1</show><required>0</required></billing>
+		    					<shipping><show>1</show><required>0</required></shipping>
+		    				</legality>
+		                </pfpj_serienr_buletin>
+
+		                <pfpj_for_billing>
+		                	<natural>
+		    					<billing><default>1</default><show>0</show></billing>
+		    				</natural>
+		    				<legality>
+		    					<billing><default>0</default><show>1</show></billing>
+		    				</legality>
+		                </pfpj_for_billing>
+		                <pfpj_for_shipping>
+		                	<!--<disabled>0</disabled>-->
+		                	<natural>
+		    					<shipping><default>1</default><show>0</show></shipping>
+		    				</natural>
+		    				<legality>
+		    					<shipping><default>1</default><show>0</show></shipping>
+		    				</legality>
+		                </pfpj_for_shipping>
+					</fields>
+	    		</tippers>
+
+                <formats>
+                    <text translate="title" module="customer">
+                        <title>Text</title>
+                        <defaultFormat><![CDATA[
+{{if pfpj_tip_pers == 1}}persoană fizică{{/if}}
+{{depend prefix}}{{var prefix}} {{/depend}}{{var firstname}} {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}
+{{var street1}}
+{{depend street2}}{{var street2}}{{/depend}}
+{{depend street3}}{{var street3}}{{/depend}}
+{{depend street4}}{{var street4}}{{/depend}}
+{{depend city}}{{var city}}, {{/depend}}{{depend region}}{{var region}}, {{/depend}}{{var postcode}}
+{{var country}}
+{{depend pfpj_serienr_buletin}}Serie/Nr. buletin: {{var pfpj_serienr_buletin}}{{/depend}}
+{{depend pfpj_cnp}}CNP: {{var pfpj_cnp}}{{/depend}}
+Tel: {{var telephone}}
+{{depend fax}}Fax: {{var fax}}{{/depend}}
+{{if pfpj_tip_pers == 2}}persoană juridică{{/if}}
+{{if pfpj_tip_pers == 2}}{{var company}}{{/if}}
+{{if pfpj_tip_pers == 2}}{{inner_if pfpj_for_billing == 1}}CIF: {{var pfpj_cui}},{{/inner_if}}{{inner_if pfpj_for_billing == 1}} Reg.Com.: {{var pfpj_reg_com}}{{/inner_if}}{{/if}}
+{{if pfpj_tip_pers == 2}}{{inner_if pfpj_for_billing == 1}}Banca: {{var pfpj_banca}},{{/inner_if}}{{inner_if pfpj_for_billing == 1}} IBAN: {{var pfpj_iban}}{{/inner_if}}{{/if}}
+                        ]]></defaultFormat>
+                    </text>
+                    <oneline translate="title" module="customer">
+                        <title>Text One Line</title>
+                        <htmlEscape>true</htmlEscape>
+                        <defaultFormat>
+<![CDATA[{{if pfpj_tip_pers == 2}}{{var company}}{{/if}} {{depend prefix}}{{var prefix}} {{/depend}}{{var firstname}} {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}, {{var street}}, {{var city}}, {{var region}} {{var postcode}}, {{var country}}]]>
+                        </defaultFormat>
+                    </oneline>
+                    <html translate="title" module="customer">
+                        <title>HTML</title>
+                        <htmlEscape>true</htmlEscape>
+                        <defaultFormat><![CDATA[
+{{if pfpj_tip_pers == 1}}<b>persoană fizică</b><br />{{/if}}
+{{depend prefix}}{{var prefix}} {{/depend}}{{var firstname}} {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}<br />
+{{var street1}}<br />
+{{depend street2}}{{var street2}}<br />{{/depend}}
+{{depend street3}}{{var street3}}<br />{{/depend}}
+{{depend street4}}{{var street4}}<br />{{/depend}}
+{{depend city}}{{var city}}, {{/depend}}{{depend region}}{{var region}}, {{/depend}}{{var postcode}}<br />
+{{var country}}<br />
+{{depend pfpj_serienr_buletin}}Serie/Nr. buletin: {{var pfpj_serienr_buletin}}{{/depend}}<br />
+{{depend pfpj_cnp}}CNP: {{var pfpj_cnp}}{{/depend}}<br />
+{{depend telephone}}Tel: {{var telephone}}<br />{{/depend}}
+{{depend fax}}Fax: {{var fax}}<br />{{/depend}}
+{{if pfpj_tip_pers == 2}}<br /><b>persoană juridică</b><br />{{/if}}
+{{if pfpj_tip_pers == 2}}{{var company}}<br />{{/if}}
+{{if pfpj_tip_pers == 2}}{{inner_if pfpj_for_billing == 1}}CIF: {{var pfpj_cui}},{{/inner_if}}{{inner_if pfpj_for_billing == 1}} Reg.Com.: {{var pfpj_reg_com}}{{/inner_if}}{{inner_if pfpj_for_billing == 1}}<br />{{/inner_if}}{{/if}}
+{{if pfpj_tip_pers == 2}}{{inner_if pfpj_for_billing == 1}}Banca: {{var pfpj_banca}},{{/inner_if}}{{inner_if pfpj_for_billing == 1}} IBAN: {{var pfpj_iban}}{{/inner_if}}{{/if}}
+            ]]></defaultFormat>
+                    </html>
+                    <pdf translate="title" module="customer">
+                        <title>PDF</title>
+                        <defaultFormat><![CDATA[
+{{if pfpj_tip_pers == 1}}persoană fizică|{{/if}}
+{{depend prefix}}{{var prefix}} {{/depend}}{{var firstname}} {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}|
+{{var street1}}|
+{{depend street2}}{{var street2}}|{{/depend}}
+{{depend street3}}{{var street3}}|{{/depend}}
+{{depend street4}}{{var street4}}|{{/depend}}
+{{depend city}}{{var city}}, {{/depend}}{{depend region}}{{var region}}, {{/depend}}{{var postcode}}|
+{{var country}}|
+{{depend pfpj_serienr_buletin}}Serie/Nr. buletin: {{var pfpj_serienr_buletin}}{{/depend}}|
+{{depend pfpj_cnp}}CNP: {{var pfpj_cnp}}{{/depend}}|
+{{depend telephone}}Tel: {{var telephone}}{{/depend}}|
+{{depend fax}}Fax: {{var fax}}|{{/depend}}|
+{{if pfpj_tip_pers == 2}}|persoană juridică|{{/if}}
+{{if pfpj_tip_pers == 2}}{{var company}}|{{/if}}
+{{if pfpj_tip_pers == 2}}{{inner_if pfpj_for_billing == 1}}CIF: {{var pfpj_cui}},{{/inner_if}}{{inner_if pfpj_for_billing == 1}} Reg.Com.: {{var pfpj_reg_com}}{{/inner_if}}{{inner_if pfpj_for_billing == 1}}|{{/inner_if}}{{/if}}
+{{if pfpj_tip_pers == 2}}{{inner_if pfpj_for_billing == 1}}Banca: {{var pfpj_banca}},{{/inner_if}}{{inner_if pfpj_for_billing == 1}} IBAN: {{var pfpj_iban}}{{/inner_if}}{{/if}}
+            ]]></defaultFormat>
+                    </pdf>
+                    <js_template template="title" module="customer">
+                        <title>Javascript Template</title>
+                        <defaultFormat><![CDATA[#{prefix} #{firstname} #{middlename} #{lastname} #{suffix}<br />#{street0}<br />#{street1}<br />#{street2}<br />#{street3}<br />#{city}, #{region}, #{postcode}<br />#{country_id}<br />#{pfpj_serienr_buletin}<br />#{pfpj_cnp}<br />Tel: #{telephone}<br />Fax: #{fax}<br />#{pfpj_tip_pers}<br />#{company}<br />#{pfpj_cui}<br />#{pfpj_reg_com}<br />#{pfpj_banca}<br />#{pfpj_iban}<br />]]></defaultFormat>
+                    </js_template>
+                </formats>
+            </address>
+        </customer>
+
+    	<helpers>
+            <customerrom>
+                <class>PfpjRom_CustomerRom_Helper</class>
+            </customerrom>
+            <customerrom>
+                <rewrite>
+                	<js>PfpjRom_CustomerRom_Helper_Js</js>
+                </rewrite>
+            </customerrom>
+            <customerrom>
+                <rewrite>
+                	<tippers>PfpjRom_CustomerRom_Helper_Tippers</tippers>
+                </rewrite>
+            </customerrom>
+        </helpers>
+
+        <models>
+            <customerrom>
+                <class>PfpjRom_CustomerRom_Model</class>
+                <resourceModel>customerrom_entity</resourceModel>
+            </customerrom>
+            <customerrom_entity>
+                <class>PfpjRom_CustomerRom_Model_Entity</class>
+            </customerrom_entity>
+            <customer>
+            	<rewrite>
+            		<address>PfpjRom_CustomerRom_Model_Address</address>
+            		<address_config>PfpjRom_CustomerRom_Model_Address_Config</address_config>
+            	</rewrite>
+            </customer>
+        </models>
+
+        <resources>
+            <customerrom_setup>
+                <setup>
+                    <module>PfpjRom_CustomerRom</module>
+                    <class>PfpjRom_CustomerRom_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </customerrom_setup>
+            <customerrom_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </customerrom_write>
+            <customerrom_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </customerrom_read>
+        </resources>
+
+        <blocks>
+			<customerrom>
+                <class>PfpjRom_CustomerRom_Block</class>
+			</customerrom>
+
+			<customer>
+				<rewrite>
+					<address_renderer_default>PfpjRom_CustomerRom_Block_Address_Renderer_Default</address_renderer_default>
+					<address_edit>PfpjRom_CustomerRom_Block_Address_Edit</address_edit>
+				</rewrite>
+			</customer>
+
+        	<customerrom>
+        		<rewrite>
+        			<address_renderer_tippers>PfpjRom_CustomerRom_Block_Address_Renderer_Tippers</address_renderer_tippers>
+        			<address_renderer_forbilling>PfpjRom_CustomerRom_Block_Address_Renderer_Forbilling</address_renderer_forbilling>
+        			<address_renderer_forshipping>PfpjRom_CustomerRom_Block_Address_Renderer_Forshipping</address_renderer_forshipping>
+        		</rewrite>
+        	</customerrom>
+        </blocks>
+    </global>
+</config>

@@ -1,0 +1,24 @@
+a:9:{s:7:"attribs";a:2:{s:5:"xmlns";s:36:"http://pear.php.net/dtd/rest.package";s:18:"xsi:schemaLocation";s:80:"http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd";}s:1:"n";s:14:"CashOnDelivery";s:1:"c";s:37:"connect.magentocommerce.com/community";s:2:"ca";a:2:{s:7:"attribs";a:1:{s:10:"xlink:href";s:34:"/Chiara_PEAR_Server_REST/c/Default";}s:8:"_content";s:7:"Default";}s:1:"l";s:27:"Open Software License (OSL)";s:2:"lu";s:42:"http://opensource.org/licenses/osl-3.0.php";s:1:"s";s:105:"Cash on Delivery allows to book additional fee on delivery depending on inland or international delivery.";s:1:"d";s:4061:"<p><span style="color: red; font-weight: bold; font-size: small;">Attention: From version 0.4 only Magento &gt;= 1.4.0 is supported. If you use Magento &lt; 1.4 switch to the "Releases" tab and choose the extension key of the last 0.3.x version which supports previous Magento releases.</span></p>
+<p><span style="font-size: small;">This extension is maintained by&nbsp;<a title="Magento Partner" href="http://www.phoenix-medien.de/" target="_blank">Phoenix Medien</a>,&nbsp;Magento Enterprise Partner in Stuttgart and Vienna.</span></p>
+<p>&nbsp;</p>
+<p><span style="text-decoration: underline;"><strong><span style="font-size: small;">Changelog</span></strong></span></p>
+<p><span style="font-size: small;">1.0.1:</span><br /><span style="font-size: small;">- Fixed wrong COD fee displaying on order info block when "Display Cod Fee" optionis set to "Including Tax"</span>&nbsp;</p>
+<p><span style="font-size: small;">1.0.0:</span><br /><span style="font-size: small;">- Version 0.4.8 is considered as stable.&nbsp;</span></p>
+<p><span style="font-size: small;">0.4.8:</span><br /><span style="font-size: small;">- Fixed module setup for Magento &gt;1.4.1 &nbsp;compliance</span>&nbsp;</p>
+<p><span style="font-size: small;">0.4.7:</span><br /><span style="font-size: small;">- Added missing COD fee in several documents</span>&nbsp;</p>
+<p><span style="font-size: small;">0.4.6:</span><br /><span style="font-size: small;">- Allowed store scope module configuring</span><br /><span style="font-size: small;">- Fixed isAvailable() method: added general settings &amp; store specific configuration handing</span><br /><span style="font-size: small;">- Added Greek translation</span><br /><span style="font-size: small;">- Fixed backend order/create: payment methods block is updated on address change</span></p>
+<p><span style="font-size: small;">0.4.5:</span><br /><span style="font-size: small;">- Added missing templates</span>&nbsp;</p>
+<p><span style="font-size: small;">0.4.4:</span><br /><span style="font-size: small;">- Added missing translations</span>&nbsp;</p>
+<p><span style="font-size: small;">0.4.3:</span><br /><span style="font-size: small;">- Added "Display COD fee incl/excl tax" option handling on checkout, order, invoice (+pdf) pages&nbsp;</span>&nbsp;</p>
+<p><span style="font-size: small;">0.4.2:</span><br /><span style="font-size: small;">- Small fix for backend orders</span>&nbsp;</p>
+<p><span style="font-size: small;">0.4.1:<br />- Added COD fee in order and invoice emails (thanks to Kristof Ringleff)</span></p>
+<p><span style="font-size: small;">0.4.0:<br />- Added support of the Magento 1.4<br />- Added COD fee to the customer-&gt;order/invoice-view/print/email pages<br />- Implemented "Display Zero COD fee" option<br />- Added COD fee to the PDFs</span></p>
+<p><span style="font-size: small;">0.3.5:<br />- Fixed another tax issue with Market Ready Germany module<br />- Fixed translation</span></p>
+<p><span style="font-size: small;">0.3.4:<br />- Fixed tax issue with Market Ready Germany module</span></p>
+<p><span style="font-size: small;">0.3.3:<br />- Supports control of COD method availability for specific shipment methods<br />- Fixes configuration issue while upgrading from earlier versions</span></p>
+<p><span style="font-size: small;">0.3.2:<br />- Removed support for MultiShipping checkout</span></p>
+<p><span style="font-size: small;">0.3-0.3.1:<br />- Uses shipping country instead of billing country in checkout<br />- Added COD fee to order total summary<br />- Now supports separate tax configuration<br />- Fixed several tax issues<br />- Fixed some backend issues when creating orders</span></p>
+<p><span style="font-size: small;">0.2.1:<br />- added Polish locale</span></p>
+<p><span style="font-size: small;">0.2.0:<br />- finally the shipping costs and taxes are calculated (really) properly</span></p>
+<p><span style="font-size: small;">0.1.1:<br />- quick update to correctly calculate shipping taxes</span></p>
+<p><span style="font-size: small;">0.1.0<br />- initial public release</span></p>";s:1:"r";a:1:{s:7:"attribs";a:1:{s:10:"xlink:href";s:41:"/Chiara_PEAR_Server_REST/r/CashOnDelivery";}}}

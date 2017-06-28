@@ -1,0 +1,53 @@
+<script type="text/javascript">
+//<![CDATA[
+	//var auctionTimeCounters = new Array();
+	var dailydealTimeCounters = new Array();
+	var i = 0;
+//]]>
+</script>
+<?php 
+// date_default_timezone_set('Asia/Ho_Chi_Minh');
+//die();
+        $_coreHelper = $this->helper('core');
+	$_product = $this->getProduct();
+        
+	$dailydeal=$this->getDailydealByProduct($_product->getId()); 
+        $temp=$dailydeal->getQuantity()-$dailydeal->getSold();
+
+	if($temp>0){
+?>
+							<ul class="save-sold">
+                                <li class="special-price">
+                                    <?php 
+                                        echo $this->__('<label>You save </label>').$_coreHelper->currency($_product->getPrice()-$dailydeal->getDealPrice());
+                                    ?>
+                                </li>
+								<li class="special-price lastspecial">
+								<?php echo $this->__('<label>Bought </label><span class="price">');?>
+								<?php 
+                                        $limit=Mage::getStoreConfig('dailydeal/general/limit');
+										$items=$dailydeal->getQuantity();
+                                        if ($limit>0){
+                                            echo $dailydeal->getSold().' '.$this->__('/').$items; 
+                                        }else {
+                                            echo $dailydeal->getSold().' '.$this->__('/').$items;
+                                        }
+                                    ?>
+                            </ul> 
+                          <ul>
+                                <li class="bg-saleoff"><span><?php echo $dailydeal->getSave().$this->__('<span class="off-label">%Off</span> '); ?></span></li>                               
+                                
+                                <?php $now_time = Mage::getModel('core/date')->timestamp(time()) ?>
+                                <?php 
+                                        $end_time = Mage::getModel('core/date')->timestamp(strtotime($dailydeal->getCloseTime()));
+                                 ?>
+                               <div class="wrap-timeleft-detail"> <div class="timeleft" id="timeleft_<?php echo $_product->getId() ?>"> </div></div>
+    
+                        </ul>
+                <script type="text/javascript">
+		//<![CDATA[
+			dailydealTimeCounters[i] = new DailydealTimeCounter('<?php echo $now_time ?>', '<?php echo $end_time ?>', '<?php echo $dailydeal->getId() ?>');
+			dailydealTimeCounters[i].setTimeleft('timeleft_<?php echo $_product->getId() ?>');
+		//]]>
+		</script>
+<?php } ?>

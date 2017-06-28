@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie3
+ * @copyright	Copyright (C) 2013 - 2014 Qubesys Technologies Pvt.Ltd. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+ -->
+
+<config>
+	<menu>
+		<mc>
+			<title>MageClub Extensions</title>
+			<sort_order>6</sort_order>
+			<children>
+				<eucookie3 module="eucookie3">
+					<title>Eucookie Alert V3</title>
+					<sort_order>6</sort_order>
+					<children>
+						<eucookie3_config module="eucookie3">
+							<title>Configuration</title>
+							<sort_order>999</sort_order>
+							<action>adminhtml/system_config/edit/section/eucookie3</action>
+						</eucookie3_config>
+					</children>
+				</eucookie3>
+			</children>
+		</mc>
+	</menu>
+	<acl>
+		<resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<eucookie3 translate="title">
+										<title>Eucookie Alert V3</title>
+										<sort_order>50</sort_order>
+									</eucookie3>
+								</children>
+							</config>
+						</children>
+					</system>
+					<Mc_Eucookie3>
+						<title>Eucookie Alert V3</title>
+						<sort_order>10</sort_order>
+					</Mc_Eucookie3>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

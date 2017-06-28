@@ -1,0 +1,149 @@
+<?php
+/**
+
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie1
+ * @copyright	Copyright (C) 2010 - 2011 Open Source Matters. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+
+$enable				= $this->getConfigData('enable');
+$jquery				= $this->getConfigData('jquery');
+
+if (!$enable) {
+	return;
+}
+?>
+<?php if ($jquery==1) { ?>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'skin/frontend/default/default/mageclub/js/jquery.min.js'; ?>"></script>
+<?php } ?>
+<link type="text/css" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'skin/frontend/default/default/mageclub/css/style.min.css'?>" rel="stylesheet" />
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'skin/frontend/default/default/mageclub/js/plugin.min.js'; ?>"></script>
+
+
+
+
+<?php
+$consenttype			= $this->getConfigData('consenttype');
+$tagPosition			= $this->getConfigData('tagPosition');
+$bannerPosition			= $this->getConfigData('bannerPosition');
+$style			= $this->getConfigData('style');
+$onlyshowbanneronce			= $this->getConfigData('onlyshowbanneronce');
+$useSSL			= $this->getConfigData('useSSL');
+$hideallsitesbutton			= $this->getConfigData('hideallsitesbutton');
+$hideprivacysettingstab			= $this->getConfigData('hideprivacysettingstab');
+
+
+?>
+
+<script type="text/javascript">
+// <![CDATA[
+cc.initialise({
+	cookies: {
+		social: {},
+		analytics: {},
+		advertising: {}
+	},
+	settings: {
+       	<?php if($consenttype==1) { ?>
+		consenttype: "implicit",
+		<?php } else { ?>
+		consenttype: "explicit",
+		<?php } ?>
+		
+		<?php if($tagPosition==1) { ?>
+		tagPosition: "bottom-left",
+		<?php } if($tagPosition==2) { ?>
+		tagPosition: "bottom-right",
+		<?php } if($tagPosition==3) { ?>
+		tagPosition: "vertical-left",
+		<?php } if($tagPosition==4) { ?>
+		tagPosition: "vertical-right",
+		<?php } ?>
+		
+		<?php if($onlyshowbanneronce==1) { ?>
+		onlyshowbanneronce: true,
+		<?php } else { ?>
+		onlyshowbanneronce: false,
+		<?php } ?>
+		
+		<?php if($useSSL==1) { ?>
+		useSSL: true,
+		<?php } else { ?>
+		useSSL: false,
+		<?php } ?>
+		
+		<?php if($bannerPosition==1) { ?>
+		bannerPosition: "top",
+		<?php } if($bannerPosition==2) { ?>
+		bannerPosition: "bottom",
+		<?php } if($bannerPosition==3) { ?>
+		bannerPosition: "push",
+		
+		<?php } ?>
+		
+		<?php if($style==1) { ?>
+		style: "dark",
+		<?php } else { ?>
+		style: "light",
+		<?php } ?>
+		
+		
+		<?php if($hideallsitesbutton==1) { ?>
+		hideallsitesbutton: true,
+		<?php } else { ?>
+		hideallsitesbutton: false,
+		<?php } ?>
+		
+		<?php if($hideprivacysettingstab==1) { ?>
+		hideprivacysettingstab: true
+		<?php } else { ?>
+		hideprivacysettingstab: false
+		<?php } ?>
+		
+		
+	},
+	strings: {
+		socialDefaultTitle: 'Social media',
+		socialDefaultDescription: 'Facebook, Twitter and other so,cial websites need to know who, you are to work properly.',
+		analyticsDefaultTitle: 'Analytics',
+		analyticsDefaultDescription: 'We anonymously measure your us,e of this website to improve your experience.',
+		advertisingDefaultTitle: 'Advertising',
+		advertisingDefaultDescription: 'Adverts will be chosen for you automatically based on your past behaviour and interests.',
+		defaultTitle: 'Default cookie title',
+		defaultDescription: 'Default cookie description.',
+		learnMore: 'Learn more',
+		closeWindow: 'Close window',
+		notificationTitle: 'Your experience on this site will be improved by allowing cookies',
+		notificationTitleImplicit: 'We use cookies to ensure you g,et the best experience on our   website',
+		customCookie: 'This website uses a custom type of cookie which needs specific approval',
+		seeDetails: 'see details',
+		seeDetailsImplicit: 'change your settings',
+		hideDetails: 'hide details',
+		allowCookies: 'Allow cookies',
+		allowCookiesImplicit: 'Close',
+		allowForAllSites: 'Allow for all sites',
+		savePreference: 'Save preference',
+		saveForAllSites: 'Save for all sites',
+		privacySettingsDialogTitleA: 'Privacy settings',
+		privacySettings: 'Privacy settings',
+		privacySettingsDialogTitleB: 'for this website',
+		privacySettingsDialogSubtitle: 'Some features of this website ,need your consent to remember who you are.',
+		changeForAllSitesLink: 'Change settings for all WEBSITES',
+		preferenceUseGlobal: 'Use global settings',
+		preferenceConsent: 'I consent',
+		preferenceDecline: 'I decline',
+		notUsingCookies: 'This website does not use any cookies.',
+		allSitesSettingsDialogTitleA: 'Privacy settings',
+		allSitesSettingsDialogTitleB: 'for all websites',
+		allSitesSettingsDialogSubtitle: 'You may consent to these cooki,es for all websites that use this plugin.',
+		backToSiteSettings: 'Back to website settings',
+		preferenceAsk: 'Ask me each time',
+		preferenceAlways: 'Always allow',
+		preferenceNever: 'Never allow'
+	}
+});
+// ]]>
+</script>

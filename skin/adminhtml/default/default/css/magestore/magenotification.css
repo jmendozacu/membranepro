@@ -1,0 +1,21 @@
+.licensekey-warning {background: url(notice_price.gif) top left no-repeat;padding:0 0 0 20px;}
+.form-list td.value .link-store-scope {
+    float: none;
+    margin-right: 0;
+    margin-top: 6px;
+    vertical-align: top;
+}
+.link-store-scope {
+    background: url("i_question-mark.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 16px;
+    margin: 0 0 1px;
+    overflow: hidden;
+    text-decoration: none !important;
+    text-indent: -999em;
+    vertical-align: middle;
+    width: 16px;
+}
+.form-list td.value input.input-text, .form-list td.value textarea {
+    width: 254px;
+}

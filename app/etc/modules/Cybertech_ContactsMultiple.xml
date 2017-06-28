@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Cybertech_ContactsMultiple>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Cybertech_ContactsMultiple>
+    </modules>
+</config>

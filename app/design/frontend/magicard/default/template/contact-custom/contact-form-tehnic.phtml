@@ -1,0 +1,75 @@
+<div class="container">
+	<div class="container-top">
+		<h1>Contact Departament Suport Tehnic</h1>
+	</div>
+	
+	<div class="container-content">
+
+		<div class="box simple-contact">
+			
+			<div class="contact-info comenzi fleft">
+				<div class="form-logo-comenzi"></div>
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('contact_form_tehnic')->toHtml() ?>
+			</div>
+		 
+		 	<div class="contact-form fright">
+				<form id="contact_form_orders" class="contact_form half" name="simple_contact_form" action="<?php echo $this->getUrl('contact/tehnic/sendemail') ?>" method="post">
+				 
+				    <div class="form-block">
+						<label class="input-label" for="name">Nume</label>
+						<input name="name" id="name" title="Nume" value="" class="input-text required-entry" type="text" />
+					</div>
+		
+					<div class="form-block">
+						<label class="input-label" for="company">Firma</label>
+						<input name="company" id="company" title="Firma" value="" class="input-text required-entry" type="text" />
+					</div>
+					
+					<div class="form-block">
+						<label class="input-label" for="phone">Telefon</label>
+						<input name="phone" id="phone" title="Telefon" value="" class="input-text required-entry validate-digits" type="text" />
+					</div>
+					
+					<div class="form-block">
+						<label class="input-label" for="email">E-mail</label>
+						<input name="email" id="email" title="Email" value="" class="input-text required-entry validate-email" type="text" />
+					</div>
+					
+					<div class="form-block">
+						<label class="input-label" for="model_imprimanta">Model imprimanta</label>
+						<input name="model_imprimanta" id="model_imprimanta" title="Model imprimanta" value="" class="input-text required-entry" type="text" />
+					</div>
+		
+					<div class="form-block">
+						<label class="input-label" for="serie">Serie</label>
+						<input name="serie" id="serie" title="Serie" value="" class="input-text required-entry" type="text" />
+						</div>
+		
+					
+					<div class="form-block">
+						<label class="input-label top" for="message">Descriere problema</label>
+						<textarea name="message" id="message" title="Mesaj" class="input-text required-entry" style="height:100px;" cols="50" rows="3"></textarea>
+					</div>
+					
+				    <div class="button-set">
+				    	<label class="input-label">&nbsp;</label>
+				        <button class="button small-button" type="submit"><span><span>Trimite</span></span></button>
+				    </div>
+				</form>
+				
+				<br/><br/>
+			</div>
+			
+			<div class="fclear"></div>
+			
+			<script type="text/javascript">
+				function formCallback(result, form) {
+					window.status = "valiation callback for form '" + form.id + "': result = " + result;
+				}
+				var valid = new Validation('contact_form_orders', {immediate : true, onFormValidate : formCallback});
+			</script>
+		 
+		</div>
+		
+	</div>
+</div>

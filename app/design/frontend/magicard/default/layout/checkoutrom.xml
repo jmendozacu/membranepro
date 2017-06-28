@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category   design_default
+ * @package    PfpjRom_CheckoutRom
+ * @author     Daniel Ifrim
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * @uses Interface_Frontend_Default 1.4.0.1 (stable)
+ */
+
+Supported layout update handles (action):
+- checkout_onepage_index
+-->
+<layout version="0.1.0">
+
+<!--
+Overrides checkout billing and shipping block on opc page from checkout.xml
+-->
+    <checkout_onepage_index>
+    	<reference name="content">
+    		<reference name="checkout.onepage">
+    			<action method="setTemplate"><template>checkoutrom/onepage.phtml</template></action>
+		    	<reference name="checkout.onepage.billing">
+		    		<action method="setTemplate"><template>checkoutrom/onepage/billing.phtml</template></action>
+		    	</reference>
+		    	<reference name="checkout.onepage.shipping">
+		    		<action method="setTemplate"><template>checkoutrom/onepage/shipping.phtml</template></action>
+		    	</reference>
+			</reference>
+		</reference>
+    </checkout_onepage_index>
+
+</layout>

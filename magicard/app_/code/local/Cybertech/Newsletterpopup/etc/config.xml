@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Cybertech_Newsletterpopup>
+            <version>0.1.0</version>
+        </Cybertech_Newsletterpopup>
+    </modules>
+    <global>
+        <blocks>
+            <newsletterpopup>
+                <class>Cybertech_Newsletterpopup_Block</class>
+            </newsletterpopup>
+        </blocks>
+        <helpers>
+            <newsletterpopup>
+                <class>Cybertech_Newsletterpopup_Helper</class>
+            </newsletterpopup>
+            <Cybertech_Newsletterpopup>
+            	<class>Cybertech_Newsletterpopup_Helper</class>
+            </Cybertech_Newsletterpopup>
+        </helpers>
+    </global>
+    <frontend>
+		<layout>
+            <updates>
+                <newsletterpopup>
+                    <file>newsletterpopup.xml</file>
+                </newsletterpopup>                
+            </updates>
+        </layout>
+	</frontend>
+</config>

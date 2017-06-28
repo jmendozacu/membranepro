@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie3
+ * @copyright	Copyright (C) 2013 - 2014 Qubesys Technologies Pvt.Ltd. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+ -->
+
+<config>
+	<modules>
+		<Mc_Eucookie3>
+			<version>0.1.0</version>
+		</Mc_Eucookie3>
+	</modules>
+
+	<frontend>
+		<layout>
+			<updates>
+				<eucookie3>
+					<file>eucookie3.xml</file>
+				</eucookie3>
+			</updates>
+		</layout>
+	</frontend>
+
+	<global>
+		<models>
+			<eucookie3>
+				<class>Mc_Eucookie3_Model</class>
+			</eucookie3>
+		</models>
+
+		<blocks>
+			<eucookie3>
+				<class>Mc_Eucookie3_Block</class>
+			</eucookie3>
+		</blocks>
+
+		<helpers>
+			<eucookie3>
+				<class>Mc_Eucookie3_Helper</class>
+			</eucookie3>
+		</helpers>
+	</global>
+
+	<default>
+		<eucookie3>
+			<general>
+				<enable>1</enable>
+				<jquery>1</jquery>
+				<cookie_pos></cookie_pos>
+				<cookie_loc></cookie_loc>
+				<cookie_color>1</cookie_color>
+				<cookie_mode></cookie_mode>
+				<modal_title>Cookie Compliancy</modal_title>
+				<short_desc>We use cookies to improve your experience on the website.</short_desc>
+				<long_desc>Some cookies are required to ensure that the site functions correctly, for this reason we may have already set some cookies.Other cookies gather anonymous data about how you are using the website, however these will only be set if you give your consent.</long_desc>
+				<modal_acpt>Declined</modal_acpt>
+				<modal_dcln>Accepted</modal_dcln>
+				<animation_time>500</animation_time>
+				<cookie_expiry>90</cookie_expiry>
+				
+			</general>
+		</eucookie3>
+	</default>
+</config>

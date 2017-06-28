@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie4
+ * @copyright	Copyright (C) 2010 - 2011 Open Source Matters. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+ -->
+
+<config>
+	<tabs>
+		<mc translate="label">
+			<label>MageClub Extensions</label>
+			<sort_order>40</sort_order>
+		</mc>
+	</tabs>
+	<sections>
+		<eucookie4 translate="label" module="eucookie4">
+			<class>separator-top</class>
+			<label>Eucookie Alert V4</label>
+			<tab>mc</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>300</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<general translate="label">
+					<label>General</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enable translate="label">
+							<label>Enable Eucookie Alert V4</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable>
+						
+						<cookie_introtext translate="label">
+                            <label>Cookie Introtext: </label>
+                            <frontend_type>textarea</frontend_type>
+                           
+							<sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_introtext>
+						
+						<cookie_accepttext translate="label">
+                            <label>Cookie Acceptance Text: </label>
+                            <frontend_type>textarea</frontend_type>
+                           
+							<sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_accepttext>
+						<cookie_infotext translate="label">
+                            <label>Cookie Information Text: </label>
+                            <frontend_type>textarea</frontend_type>
+                           
+							<sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_infotext>
+						<cookie_infolink translate="label">
+                            <label>Cookie Information Link: </label>
+                            <frontend_type>text</frontend_type>
+                           
+							<sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_infolink>
+						
+						<cookie_infolink_open translate="label">
+                            <label>Open Cookie Information Link: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>eucookie4/config_style1</source_model>
+							<sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_infolink_open>
+						
+						<cookie_bgcolor translate="label">
+                            <label>Background Color: </label>
+                            <frontend_type>text</frontend_type>
+                           
+							<sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_bgcolor>
+						<cookie_textcolor translate="label">
+                            <label>Text Color: </label>
+                            <frontend_type>text</frontend_type>
+                           
+							<sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_textcolor>
+						<cookie_textsize translate="label">
+                            <label>Text Font Size: </label>
+                            <frontend_type>text</frontend_type>
+                           
+							<sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_textsize>
+						<cookie_textfont translate="label">
+                            <label>Select Fonts Text: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>eucookie4/config_style2</source_model>
+							<sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_textfont>
+						<cookie_linkcolor translate="label">
+                            <label>Link Color: </label>
+                            <frontend_type>text</frontend_type>
+                           
+							<sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_linkcolor>
+						<cookie_linksize translate="label">
+                            <label>Link Font Size: </label>
+                            <frontend_type>text</frontend_type>
+                           
+							<sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_linksize>
+						<cookie_linkfont translate="label">
+                            <label>Select Fonts Text: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>eucookie4/config_style3</source_model>
+							<sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_linkfont>
+						
+					</fields>
+				</general>
+			</groups>
+		</eucookie4>
+	</sections>
+</config>

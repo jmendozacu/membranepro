@@ -1,0 +1,57 @@
+<div class="footer-container">
+    <div id="footer">
+        
+	    <div class="footer-top">
+				
+			<div class="promo-banner fleft">
+				<?php echo $this->getChildHtml('footerLeft') ?>
+			</div>
+			
+			<div class="promo-banner fleft">
+				<?php echo $this->getChildHtml('footerCenter') ?>
+			</div>
+			
+			<div class="promo-banner configurator last fleft">
+				<?php //echo $this->getChildHtml('footerRight') ?>
+				<?php echo $this->getLayout()->createBlock('page/html')->setName('configurator_consumables')->setTemplate("page/html/footer-consumables-search.phtml")->toHtml()?>
+			</div>
+			
+			<div class="fclear"></div>
+			
+		</div>
+		
+		<div class="footer-middle">
+			<a href="<?php echo $this->getUrl('') ?>" class="logo"><img src="<?php echo $this->getSkinUrl('graphics/logo-footer.png') ?>" /></a>
+			<div class="footer-menu">
+				<?php echo $this->getChildHtml('footerMenu') ?>
+			</div>
+			<div class="fclear"></div>
+		</div>
+		
+		
+					
+		<div class="footer-bottom">
+				<?php echo $this->getCopyright() ?>
+		</div>
+		
+		<div class="footer-web-partners">
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_web_partners')->toHtml() ?> 
+		</div>
+	
+	</div>
+</div>
+
+<script type="text/javascript">
+	$$('.sub').each(function(sub) {
+		$(sub).observe('mouseenter', function() {
+			$(this).up('li').addClassName('hover');
+	 	});
+	});
+
+	$$('.sub').each(function(sub) {
+		$(sub).observe('mouseleave', function() {
+			$(this).up('li').removeClassName('hover');
+	 	});
+	});
+	 	
+</script>

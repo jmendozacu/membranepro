@@ -1,0 +1,40 @@
+/* Reset */
+#cookieok_bar,#cookieok_bar p, #cookieok_bar a, #cookieok_bar input {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	line-height:120%;
+}
+
+
+
+
+#cookieok_bar .more {
+	position: absolute;
+	top: 6px;
+	right: 10px;
+}
+
+
+
+#cookieok_bar p {
+	padding:6px 10px;
+}
+
+
+
+#cookieok_bar label {
+	padding-left: 4px;
+	vertical-align: bottom;
+}
+
+#cookieok_bar a.site {
+	position: absolute;
+	right: 10px;
+	bottom: 4px;
+	font-size: 10px;
+	text-decoration: none;
+}

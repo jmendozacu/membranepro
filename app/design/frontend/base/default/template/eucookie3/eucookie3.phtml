@@ -1,0 +1,60 @@
+<?php
+/**
+
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie3
+ * @copyright	Copyright (C) 2013 - 2014 Qubesys Technologies Pvt.Ltd. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+
+$enable				= $this->getConfigData('enable');
+$jquery				= $this->getConfigData('jquery');
+
+if (!$enable) {
+	return;
+}
+?>
+<?php if ($jquery==1) { ?>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'skin/frontend/default/default/mageclub/js/jquery.min.js'; ?>"></script>
+<?php } ?>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'skin/frontend/default/default/mageclub/js/cookiecompliancy.js'; ?>"></script>
+<link type="text/css" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'skin/frontend/default/default/mageclub/css/cookiecompliancy.css'?>" rel="stylesheet" />
+
+
+
+<?php
+$cookie_pos			= $this->getConfigData('cookie_pos');
+$cookie_loc			= $this->getConfigData('cookie_loc');
+$cookie_color			= $this->getConfigData('cookie_color');
+$cookie_mode			= $this->getConfigData('cookie_mode');
+$modal_title			= $this->getConfigData('modal_title');
+$short_desc			= $this->getConfigData('short_desc');
+$long_desc			= $this->getConfigData('long_desc');
+$modal_acpt			= $this->getConfigData('modal_acpt');
+$modal_dcln			= $this->getConfigData('modal_dcln');
+$animation_time			= $this->getConfigData('animation_time');
+$cookie_expiry			= $this->getConfigData('cookie_expiry');
+
+?>
+
+<script type="text/javascript">
+	jQuery.noConflict();
+    jQuery(document).ready(function(e) {
+    jQuery(document).cookiecompliancy({
+		type: '<?php echo $cookie_pos; ?>',
+		location: '<?php echo $cookie_loc; ?>',
+		color: '<?php echo $cookie_color; ?>',
+		modalMode: '<?php echo $cookie_mode; ?>',
+		modalTitle:'<?php echo $modal_title; ?>',
+		desc:'<p><?php echo $short_desc; ?></p>',
+		modalLongDesc:'<p><?php echo $long_desc; ?></p>',
+		modalButtonTextAccepted:'<?php echo $modal_acpt; ?>',
+		modalButtonTextNotAccepted:'<?php echo $modal_dcln; ?>',
+		modalAnimationTime: <?php echo $animation_time; ?>,
+		cookieExpiry:<?php echo $cookie_expiry; ?>
+    	
+	});
+    });
+</script>

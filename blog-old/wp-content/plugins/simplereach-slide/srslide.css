@@ -1,0 +1,86 @@
+#srslide .color {
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+
+#srslide .srslide_minitext {
+  display: block;
+}
+
+#srslide .branding {
+  text-indent: -9999px;
+  width: 150px;
+  height: 40px;
+  background: url(//d8rk54i4mohrb.cloudfront.net/images/plugins/slide_logo.png);
+  -webkit-background-size: 150px 40px;
+  -moz-background-size: 150px 40px;
+  background-size: 150px 40px;
+  float: left;
+  margin-right: 30px;
+}
+
+#srslide .branding {
+  background: url(//d8rk54i4mohrb.cloudfront.net/images/plugins/slide_logo_nonretina.png)\9;
+}
+
+#srslide .overview {
+  margin: 15px 0;
+}
+
+#srslide .overview h2 {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+#srslide .overview p {
+  margin: 0;
+}
+
+#srslide .link_color_selector input {
+  display: inline-block;
+  width: auto;
+}
+
+#srslide .link_color_selector input[type="radio"] {
+  margin-right: 10px;
+  border: 0;
+}
+
+#srslide .link_color_selector input[type="text"] {
+  margin-right: 8px;
+}
+
+#srslide .link_color_selector input, #srslide .link_color_selector .color {
+  float: left;
+}
+
+#srslide .link_color_selector .color {
+  margin-right: 25px;
+}
+
+#srslide .custom_color_label {
+ margin-top: -17px;
+ color: #999;
+}
+
+#srslide .srslide_minitext {
+  color: #999;
+}
+
+#srslide_controls tr.form-field, #srslide_account tr.form-field {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+#srslide input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+#srslide .connect {
+  font-size: 14px;
+}
+
+#srslide .link_color_selector .customcolor {
+  width: 15%;
+}

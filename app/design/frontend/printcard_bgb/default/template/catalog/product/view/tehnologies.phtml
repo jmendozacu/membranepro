@@ -1,0 +1,153 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+
+<?php
+    $attributesToDisplayArr = array(
+        'printing_covering_type'        => array('edge-to-edge'        => '81'),
+        'printing_side_type'            => array('duplex'              => '78'),
+        'printing_rewritable_card'      => array('rewritable'          => '23'),
+        'printing_icc_profiles'         => array('icc-profiles'        => '220'),
+        'printing_security_type'        => array('holokote'            => '27',
+                                                 'holokote-custom'     => '79',
+                                                 'holokote-flex'       => '80',
+                                                 'holopatch'           => '29',
+                                                 'over-laminate'       => '28',
+                                                 'ultra-violet'        => '221',
+                                                ),
+        'printer_lock'                  => array('printer-lock'        => '223'),
+        'printer_connect_ethernet'      => array('ethernet'            => '225'),
+        'printer_adaptation'            => array('duplex-upgrade'      => '226'),
+        'printing_encoding_type'        => array(   'magnetic'         => '70',
+                                                    'chip'             => '71',
+                                                    'mifare'           => '72', 
+                                                    'hid-i-class'      => '73',
+                                                    /*
+                                                    'smart' => array('71','72','73'),
+                                                    */
+                                                ),
+        'warranty'                      => array(   'ultra-plus'       => '227',
+                                                    'ultra-cover-plus' => '228',
+                                                ),
+        'warranty_extended'             => array('ultra-plus-extended' => '229'),
+    );
+    
+    $printingCoveringType   = $_helper->productAttribute($_product, $_product->getPrintingCoveringType(), 'printing_covering_type');
+    $printingSideType       = $_helper->productAttribute($_product, $_product->getPrintingSideType(), 'printing_side_type');
+    $printingRewritableCard = $_helper->productAttribute($_product, $_product->getPrintingRewritableCard(), 'printing_rewritable_card');
+    $printingIccProfiles    = $_helper->productAttribute($_product, $_product->getPrintingIccProfiles(), 'printing_icc_profiles');
+    $printingSecurityType   = $_helper->productAttribute($_product, $_product->getPrintingSecurityType(), 'printing_security_type');
+    $printerLock            = $_helper->productAttribute($_product, $_product->getPrinterLock(), 'printer_lock');
+    $printerConnectEthernet = $_helper->productAttribute($_product, $_product->getPrinterConnectEthernet(), 'printer_connect_ethernet');
+    $printerAdaptation      = $_helper->productAttribute($_product, $_product->getPrinterAdaptation(), 'printer_adaptation');
+    $printingEncodingType   = $_helper->productAttribute($_product, $_product->getPrintingEncodingType(), 'printing_encoding_type');
+    $warranty               = $_helper->productAttribute($_product, $_product->getWarranty(), 'warranty');
+    $warrantyExtended       = $_helper->productAttribute($_product, $_product->getWarrantyExtended(), 'warranty_extended');
+    
+    if(strpos($printingCoveringType,$attributesToDisplayArr['printing_covering_type']['edge-to-edge']) !== false)
+        echo '<a class="edge-to-edge fleft" href="'.$this->getUrl('tehnologii').'?imprimare=edge-to-edge">&nbsp;</a>';
+        
+    if(strpos($printingSideType,$attributesToDisplayArr['printing_side_type']['duplex']) !== false)
+        echo '<a class="duplex fleft" href="'.$this->getUrl('tehnologii').'?imprimare=duplex">&nbsp;</a>';
+    
+    if(strpos($printingRewritableCard,$attributesToDisplayArr['printing_rewritable_card']['rewritable']) !== false)
+        echo '<a class="rewritable fleft" href="'.$this->getUrl('tehnologii').'?imprimare=rewritable">&nbsp;</a>';
+    
+    if(strpos($printingIccProfiles,$attributesToDisplayArr['printing_icc_profiles']['icc-profiles']) !== false)
+        echo '<a class="icc-profiles fleft" href="'.$this->getUrl('tehnologii').'?imprimare=icc-profiles">&nbsp;</a>';
+    
+    if(strpos($printingSecurityType,$attributesToDisplayArr['printing_security_type']['holokote']) !== false)
+        echo '<a class="holokote fleft" href="'.$this->getUrl('tehnologii').'?securitate=holokote">&nbsp;</a>';
+    
+    if(strpos($printingSecurityType,$attributesToDisplayArr['printing_security_type']['holokote-custom']) !== false)
+        echo '<a class="holokote-custom fleft" href="'.$this->getUrl('tehnologii').'?securitate=holokote-custom">&nbsp;</a>';
+        
+    if(strpos($printingSecurityType,$attributesToDisplayArr['printing_security_type']['holokote-flex']) !== false)
+        echo '<a class="holokote-flex fleft" href="'.$this->getUrl('tehnologii').'?securitate=holokote-flex">&nbsp;</a>';
+    
+    if(strpos($printingSecurityType,$attributesToDisplayArr['printing_security_type']['holopatch']) !== false)
+        echo '<a class="holopatch fleft" href="'.$this->getUrl('tehnologii').'?securitate=holopatch">&nbsp;</a>';
+        
+    if(strpos($printingSecurityType,$attributesToDisplayArr['printing_security_type']['over-laminate']) !== false)
+        echo '<a class="over-laminate fleft" href="'.$this->getUrl('tehnologii').'?securitate=over-laminate">&nbsp;</a>';
+        
+    if(strpos($printingSecurityType,$attributesToDisplayArr['printing_security_type']['ultra-violet']) !== false)
+
+        echo '<a class="ultra-violet fleft" href="'.$this->getUrl('tehnologii').'?securitate=ultra-violet">&nbsp;</a>';
+    
+    if(strpos($printerLock,$attributesToDisplayArr['printer_lock']['printer-lock']) !== false)
+
+        echo '<a class="printer-lock fleft" href="'.$this->getUrl('tehnologii').'?securitate=printer-lock">&nbsp;</a>';
+    
+    if(strpos($printerConnectEthernet,$attributesToDisplayArr['printer_connect_ethernet']['ethernet']) !== false)
+
+        echo '<a class="ethernet fleft" href="'.$this->getUrl('tehnologii').'?conectivitate=ethernet">&nbsp;</a>';
+    
+    if(strpos($printerAdaptation,$attributesToDisplayArr['printer_adaptation']['duplex-upgrade']) !== false)
+
+        echo '<a class="duplex-upgrade fleft" href="'.$this->getUrl('tehnologii').'?adaptare=duplex-upgrade">&nbsp;</a>';
+    
+    if(strpos($printingEncodingType,$attributesToDisplayArr['printing_encoding_type']['magnetic']) !== false)
+        echo '<a class="magnetic fleft" href="'.$this->getUrl('tehnologii').'?codare=magnetic">&nbsp;</a>';
+    
+    /*
+    if(strpos($printingEncodingType,$attributesToDisplayArr['printing_encoding_type']['chip']) !== false)
+        echo '<div class="chip fleft">&nbsp;</div>';
+    
+    if(strpos($printingEncodingType,$attributesToDisplayArr['printing_encoding_type']['mifare']) !== false)
+        echo '<div class="mifare fleft">&nbsp;</div>';
+    
+    if(strpos($printingEncodingType,$attributesToDisplayArr['printing_encoding_type']['hid-i-class']) !== false)
+        echo '<div class="hid-i-class fleft">&nbsp;</div>';
+    */
+        
+    if(strpos($printingEncodingType,$attributesToDisplayArr['printing_encoding_type']['chip']) !== false)
+        echo '<a class="smart fleft" href="'.$this->getUrl('tehnologii').'?codare=smart">&nbsp;</a>';
+
+    elseif(strpos($printingEncodingType,$attributesToDisplayArr['printing_encoding_type']['mifare']) !== false)
+        echo '<a class="smart fleft" href="'.$this->getUrl('tehnologii').'?codare=smart">&nbsp;</a>';
+
+    elseif(strpos($printingEncodingType,$attributesToDisplayArr['printing_encoding_type']['hid-i-class']) !== false)
+        echo '<a class="smart fleft" href="'.$this->getUrl('tehnologii').'?codare=smart">&nbsp;</a>';
+    
+    if(strpos($warranty,$attributesToDisplayArr['warranty']['ultra-plus']) !== false)
+        echo '<a class="ultra-plus fleft" href="'.$this->getUrl('tehnologii').'?garantie=ultra-plus">&nbsp;</a>';
+    if(strpos($warranty,$attributesToDisplayArr['warranty']['ultra-cover-plus']) !== false)
+        echo '<a class="ultra-cover-plus fleft" href="'.$this->getUrl('tehnologii').'?garantie=ultra-cover-plus">&nbsp;</a>';
+    
+    if(strpos($warrantyExtended,$attributesToDisplayArr['warranty_extended']['ultra-plus-extended']) !== false)
+        echo '<a class="ultra-plus-extended fleft" href="'.$this->getUrl('tehnologii').'?garantie=ultra-plus-extended">&nbsp;</a>';
+?>

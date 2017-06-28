@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Mage
+ * @package     Mage_Paypal
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+   <sections>
+		<orderfollowupemail translate="label" module="orderfollowupemail">
+			<label>Order Followup Email Settings</label>
+			<tab>sales</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>301</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<settings translate="label">
+					<label>Settings</label>
+					<expanded>1</expanded>
+					<frontend_type>text</frontend_type>
+					<sort_order>0</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<fields>
+						<enabled translate="label comment">
+							<label>Enabled</label>
+							<comment>Enable this module?</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<sort_order>1</sort_order>
+						</enabled>
+						<reminder_period translate="label comment">
+							<label># of hours after order placed</label>
+							<comment>After this many hours, send the order followup email</comment>
+							<frontend_type>text</frontend_type>
+							<show_in_default>1</show_in_default>
+							<sort_order>2</sort_order>
+						</reminder_period>
+						<identity translate="label">
+							<label>Order Followup Email Sender</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_email_identity</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</identity>
+						<template translate="label">
+							<label>Order Followup Email Template</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_email_template</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</template>
+						<email_copy_to translate="label comment">
+							<label>Send a copy to:</label>
+							<comment>We will send a blind copy of the order followup email to this address</comment>
+							<frontend_type>text</frontend_type>
+							<show_in_default>1</show_in_default>
+							<sort_order>5</sort_order>
+						</email_copy_to>
+						<email_override translate="label comment">
+							<label>Email Override:</label>
+							<comment>If this is populated, customers will not receive order followup emails.  Instead they will be routed to this address.  Default [blank].</comment>
+							<frontend_type>text</frontend_type>
+							<show_in_default>1</show_in_default>
+							<sort_order>6</sort_order>
+						</email_override>
+					</fields>
+				</settings>
+			</groups>
+		</orderfollowupemail>
+	</sections>
+</config>

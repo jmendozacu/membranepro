@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<orderfollowup_email_order_items>
+		<block type="orderfollowupemail/items" name="orderfollowupemail.items" template="orderfollowupemail/items.phtml" />
+	</orderfollowup_email_order_items>
+</layout>

@@ -1,0 +1,24 @@
+a:9:{s:7:"attribs";a:2:{s:5:"xmlns";s:36:"http://pear.php.net/dtd/rest.package";s:18:"xsi:schemaLocation";s:80:"http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd";}s:1:"n";s:19:"Ebizmarts_MailChimp";s:1:"c";s:37:"connect.magentocommerce.com/community";s:2:"ca";a:2:{s:7:"attribs";a:1:{s:10:"xlink:href";s:34:"/Chiara_PEAR_Server_REST/c/Default";}s:8:"_content";s:7:"Default";}s:1:"l";s:32:"GNU General Public License (GPL)";s:2:"lu";s:50:"http://www.opensource.org/licenses/gpl-license.php";s:1:"s";s:58:"Synchronizes Magento Newsletter subscribers with MailChimp";s:1:"d";s:2430:"<p><span style="color: #000080;"><strong><span style="font-size: medium;">A Commercial version of this extension can be found <a href="../../extension/4546/ebizmart_mailchimppro">here</a></span></strong></span></p>
+<p><span style="font-size: medium; color: #0000ff;"><strong><br /></strong></span></p>
+<p>This module provides integration with MailChimp email marketing system using their integration API.</p>
+<p>You only have to set up your MailChimp credentials and the MailChimp's List ID you want to synchronize.</p>
+<p>Once setup, the module will keep your Magento Newsletter subscribers automatically synchronized with MailChimp.</p>
+<p>Since v1.3 You can setup MailChimp's Lists to sync per store and not globally.</p>
+<p>A tool to make a Batch Synchronization is available on the  "Newsletter  / Subscribers" Admin page. This tool is meant to be used the first time you install the module, or, if for some reason the Mail List gets out of sync.</p>
+<p>We encourage you to review and rate this extension based on your experience, any positive, neutral or negative feedback  is welcome to make this extension better.</p>
+<p>Thanks!</p>
+<p>***As usual, do not install extensions directly on your Live setup, try it on a Test setup first. Also, it is a good practice to make backups of both Magento and MailChimp before installing this extension ***</p>
+<p>[10/27/2009] v1.4.3 released, Bugs fixed in code at unsubscribing.</p>
+<p>[10/12/2009] v1.4.2 released, Account confirmation issue fixed.</p>
+<p>[09/11/2009] v1.4.1 released, Bugs fixed in code.</p>
+<p>[09/02/2009] v1.4 released, Renewed code according to new API specs, in which Username and Password are not needed anymore, just the API key. Fixed code error in Admin Panel.</p>
+<p>[08/21/2009] v1.3.8 released, Code fixed.</p>
+<p>[07/16/2009] v1.3.7 released, Can't save Customer Bug fixed.</p>
+<p>[06/02/2009] v1.3.6 released, compatibility with Magento 1.3.2,  Admin Synchronizes bottom bug fixed and Customer profile bugs fixed.</p>
+<p>[05/19/2009] v1.3.5 released, Admin Config, add drop down list id selector.</p>
+<p>[05/06/2009] v1.3.4 released, Admin Config. Section Bug fixed.</p>
+<p>[05/05/2009] v1.3.3 released, Bug pack fixed.</p>
+<p>[05/05/2009] v1.3.2 released, Bug pack fixed.</p>
+<p>[05/05/2009] v1.3.1 released, List ID display on error.</p>
+<p>[05/05/2009] v1.3 released, multi-store support added.</p>
+<p>[04/27/2009] First version released v1.2</p>";s:1:"r";a:1:{s:7:"attribs";a:1:{s:10:"xlink:href";s:46:"/Chiara_PEAR_Server_REST/r/Ebizmarts_MailChimp";}}}

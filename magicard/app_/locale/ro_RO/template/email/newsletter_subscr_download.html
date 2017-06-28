@@ -1,0 +1,79 @@
+<!--@subject eBook - {{var documentName}} @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"htmlescape var=$customer.name":"Customer Name",
+"var subscriber.getConfirmationLink()":"Subscriber Confirmation Url"}
+@-->
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" height="100%" width="100%">
+    <tr>
+        <td align="center" valign="top" style="padding:20px 0 20px 0">
+            <!-- [ header starts here] -->
+            <table bgcolor="FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+                <tr>
+                    <td valign="top">
+                        <a href="{{store url=""}}" style="color:#CC3333;"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}" border="0"/></a>
+                    </td>
+                </tr>
+                <!-- [ middle starts here] -->
+                <tr style="font-family:Myriad Pro,sans-serif;">
+                    <td valign="top">
+                        <p style="margin-bottom:0; font-size:13px; font-weight:bold; color:#751D25;">Informatiile potrivite, la momentul potrivit. Acum le puteti accesa.</p>
+                        <p style="margin-top:0; font-size:12px; font-weight:normal; color:#000000;">
+							Va multumim pentru alegerea facuta si pentru abonarea la newsletter-ul Printcard Systems.<br/>
+							Periodic, veti primi informatii utile si noutati de interes din domeniul echipamentelor de imprimare de carduri.
+						</p>
+                        <div style="border:1px solid #E0E0E0; font-size:12px; line-height:16px; margin:0; padding:13px 10px 5px 0px; background:#F9F9F9;">
+	                        <table>
+	                        <tr>
+	                        	<td rowspan="5" width="240"><img src="{{store url="skin/frontend/base/default/images/mail/newsletter-download/"}}main-image.png" /></td>
+	                        	<td width="40"></td>
+	                        	<td style="font-size:18px; font-weight:bold;">eBook-ul contine informatii despre:</td>
+	                        </tr>
+	                        <tr>
+	                        	<td valign="middle" height="50"><img src="{{store url="skin/frontend/base/default/images/mail/newsletter-download/"}}bullet-red.png" /></td>
+	                        	<td valign="middle" style="font-size:14px; font-weight:normal;">Ce functionalitati trebuie sa aiba o imprimanta potrivita nevoilor dumneavoastra?</td>
+	                        </tr>
+	                        <tr>
+	                        	<td valign="middle" height="40"><img src="{{store url="skin/frontend/base/default/images/mail/newsletter-download/"}}bullet-red.png" /></td>
+	                        	<td valign="middle" style="font-size:14px; font-weight:normal;">Cum sa alegeti in functie de bugetul pe care il aveti?</td>
+	                        </tr>
+	                        <tr>
+	                        	<td valign="middle" height="50"><img src="{{store url="skin/frontend/base/default/images/mail/newsletter-download/"}}bullet-red.png" /></td>
+	                        	<td valign="middle" style="font-size:14px; font-weight:normal;">Ce tipuri de imprimante aduc cele mai multe beneficii pe termen lung afacerii dumneavoastra?</td>
+	                        </tr>
+	                        <tr>
+	                        	<td></td>
+	                        	<td></td>
+	                        </tr>
+	                        </table>
+	                        <table style="width:100%; margin-top:20px;">
+	                        <tr>
+	                        	<td width="50%" align="center"><a href="{{var documentUrl}}"><img src="{{store url="skin/frontend/base/default/images/mail/newsletter-download"}}download-pdf.png" border="0" /></a></td>
+	                        	<td width="50%" align="center"></td>
+	                        </tr>
+	                        </table>
+	                        <p style="margin:20px 0 0 0; font-size:12px; font-weight:normal; color:#000000; text-align:center;">
+	                        	Pentru a vizualiza corect acest eBook pe calculator (PC sau Mac) aveti nevoie sa instalati aplicatia<br/> 
+								<a href="http://www.adobe.com/products/digital-editions.html" style="color:#CC3333;">Adobe Digital Editions</a>, iar pe dispozitive mobile una sau mai multe din aplicatiile prezentate <a href="http://blogs.adobe.com/digitalpublishing/supported-devices" style="color:#CC3333;">aici</a>.
+							</p>
+						</div>
+						
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;"><center>
+                      <p style="font-size:12px; margin:0;">Va multumim, echipa <strong>{{var store.getFrontendName()}}</strong></p></center></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</div>
+</body>

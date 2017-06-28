@@ -1,0 +1,15 @@
+<a class="register fright" href="<?php echo Mage::getURL('customer/account/create/') ?>"><?php echo $this->__('Create an Account') ?></a>
+<span class="title"><?php echo $this->__('Login') ?></span>
+<form action="<?php echo $this->getPostActionUrl() ?>" method="post">
+	<div class="block-content">
+		<label for="mini-login"><?php echo $this->__('E-mail') ?>:</label>
+		<input type="text" name="login[username]" id="mini-login" class="input-text" />
+		<label for="mini-password"><?php echo $this->__('Password') ?>:</label>
+		<input type="password" name="login[password]" id="mini-password" class="input-text" />
+		<div class="options">
+			<a href="<?php echo $this->getForgotPasswordUrl() ?>" class="forgot f-left"><?php echo $this->__('Forgot Your Password?') ?></a>
+			<button type="submit" class="button small-button fright"><span><span><?php echo $this->__('Login') ?></span></span></button>
+			<div class="fclear"></div>
+		</div>
+	</div>
+</form>

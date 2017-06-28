@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="container-top">
+		<h1>Contact</h1>
+	</div>
+	
+	<div class="container-content">
+
+		<div class="box simple-contact">
+			<a class="contact-comenzi-button fleft" href="<?php echo $this->getUrl('contact/tehnic') ?>">Departament tehnic</a>
+			<a class="contact-vanzari-button fleft" href="<?php echo $this->getUrl('contact/vanzari') ?>">Departament Vanzare si Consultanta</a>
+			<div class="fclear"></div>
+		
+		
+			<div class="contact-main">
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('contact_main')->toHtml() ?> 
+			</div>
+		
+		</div>
+		
+	</div>
+</div>

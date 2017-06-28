@@ -1,0 +1,33 @@
+<?php
+/**
+
+ * @version		$Id$
+ * @author		Qubesys Technologies Pvt.Ltd (info@qubesys.com)
+ * @category	Mc
+ * @package		Mc_Eucookie5
+ * @copyright	Copyright (C) 2013 - 2014 Qubesys Technologies Pvt.Ltd. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+
+$enable				= $this->getConfigData('enable');
+
+
+if (!$enable) {
+	return;
+}
+
+$cookie_domain			= $this->getConfigData('cookie_domain');
+$cookie_textfont			= $this->getConfigData('cookie_textfont');
+$cookie_textsize			= $this->getConfigData('cookie_textsize');
+$cookie_bgcolor			= $this->getConfigData('cookie_bgcolor');
+$cookie_textcolor			= $this->getConfigData('cookie_textcolor');
+
+
+
+?>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Jockey+One|Lato:400,900|Ubuntu:400,700|Lobster|Satisfy|Sansita+One|Damion|Carter+One|Bangers|Pacifico|Open+Sans:400,700|Nunito:400,700|Terminal+Dosis|Merriweather' rel='stylesheet' type='text/css'/>
+<script type="text/javascript">var ck_params = {};ck_params.tagsrc='<?php echo $cookie_domain; ?>';ck_params.man_url='undefined';ck_params.font='<?php if($cookie_textfont==1) {?>
+Droid Sans<?php } if($cookie_textfont==2) {?>Jockey One<?php } if($cookie_textfont==3) {?>Lato<?php } if($cookie_textfont==4) {?>Ubuntu<?php } if($cookie_textfont==5) {?>Lobster<?php } if($cookie_textfont==6) {?>Satisfy<?php } if($cookie_textfont==7) {?>Sansita One<?php } if($cookie_textfont==8) {?>Damion<?php } if($cookie_textfont==9) {?>Carter One<?php } if($cookie_textfont==10) {?>Bangers<?php } if($cookie_textfont==11) {?>Pacifico<?php } if($cookie_textfont==12) {?>Open Sans<?php } if($cookie_textfont==13) {?>Nunito<?php } if($cookie_textfont==14) {?>Terminal Dosis<?php } if($cookie_textfont==15) {?>Merriweather
+<?php } if($cookie_textfont==0) { ?>inherit<?php }  ?>';ck_params.fontsize='<?php echo $cookie_textsize; ?>';ck_params.bg='<?php echo $cookie_bgcolor;  ?>';ck_params.tc='<?php echo $cookie_textcolor; ?>';
+</script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'skin/frontend/default/default/mageclub/js/consent.js'; ?>"></script>

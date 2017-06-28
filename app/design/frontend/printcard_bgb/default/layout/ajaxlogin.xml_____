@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout version="1.0.0">
+    <ajaxlogin_customer_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/empty.phtml</template>
+            </action>
+        </reference>
+        <!--
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/ajaxlogin/ajaxlogin.js</name></action>
+            <action method="addCss"><stylesheet>css/ajaxlogin/ajaxlogin.css</stylesheet></action> 
+        </reference>
+        -->
+        <reference name="content">
+            <block type="ajaxlogin/response" name="ajaxlogin_response" template="ajaxlogin/response.phtml"/>
+        </reference>
+    </ajaxlogin_customer_index>
+</layout>

@@ -1,0 +1,120 @@
+/**
+* Interakting Slider
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Open Software License (OSL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/osl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@magentocommerce.com and you will be sent a copy immediately.
+*
+* @category   BusinessDecision
+* @package    BusinessDecision_Interaktingslider
+* @author     Business & Decision Picardie - contactmagento@interakting.com
+* @copyright  Copyright (c) 2009 Business & Decision (http://www.businessdecision.com)
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/  
+
+#frame{
+	text-align:left;
+    /*background:url([[IMAGES_FOLDER]]/base_mini_head_bg.gif) repeat-x #fff;*/
+   
+}
+
+#frame div{	
+	/*position:absolute;	*/
+	
+}
+
+#frame div div{
+
+}
+
+#middle-center{
+	
+	/*border:1px solid #DDD;*/
+}
+
+.slide{
+	position:absolute;	
+	text-align:left;
+	width:978px;
+	height:326px;
+	padding:0;
+	margin:0;
+	background:transparent;
+	color:#2F2F2F; 
+	font-size:12px; 
+	font-family:Tahoma,sans-serif;
+	border-radius:6px 6px 0 0;
+}
+
+#slide-content .slide img { border-radius:6px 6px 0 0; }
+
+#slide-content{
+	text-align:left;
+	width:978px;
+	height:326px;
+ 	border:1px solid #D7D7D7;
+	border-radius: 6px 6px 0 0;
+	border-bottom:none;
+	overflow:hidden;
+}
+
+#slide-content p { margin:0; }
+
+#slide-commands{
+	text-align:center;
+	height:55px;
+	background:url([[IMAGES_FOLDER]]/carousel-controls-bg.png) repeat-x;
+	z-index:5;
+	border-radius:0 0 6px 6px;
+	border:1px solid #D7D7D7;
+	border-top:none;
+	border-bottom:1px solid #999999;
+}
+
+#slide-commands a{
+	display:inline-block;
+	text-decoration:none;
+	margin:15px 15px 0 15px;
+    color:#CCCCCC;
+    font-size:14px;
+	text-shadow:1px 1px 0 #013D7F;
+	line-height:25px;
+    cursor:pointer;
+	padding:0 10px;
+	min-width:100px;
+	border:1px solid #023E81;
+	background:#3468A1;
+	color:#FFFFFF;
+    text-align:center;
+    vertical-align:middle;
+	border-radius:6px;
+}
+#slide-commands a.active{
+	background:url([[IMAGES_FOLDER]]/button-active.png) repeat-x;
+}
+
+#prev{
+	min-width:10px !important;
+	background:url([[IMAGES_FOLDER]]/arrow-left.png) no-repeat 9px center #000000 !important;
+}
+#prev span { color:transparent; text-shadow:none; }
+
+#next{
+	min-width:10px !important;
+	background:url([[IMAGES_FOLDER]]/arrow-right.png) no-repeat 12px center #000000 !important;
+}
+#next span { color:transparent; text-shadow:none; }
+
+.active span{
+	
+}
+
+.normal{
+	
+}

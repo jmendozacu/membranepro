@@ -1,0 +1,657 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Fast Blog\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-19 11:58+0100\n"
+"PO-Revision-Date: 2012-12-31 09:59+0200\n"
+"Last-Translator: Gabriel Anghelus <anghelus@printcard.ro>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../comment.php:13
+msgid "Your comment is awaiting moderation."
+msgstr "Comentariul facut asteapta validarea."
+
+#: ../comment.php:19
+msgid "reply"
+msgstr "răspuns"
+
+#: ../comment.php:23
+msgid "edit"
+msgstr "editare"
+
+#: ../comments.php:33
+msgid "Leave a comment"
+msgstr "Posteaza un comenariu"
+
+#: ../comments.php:33
+#, php-format
+msgid "Leave a reply to %s"
+msgstr "Lasa un raspuns catre %s"
+
+#: ../comments.php:35
+msgid "cancel"
+msgstr "renunţă"
+
+#: ../comments.php:37
+#, php-format
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>."
+msgstr "Logat ca si <a href=\"%1$s\">%2$s</a>."
+
+#: ../comments.php:38
+msgid "Log out of this account"
+msgstr "Deautentificare din acest cont"
+
+#: ../comments.php:38
+msgid "Log out &raquo;"
+msgstr "Deautentificare"
+
+#: ../comments.php:40
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+"Trebuie sa fiti <a href=\"%s\">logat</a> pentru a putea posta un comentariu."
+
+#: ../comments.php:46
+msgid "name"
+msgstr "nume"
+
+#: ../comments.php:47
+msgid "email"
+msgstr "EMAIL"
+
+#: ../comments.php:48
+msgid "website"
+msgstr "WEBSITE"
+
+#: ../comments.php:51
+msgid "Submit comment"
+msgstr "Trimite comentariu"
+
+#: ../functions.php:223
+msgid "Main navigation menu"
+msgstr "Meniul principal de navigare"
+
+#: ../functions.php:224
+msgid "Footer navigation menu"
+msgstr ""
+
+#: ../functions.php:228
+msgid "Sidebar"
+msgstr "Bara laterala"
+
+#: ../functions.php:308 ../options.php:13
+msgid "Fast Blog Options"
+msgstr "Optiuni Fast Blog"
+
+#: ../functions.php:308
+msgid "Theme Options"
+msgstr "Optiuni sablon"
+
+#: ../functions.php:377
+msgid ""
+"This post is password protected. To view it please enter your password below:"
+msgstr ""
+
+#: ../functions.php:400
+msgid "Please enter your name."
+msgstr "Va rugam introduceti numele dvs."
+
+#: ../functions.php:402
+msgid "Invalid email address."
+msgstr "Adresa de email invalida."
+
+#: ../functions.php:404
+msgid "Please write your comment."
+msgstr "Vă rugăm scrieti comentariul."
+
+#: ../functions.php:433
+msgid "Message sent."
+msgstr "Mesaj trimis."
+
+#: ../functions.php:435
+msgid "Error occured. Message couldn't be sent."
+msgstr "A apărut o eroare. Mesajul nu a putut fi trimis."
+
+#: ../header.php:47 ../header.php:117
+msgid "search"
+msgstr "cautare"
+
+#: ../header.php:61
+msgid ""
+"Your browser (Internet Explorer 6) is <strong>out of date</strong>. It has "
+"known <strong>security flaws</strong> and may <strong>not display all "
+"features</strong> of this and other websites. <a href=\"http://www.browser-"
+"update.org/update.html\">Learn how to update your browser</a>."
+msgstr ""
+"Browser-ul dvs. (Internet Explorer 6/7) este <strong>depasit tehnologic/"
+"neactualizat</strong>. Acesta contine <strong>defecte si erori de "
+"securitate</strong> si <strong>nu poate afisa corect toate caracteristicile "
+"si optiunile</strong> acestui blog sau a altor site-uri. <a href=\"http://"
+"www.browser-update.org/update.html\">Aflați cum să actualizați browser-ul "
+"dvs.</a>."
+
+#: ../index.php:19
+msgid "Oops, the page you are trying to reach doesn't exist."
+msgstr ":-) Oops! Pagina cautata nu a fost gasita pe server..."
+
+#: ../index.php:21
+#, php-format
+msgid "Search results for &#8216;%1$s&#8217; keyword"
+msgstr ""
+
+#: ../index.php:23
+#, php-format
+msgid "Posts tagged &#8216;%1$s&#8217;"
+msgstr ""
+
+#: ../index.php:25 ../index.php:27 ../index.php:29
+#, php-format
+msgid "Archive for %1$s"
+msgstr ""
+
+#: ../index.php:39
+msgid "Older posts"
+msgstr "Postari mai vechi"
+
+#: ../index.php:40
+msgid "Newer posts"
+msgstr "Postari mai noi"
+
+#: ../loop.php:25 ../loop.php:30 ../options.php:99
+msgid "Post"
+msgstr "Postari"
+
+#: ../loop.php:30 ../meta.php:29
+#, php-format
+msgid "View all posts in %s"
+msgstr ""
+
+#: ../loop.php:60
+msgid "More"
+msgstr "Mai mult"
+
+#: ../meta.php:20
+msgid "Today"
+msgstr "Astazi"
+
+#: ../meta.php:41 ../options.php:109 ../options.php:112
+msgid "Short URL"
+msgstr "URL scurt"
+
+#: ../meta.php:43
+msgid "Edit"
+msgstr "Editare"
+
+#: ../options.php:15
+msgid ""
+"<strong>WooTumblog</strong> plugin is not active, so Fast Blog theme's "
+"features are limited."
+msgstr ""
+
+#: ../options.php:18
+msgid "Settings saved."
+msgstr "Setari salvate."
+
+#: ../options.php:32
+msgid "Appearance"
+msgstr "Aspect"
+
+#: ../options.php:36
+msgid "Color scheme"
+msgstr "Schema de culori"
+
+#: ../options.php:37
+msgid "Favicon path"
+msgstr "Cale Favicon"
+
+#: ../options.php:37 ../options.php:54
+msgid "empty = default"
+msgstr "gol =  implicit"
+
+#: ../options.php:38
+msgid "Sidebar position"
+msgstr "Pozitie bara laterala"
+
+#: ../options.php:39
+msgid "Left"
+msgstr "Stanga"
+
+#: ../options.php:40
+msgid "Right"
+msgstr "Dreapta"
+
+#: ../options.php:48
+msgid "Header"
+msgstr "Header"
+
+#: ../options.php:49
+msgid "Height"
+msgstr "Inălțime"
+
+#: ../options.php:51
+msgid "default"
+msgstr "implicit"
+
+#: ../options.php:53
+msgid "Logo text or image path"
+msgstr "Cale text logo sau imagine"
+
+#: ../options.php:55
+msgid "Center logo"
+msgstr "Centrare logo"
+
+#: ../options.php:57 ../options.php:142
+msgid "Tagline"
+msgstr ""
+
+#: ../options.php:57
+msgid "Show tagline"
+msgstr ""
+
+#: ../options.php:58
+msgid "Contact information"
+msgstr "Informatii contact"
+
+#: ../options.php:65 ../options.php:143
+msgid "Menu"
+msgstr "Meniu"
+
+#: ../options.php:67
+msgid "Pages"
+msgstr "Pagini"
+
+#: ../options.php:68
+msgid "Categories"
+msgstr "Categorii"
+
+#: ../options.php:71
+msgid "Tumblogs"
+msgstr "Tumblogs"
+
+#: ../options.php:74
+msgid "Main navigation menu content"
+msgstr ""
+
+#: ../options.php:75
+msgid "Footer navigation menu content"
+msgstr ""
+
+#: ../options.php:77
+msgid ""
+"Matters only if you do not select another in <code>Appearance/Menus</code>."
+msgstr ""
+
+#: ../options.php:79
+msgid "Search"
+msgstr "Cautare"
+
+#: ../options.php:79
+msgid "Display search form in the main navigation menu"
+msgstr ""
+
+#: ../options.php:86
+msgid "Content"
+msgstr "Continut"
+
+#: ../options.php:87
+msgid "Images"
+msgstr "Imagini"
+
+#: ../options.php:88
+msgid "Use Fancybox to show images"
+msgstr ""
+
+#: ../options.php:90
+msgid "Display image title"
+msgstr "Afiseaza titlul imaginii"
+
+#: ../options.php:100 ../options.php:120 ../options.php:188
+msgid "Settings"
+msgstr "Setari"
+
+#: ../options.php:101
+msgid "Don't display post titles on post pages"
+msgstr ""
+
+#: ../options.php:102
+msgid "Show author details below posts"
+msgstr ""
+
+#: ../options.php:104
+msgid "Post meta"
+msgstr ""
+
+#: ../options.php:105
+msgid "Date"
+msgstr "Data"
+
+#: ../options.php:106
+msgid "Post category"
+msgstr "Postare categorii"
+
+#: ../options.php:107 ../options.php:123
+msgid "Comments number"
+msgstr ""
+
+#: ../options.php:108
+msgid "Author"
+msgstr "Autor"
+
+#: ../options.php:110 ../options.php:124
+msgid "Admin edit link"
+msgstr ""
+
+#: ../options.php:112
+msgid "Don't create short URLs if showing them is turned off"
+msgstr ""
+
+#: ../options.php:119
+msgid "Page"
+msgstr "Pagina"
+
+#: ../options.php:120
+msgid "Don't display page titles on pages"
+msgstr ""
+
+#: ../options.php:121
+msgid "Page meta"
+msgstr ""
+
+#: ../options.php:122
+msgid "Modification date"
+msgstr "Data modificare"
+
+#: ../options.php:132
+msgid "Typography"
+msgstr ""
+
+#: ../options.php:133 ../widgets.php:283
+msgid "None"
+msgstr "Nici unul"
+
+#: ../options.php:139
+msgid "Fonts"
+msgstr "Fonturi"
+
+#: ../options.php:141
+msgid "Logo"
+msgstr "Logo"
+
+#: ../options.php:144
+msgid "Post/page title"
+msgstr "Titlupostare/pagina"
+
+#: ../options.php:145
+msgid "Widget title"
+msgstr "Titlu widget"
+
+#: ../options.php:146
+msgid "Headlines"
+msgstr ""
+
+#: ../options.php:147
+msgid "Cufon shortcode"
+msgstr ""
+
+#: ../options.php:148
+msgid "Other elements"
+msgstr ""
+
+#: ../options.php:149
+msgid "Custom elements"
+msgstr ""
+
+#: ../options.php:158
+msgid ""
+"If you use more than one version of the Myriad font, select the biggest "
+"version you need for all of them."
+msgstr ""
+
+#: ../options.php:160
+msgid "Custom elements CSS selector(s)"
+msgstr ""
+
+#: ../options.php:167
+msgid "Contact form"
+msgstr "Formular de contact"
+
+#: ../options.php:168
+msgid "Recipient e-mail address"
+msgstr ""
+
+#: ../options.php:169
+msgid "E-mail subject"
+msgstr "Subiect e-mail"
+
+#: ../options.php:173
+msgid "Blog name"
+msgstr "Nume blog"
+
+#: ../options.php:174
+msgid "Blog URL"
+msgstr "URL Blog"
+
+#: ../options.php:175
+msgid "Name field"
+msgstr "Camp nume"
+
+#: ../options.php:176
+msgid "E-mail field"
+msgstr "Camp E-mail"
+
+#: ../options.php:177
+msgid "Subject field"
+msgstr "Camp subiect"
+
+#: ../options.php:188
+msgid "Override <code>From</code> header with <code>Name</code> field"
+msgstr ""
+
+#: ../options.php:195
+msgid "Advanced"
+msgstr "Avansat"
+
+#: ../options.php:196
+msgid "Custom CSS code"
+msgstr "Cod CSS personalizat"
+
+#: ../options.php:197
+msgid "Custom JavaScript code"
+msgstr ""
+
+#: ../options.php:198
+msgid "Bit.ly login"
+msgstr ""
+
+#: ../options.php:198 ../options.php:199
+msgid "empty = default built-in"
+msgstr ""
+
+#: ../options.php:199
+msgid "Bit.ly API key"
+msgstr ""
+
+#: ../options.php:206
+msgid "Other"
+msgstr "Altul"
+
+#: ../options.php:207
+msgid "Footer text"
+msgstr ""
+
+#: ../options.php:207
+msgid "empty = auto"
+msgstr "gol = auto"
+
+#: ../options.php:208
+msgid "Alternative feed URL"
+msgstr ""
+
+#: ../options.php:208
+msgid "E.g. FeedBurner."
+msgstr ""
+
+#: ../options.php:209
+msgid "Google Analytics code"
+msgstr "Cod Google Analytics"
+
+#: ../options.php:209
+msgid "Or another tracking code."
+msgstr ""
+
+#: ../options.php:216 ../options.php:224
+msgid "Save Changes"
+msgstr "Salveaza modificarile"
+
+#: ../options.php:222
+msgid "Expand all"
+msgstr "Extinde tot"
+
+#: ../options.php:223
+msgid "Collapse all"
+msgstr "Restrange tot"
+
+#: ../toolbox.php:1506
+#, php-format
+msgid "New version of %1$s is available!"
+msgstr "O versiune noua %1$s este disponibila!"
+
+#: ../toolbox.php:1507
+msgid "Current version"
+msgstr "Versiune curenta"
+
+#: ../toolbox.php:1508
+msgid "Available version"
+msgstr "Versiune disponibila"
+
+#: ../toolbox.php:1510
+msgid "Important"
+msgstr "Important"
+
+#: ../toolbox.php:1513
+msgid "Go to download page"
+msgstr "Du-te la pagina de descărcare"
+
+#: ../toolbox.php:1514
+msgid "Remind me in 5 days"
+msgstr "Amintește-mi în 5 zile"
+
+#: ../toolbox.php:1515
+msgid "Hide this message"
+msgstr "Ascunde acest mesaj"
+
+#: ../tpl-contact-form.php:29
+msgid "Name"
+msgstr "Nume"
+
+#: ../tpl-contact-form.php:30
+msgid "Email"
+msgstr "Email"
+
+#: ../tpl-contact-form.php:31
+msgid "Subject"
+msgstr "Subiect"
+
+#: ../tpl-contact-form.php:33
+msgid "Send"
+msgstr "Trimite"
+
+#: ../widgets.php:19 ../widgets.php:59
+msgid "Twitter"
+msgstr "Twitter"
+
+#: ../widgets.php:21
+msgid "Twitter stream."
+msgstr ""
+
+#: ../widgets.php:59
+msgid "Follow me!"
+msgstr "Follow me!"
+
+#: ../widgets.php:65
+msgid "ago"
+msgstr ""
+
+#: ../widgets.php:96 ../widgets.php:192
+msgid "Username"
+msgstr "Nume utilizator"
+
+#: ../widgets.php:97
+msgid "Tweets count"
+msgstr ""
+
+#: ../widgets.php:98 ../widgets.php:194
+msgid "Update interval"
+msgstr ""
+
+#: ../widgets.php:98
+msgid "Tweets receiving interval (in minutes)."
+msgstr ""
+
+#: ../widgets.php:115 ../widgets.php:158
+msgid "Flickr"
+msgstr "Flickr"
+
+#: ../widgets.php:117
+msgid "Flickr photo stream."
+msgstr ""
+
+#: ../widgets.php:158
+msgid "My photos"
+msgstr ""
+
+#: ../widgets.php:193
+msgid "Photos count"
+msgstr ""
+
+#: ../widgets.php:194
+msgid "Photos receiving interval (in minutes)."
+msgstr ""
+
+#: ../widgets.php:195 ../widgets.php:290
+msgid "Same window"
+msgstr "Aceeași fereastră"
+
+#: ../widgets.php:195 ../widgets.php:290
+msgid "New window"
+msgstr "Fereastră nouă"
+
+#: ../widgets.php:195
+msgid "Open photos in"
+msgstr ""
+
+#: ../widgets.php:226
+msgid "Social media"
+msgstr "Social media"
+
+#: ../widgets.php:228
+msgid "Social media icons."
+msgstr ""
+
+#: ../widgets.php:288 ../widgets.php:361
+msgid "Title"
+msgstr "Titlu"
+
+#: ../widgets.php:290
+msgid "Open links in"
+msgstr ""
+
+#: ../widgets.php:295
+msgid "Icon & URL"
+msgstr ""
+
+#: ../widgets.php:315
+msgid "Scheme switcher"
+msgstr ""
+
+#: ../widgets.php:317
+msgid "Allows visitors to change site's color scheme."
+msgstr "Permiteti vizitatorilor sa modifice culorile site-ului."

@@ -1,0 +1,9 @@
+<config>
+   <Magestore_Dailydeal>
+      <name>Daily Deal</name>
+      <type>commercial</type>
+      <activation_date>Sep 2, 2014</activation_date>
+      <expiration_date/>
+      <order_number>100040017</order_number>
+   </Magestore_Dailydeal>
+</config>

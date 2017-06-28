@@ -1,0 +1,8 @@
+<config>
+	<modules>
+		<Cybertech_CourierGeneric>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Cybertech_CourierGeneric>
+	</modules>
+</config> 

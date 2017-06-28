@@ -1,0 +1,29 @@
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getProduct();
+    $downloadsHelper = $this->helper('downloads');
+    $downloadFileId  = $downloadsHelper->getRelation($_product->getId());
+    $downloadLink    = Mage::getModel('downloads/files')->load($downloadFileId)->getFilename();
+    $downloadLink    = $this->getBaseUrl() . 'media/downloads/' . $downloadFileId . '/' . $downloadLink;
+    // /Zend_Debug::dump($_product->getData());
+?>
+
+<div class="product-view">
+    <div class="product-essential">
+        <div class="product-img-box">
+            <?php /* <a href="<?php echo $downloadLink ?>" class="download-button" title="<?php echo $_product->getDownloadsTitle() ?>" target="_blank"> */?>
+            <a href="<?php echo $this->getBaseUrl() . 'ebook/' ?>" class="download-button" title="<?php echo $_product->getDownloadsTitle() ?>">
+                <img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(350); ?>" width="350" height="350" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'image'), null, true) ?>" />
+            </a>
+        </div>
+
+        <div class="product-description">
+            <p><?php echo $_product->getDescription() ?></p>
+        </div>
+        
+        <?php /* <a class="btn btn-download ion-ios7-cloud-download button" href="<?php echo $downloadLink ?>" title="<?php echo $_product->getDownloadsTitle() ?>" target="_blank"> */ ?>
+        <a class="btn btn-download ion-ios7-cloud-download button" href="<?php echo $this->getBaseUrl() . 'ebook/' ?>" title="<?php echo $_product->getDownloadsTitle() ?>">
+            <?php echo $_product->getDownloadsTitle() ?>
+        </a>
+    </div>
+</div>

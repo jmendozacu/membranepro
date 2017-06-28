@@ -1,0 +1,231 @@
+<?php
+    $categoryIds = array(3,24,29);      // Categories from which to take all products by brand and model - Printers Category
+    $attributeCode = 'consumable_type'; // Attribute to filter results by - Consumable type (Card / Ribbon / Cleaning Kit)
+    
+    // Get attribute values
+    $attributeInfo = Mage::getResourceModel('eav/entity_attribute_collection')
+                        ->setCodeFilter($attributeCode)
+                        ->getFirstItem();
+
+    $attributeInfoArr = $attributeInfo->getData();
+    $attributeOptions = $attributeInfo->getSource()->getAllOptions(false);
+
+    foreach ($attributeOptions as $id=>$attributeOptionArr) {
+        //$value = $attributeOptionArr['value'];
+        // $value = urlencode($attributeOptionArr['label']);
+        $value = $attributeOptionArr['label'];
+        $label = $attributeOptionArr['label'];
+        $attributeOptionsArr[$value] = $label;
+    }
+    
+    $attributeId = $attributeInfoArr['attribute_id'];
+    
+    // Build Manufacturers / Models arrays
+    $category = new Mage_Catalog_Model_Category();
+
+    foreach($categoryIds as $categoryId) {
+        $category->load($categoryId);
+        $collection = $category->getProductCollection()
+                        ->addAttributeToFilter('visibility', array('neq' => array('1'))); // visibility not equal to 1 ['Not visible individually'];
+        foreach ($collection as $product) {
+            $productIdArr[] = $product->getId();
+        }
+    }
+
+    $_product = new Mage_Catalog_Model_Product();
+
+    foreach ($productIdArr as $_productId) {
+        $_product->load($_productId);
+        $manufacturerId = $_product->getManufacturer();
+        $manufacturers[$manufacturerId] = $_product->getAttributeText('manufacturer');
+        $products[$manufacturerId][$_productId]['name'] = $_product->getName();
+        $products[$manufacturerId][$_productId]['sku'] = $_product->getSku();
+    }
+    
+    
+?>
+
+<h3><?php echo $this->__('Cautare Rapida Consumabile') ?></h3>
+<!-- <form name="configuratorForm" action="<?php echo Mage::getURL('configurator-consumabile') ?>" method="get" onsubmit="submitConfiguratorForm(); return false;"> -->
+<form name="configuratorForm" action="<?php echo Mage::getBaseUrl() ?>cautarerapida/consumabile/rezultate/" method="post" onsubmit="submitConfiguratorForm(); return false;">
+    <fieldset>
+        <label for="brand"><strong><?php echo $this->__('1.') ?></strong> <?php echo $this->__('Selectati marca imprimantei') ?></label>
+        <select class="ion-arrow-right-c" name="brand" id="brand" onchange="updateModels(this.options[this.selectedIndex].value)">
+            <option value="0"><?php echo $this->__('Alegeti un Producator') ?></option>
+            <?php 
+                foreach($manufacturers as $manufacurerId => $manufacturerName) {
+                    if($manufacurerId) {
+                        echo '<option value="'.$manufacurerId.'">'.$manufacturerName.'</option>';
+                    }
+                }
+            ?>
+        </select>
+    </fieldset>
+    
+    <fieldset class="disabled">
+        <label for="sku"><strong><?php echo $this->__('2.') ?></strong> <?php echo $this->__('Specificati modelul imprimantei') ?></label>
+        <select class="ion-arrow-right-c" name="sku" id="sku" onchange="updateTypes(this.options[this.selectedIndex].value)" disabled="disabled">
+            <option value="0"><?php echo $this->__('Alegeti intai Producatorul') ?></option>
+        </select>
+    </fieldset>
+    
+    <fieldset class="disabled">
+        <label for="type"><strong><?php echo $this->__('3.') ?></strong> <?php echo $this->__('Alegeti tipul consumabilului') ?></label>
+        <select class="ion-arrow-right-c" name="type" id="type" disabled="disabled">
+            <option value="0"><?php echo $this->__('Alegeti intai Modelul') ?></option>
+        </select>
+    </fieldset>
+    
+    <button id="reset-filters" class="btn btn-simple">
+        <?php echo $this->__('Reseteaza filtrele') ?>
+    </button>
+    
+    <button type="submit" class="btn btn-cauta" onclick="submitConfiguratorForm(); return false;" title="<?php echo $this->__('Cauta') ?>">
+        <?php echo $this->__('Cauta') ?>
+    </button>
+</form>
+
+<?php //Zend_Debug::dump($attributeOptionsArr) ?>
+
+<script type="text/javascript">
+//<![CDATA[
+    function submitConfiguratorForm()
+    {
+        var valid = validateForm();
+
+        if(valid == false) return false;
+
+        var sku  = document.configuratorForm.sku.value;
+        sku = sku.split('/'); 
+        sku = sku.join('~');
+        var type = document.configuratorForm.type.value;
+        type = type.split('/'); 
+        type = type.join('~');
+
+        // window.location.href = '<?php //echo Mage::getURL('configurator-consumabile') ?>' + '?sku=' + sku + '&type=' + type;
+        window.location.href = '<?php echo Mage::getBaseUrl() ?>cautarerapida/consumabile/rezultate/' + 'sku/' + sku + '/type/' + type + '/';
+        return false;
+    }
+
+    function updateModels(manufacturerId)
+    {
+        document.configuratorForm.sku.options.length = 0;
+        switch (manufacturerId)
+        {
+            <?php
+            foreach($products as $manufacturerId => $productArr):
+                if(!$manufacturerId) continue;
+                $i = 0;
+            ?>
+            case "<?php echo $manufacturerId ?>" :
+                document.configuratorForm.sku.options[0] = new Option("Alegeti Modelul", "");
+            <?php
+                foreach($products[$manufacturerId] as $productId=>$productArr):
+                    if(!$manufacturerId) continue;
+                    $i++;
+            ?>
+                document.configuratorForm.sku.options[<?php echo $i ?>] = new Option("<?php echo $productArr['name'] ?>","<?php echo $productArr['sku'] ?>");
+
+            <?php
+                endforeach;
+            ?>
+                document.configuratorForm.sku.focus();
+                document.configuratorForm.sku.disabled = false;
+                document.configuratorForm.sku.parentNode.className = "";
+            break;
+            <?php
+            endforeach;
+            ?>
+            default:
+                document.configuratorForm.sku.options[0] = new Option("Alegeti un Producator","");
+                document.configuratorForm.sku.disabled = true;
+                document.configuratorForm.sku.parentNode.className = "disabled";
+                document.configuratorForm.type.disabled = true;
+                document.configuratorForm.type.parentNode.className = "disabled";
+            }
+            return true;
+        }
+
+        function updateTypes(manufacturerId)
+        {
+            document.configuratorForm.type.options[0] = new Option("Toate consumabilele", "0");
+            <?php 
+            $i = 0;
+            foreach($attributeOptionsArr as $optionId => $optionLabel)
+            {
+                if(!$optionId) continue;
+                echo 'document.configuratorForm.type.options['.++$i.'] = new Option("'.$optionLabel.'","'.$optionId.'");';
+            }
+            ?>
+            document.configuratorForm.type.focus();
+            document.configuratorForm.type.disabled = false;
+            document.configuratorForm.type.parentNode.className = "";
+            
+            if (manufacturerId == '') {
+                document.configuratorForm.type.disabled = true;
+                document.configuratorForm.type.parentNode.className = "disabled";
+            }
+        }
+        
+
+        function validateForm(form)
+        {
+            var form = document.configuratorForm;
+            //alert(form.brand.options[form.brand.selectedIndex].value);
+            //return false;
+
+            if(form.brand.options[form.brand.selectedIndex].value == 0) {
+                alert('Alegeti marca imprimantei!');
+                return false;
+            }
+
+            if(form.sku.options[form.sku.selectedIndex].value == 0) {
+                alert('Alegeti modelul imprimantei!');
+                return false;
+            }
+
+            return true;
+        }
+        
+        // reset filters action
+        document.getElementById('reset-filters').addEventListener(
+            'click', resetFilters, false
+        );
+        
+        // reset filters function
+        function resetFilters(e)
+        {
+            e.preventDefault();
+            // brand select
+            document.configuratorForm.brand.options.selectedIndex = 0;
+            
+            // reset sku select
+            for (i = document.configuratorForm.sku.length - 1; i >= 0; i--) {
+                document.configuratorForm.sku.remove(i);
+            }
+            
+            document.configuratorForm.sku.parentNode.className = "disabled";
+            
+            var option = document.createElement('option');
+            option.appendChild(document.createTextNode('Alegeti intai Producatorul'));
+            option.value = '0';
+            document.configuratorForm.sku.appendChild(option);
+            document.configuratorForm.sku.disabled = true;
+            
+            // reset type select
+            for (i = document.configuratorForm.type.length - 1; i >= 0; i--) {
+                document.configuratorForm.type.remove(i);
+            }
+            
+            document.configuratorForm.type.parentNode.className = "disabled";
+            
+            var option = document.createElement('option');
+            option.appendChild(document.createTextNode('Alegeti intai Modelul'));
+            option.value = '0';
+            document.configuratorForm.type.appendChild(option);
+            document.configuratorForm.type.disabled = true;
+            
+            return false;
+        }
+//]]>
+</script>

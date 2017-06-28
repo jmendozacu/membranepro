@@ -1,0 +1,9 @@
+<config>
+   <Magestore_Pdfinvoiceplus>
+      <name>Magestore Pdfinvoiceplus</name>
+      <type>commercial</type>
+      <activation_date>May 14, 2014</activation_date>
+      <expiration_date/>
+      <order_number>100035337</order_number>
+   </Magestore_Pdfinvoiceplus>
+</config>

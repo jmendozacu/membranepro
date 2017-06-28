@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Mc_Eucookie3>
+            <active>false</active>
+            <codePool>local</codePool>
+        </Mc_Eucookie3>
+    </modules>
+</config>

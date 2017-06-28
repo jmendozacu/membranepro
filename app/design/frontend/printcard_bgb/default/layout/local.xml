@@ -1,0 +1,139 @@
+<layout version="0.1.0">
+
+    <default>
+        
+        <!-- remove unnecessary blocks -->
+        <remove name="minicart_head" />
+        <!-- <remove name="paypal.partner.right.logo" />
+        <remove name="right.permanent.callout" />
+        <remove name="wishlist_link" />
+        <remove name="left.permanent.callout" /> -->
+        
+        <reference name="footer">
+            <remove name="footer_links" />
+            <remove name="footer_links2" />
+            <remove name="footer_currency" />
+            
+            <block type="newsletter/subscribe" name="footer.newsletter" template="newsletter/subscribe.phtml" />
+        </reference>
+        
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/styles.css</name><params>media="all"</params></action>
+            <action method="addItem"><type>skin_js</type><name>js/custom.js</name></action>
+            <!-- FlexSlider 2 -->
+            <action method="addItem"><type>skin_css</type><name>css/flexslider/flexslider.css</name><params>media="all"</params></action>
+            <action method="addItem"><type>skin_js</type><name>js/flexslider/jquery.flexslider.js</name></action>
+            
+            <action method="addItem"><type>skin_css</type><name>css/nicu.css</name><params>media="all"</params></action>
+            
+            <action method="addJs"><script>jquery/jquery-ui.min.js</script></action>
+            <action method="addItem"><type>skin_css</type><name>css/jquery/ui.css</name><params>media="all"</params></action>
+            
+        </reference>
+        
+        <reference name="header">
+            <block type="page/html" name="home-quick-search" template="page/html/home-quick-search.phtml" />
+            <block type="customer/form_login" name="customer_form_mini_login" before="-" template="customer/form/mini.login.phtml" />
+            <block type="customer/account_forgotpassword" name="forgotPassword" template="customer/form/forgotpassword.phtml" />
+        </reference>
+        
+    </default>
+    
+    <cms_page_view>
+        <reference name="head">
+            <action method="addJs"><script>jquery/jquery-ui.min.js</script></action>
+            <action method="addItem"><type>skin_css</type><name>css/ui.css</name><params>media="all"</params></action>
+        </reference>
+        <!--
+        <reference name="left">
+            <block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml" before="-" />
+            <block type="catalog/product_compare_sidebar" after="cart_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml" />
+        </reference>
+        -->
+    </cms_page_view>
+    
+    <catalog_category_default>
+        
+        <reference name="root">
+             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="left">
+            <!-- <block type="catalog/product_compare_sidebar" before="" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/> -->
+        </reference>
+        <reference name="product_list">
+            <action method="setColumnCount"><count>5</count></action>
+        </reference>
+    </catalog_category_default>
+    
+    <catalog_category_layered>
+        
+        <reference name="root">
+             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="left">
+            
+            <!-- <block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml">
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+                    <label>Shopping Cart Sidebar Extra Actions</label>
+                </block>
+            </block> -->
+            
+            <!-- <block type="catalog/product_compare_sidebar" after="-" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/> -->
+        </reference>
+        <reference name="product_list">
+            <action method="setColumnCount"><count>5</count></action>
+        </reference>
+    </catalog_category_layered>
+    
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="catalog/product_view" name="product.clone_prices" as="prices" template="catalog/product/view/price.phtml"/>
+            <block type="catalog/product_view" name="tehnologies" template="catalog/product/view/tehnologies.phtml" />
+            <block type="catalog/product_view" name="details.container" template="catalog/product/view/details_container.phtml">
+                <block type="catalog/product_list_upsell" name="product.info.upsell" as="upsell_products" template="catalog/product/list/upsell_custom.phtml">
+                    <action method="setColumnCount"><columns>5</columns></action>
+                    <!-- <action method="setItemLimit"><type>upsell</type><limit>5</limit></action> -->
+                </block>
+                <block type="catalog/product_list_related" name="catalog.product.related" template="catalog/product/list/related_custom.phtml"/>
+                
+                <block type="review/product_view_list" name="product.reviews" as="reviews" template="review/product/view/list.phtml">
+                    <action method="setTitle" translate="value"><value>Reviews</value></action>
+                </block>
+                
+                <!-- <block type="review/form" name="product.review.form" as="review_form" />
+                <block type="review/product_view_list" name="product.info.product_additional_data" as="product_additional_data_review" template="review/product/view/reviews-in-tab.phtml">
+                    <block type="review/form" name="product.review.form" as="review_form" />
+                </block> -->
+                
+                <block type="review/product_view_list" name="product.info.product_additional_data" as="product_review" template="review/product/view/list.phtml" />
+                <block type="review/form" name="product.review.form" as="review_form" />                
+                
+                
+            </block>
+        </reference>
+    </catalog_product_view>
+    
+    <customer_account>
+        <remove name="catalog.compare.sidebar"/>
+        <reference name="customer_account_navigation">
+            <action method="removeLinkByName"><name>recurring_profiles</name></action>
+            <action method="removeLinkByName"><name>billing_agreements</name></action>
+            <action method="removeLinkByName"><name>downloadable_products</name></action>
+            <action method="removeLinkByName"><name>OAuth Customer Tokens</name></action>
+            <!-- adds new links to the same block -->
+        </reference>   
+    </customer_account>
+    
+    <catalogsearch_result_index>
+        <reference name="root">
+             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="product_list">
+            <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>5</count></action>
+        </reference>
+    </catalogsearch_result_index>
+    
+</layout>

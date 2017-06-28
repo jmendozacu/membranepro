@@ -1,0 +1,33 @@
+
+ul#pronav { margin:0 auto; padding:0; width:950px; list-style:none; font-size:14px; position:relative; z-index:1000; }
+
+ul#pronav li { float:left; margin:0; padding:0; height:50px; line-height:50px; padding:0 0 0 1px; position:relative;/*--Important--*/ border-radius:7px 7px 0 0; background:url(../../graphics/menu-separator.png) no-repeat left center; }
+ul#pronav li.first { padding:o; background:none; }
+
+ul#pronav li a { margin:10px; height:30px; line-height:30px; font-size:14px; color:#000000; float:left; padding:0 10px; text-decoration:none; text-transform:uppercase; position:relative; z-index:2000; border:1px solid transparent; border-radius:6px; }
+ul#pronav li a.drop { padding-right:20px; background:url(../../graphics/menu-arrow.png) no-repeat 95% center; border-radius:6px 6px 0 0; }
+
+
+ul#pronav li a:hover, ul#pronav li.hover > a { color:#FFFFFF; background:#3468A1; border:1px solid #013E81; }
+ul#pronav li a.drop:hover, ul#pronav li.hover > a.drop { background:url(../../graphics/menu-arrow-hover.png) no-repeat 95% center #3468A1; }
+
+
+ul#pronav li#catalog-menu:hover { background:#ECECEC; }
+
+ul#pronav li .sub { position:absolute;/*--Important--*/ top:42px; left:11px; z-index:99999; background:url(../../graphics/menu-submenu-bg.png); float:left; display:none; border-radius:0 6px 6px 6px;  }
+ul#pronav li .sub .row { clear:both; width:100%; margin-bottom:10px; }
+
+ul#pronav li .sub .row ul { list-style:none; margin:0; padding:15px 0; width:180px;/*--Important--*/ float:left; }
+ul#pronav li .sub .row ul.last { border-right:none; }
+
+ul#pronav .sub ul li { width:100%; height:auto; line-height:14px; background:none; }
+
+ul#pronav .sub ul li a { float:none; text-indent:0; height:auto; line-height:14px; background:transparent; padding:3px 5px; display:block; text-decoration:none; color:#000; text-align:left; font-size:11px; }
+ul#pronav .sub ul li a.level-one { margin-top:0px; font-size:12px; color:#FFFFFF; /*white-space:nowrap;*/ }
+ul#pronav .sub ul li a:hover { background:#929292; border-color:transparent; }
+
+ul.tertiary { width:100px !important; margin:0 0 0 20px !important; padding:0 !important; border-right:none !important; }
+
+.clear {
+	clear:both;
+}

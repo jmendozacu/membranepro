@@ -1,0 +1,209 @@
+<div class="container">
+	<div class="container-top">
+		<h1>Formular oferta carduri tiparite</h1>
+	</div>
+	
+	<div class="container-content">
+
+		<div class="box simple-contact">
+		 
+			<form id="contact_form_card_prod" class="contact_form" name="simple_contact_form" action="<?php echo $this->getUrl('contact/productiecarduri/sendemail') ?>" method="post">
+			 
+			 	<div class="fleft" style="width:45%;">
+				    <div class="form-block">
+						<label class="input-label-small" for="company">Societate</label>
+						<input name="company" id="company" title="Societate" value="" class="input-text required-entry" type="text" />
+					</div>
+					
+					<div class="form-block">
+						<label class="input-label-small" for="name">Nume</label>
+						<input name="name" id="name" title="Nume" value="" class="input-text required-entry" type="text" />
+					</div>
+		
+					<div class="form-block">
+						<label class="input-label-small" for="phone">Telefon</label>
+						<input name="phone" id="phone" title="Telefon" value="" class="input-text required-entry validate-digits" type="text" />
+					</div>
+					
+					<div class="form-block">
+						<label class="input-label-small" for="email">E-mail</label>
+						<input name="email" id="email" title="Email" value="" class="input-text required-entry validate-email" type="text" />
+					</div>
+				</div>
+				
+				<div class="fright" style="width:50%; padding-right:5%;">
+					<div class="form-block">
+						<label class="input-label-small" for="card_type">Tip card</label>
+						<select name="card_type" id="card_type" class="required-entry">
+							<option value=""></option>
+							<option value="Legitimatii">Legitimatii</option>
+							<option value="Carduri de membru">Carduri de membru</option>
+							<option value="Carduri de fidelitate">Carduri de fidelitate</option>
+							<option value="Smart carduri">Smart carduri</option>
+							<option value="Smart carduri">Carduri securitate</option>
+							<option value="Altele">Altele</option>
+						</select>
+					</div>
+					
+					<div class="input-label-small" class="form-block">
+						<label class="input-label-small" for="qty">Cantitate</label>
+						<input name="qty" id="qty" title="Cantitate" value="" class="input-text required-entry" type="text" />
+					</div>
+					
+					<div class="form-block">
+						<label class="input-label-small">Imprimare</label>
+						<input class="input-radio" type="radio" name="printing_type" value="Fata" id="printing_type_one" /> <label class="input-label-radio" for="printing_type_one">Fata</label>
+						<input class="input-radio validate-one-required" type="radio" name="printing_type" value="Fata-Verso" id="printing_type_two" /> <label class="input-label-radio" for="printing_type_two">Fata-Verso</label>
+					</div>
+		
+					<div class="form-block" style="margin:10px 0;">
+						<label class="input-label-small" style="vertical-align:top; padding-top:3px;">Cromatica</label>
+						<div class="radio-container" style="display:inline-block;">
+							<a href="#" class="tooltip-info" rel="Este un model de culoare utilizat in tiparirea policroma. Pentru obtinerea unei anumite culori sunt combinate cele patru planuri de culoare: Cyan, Magenta, Yellow, Black. Cele patru culori mai sunt denumite si culori de proces.<br/><br/>
+Cu ajutorul acestui model se pot reproduce aproape toate culorile din spectrul vizibil." onmouseover="javascript:Tips.add(this, event, this.rel, 'CMYK', { style: 'standard', stem: true, tipJoint: [ 'right', 'middle' ], targetJoint: [ 'left', 'middle' ], target: true });"></a>
+							<input class="input-radio" type="radio" name="printing_color" value="CMYK" id="printing_type_cmyk" />
+							<label class="input-label-radio" for="printing_type_cmyk">Color</label><br/>
+							<a href="#" class="tooltip-info" rel="Se bifeaza doar in cazurile in care doriti carduri tiparite in spectrul monocrom in cantitati de peste 4000 de bucati. Pentru tiraje sub aceasta cantitate va putem oferi si alternativa digitala in urmatoarele nuante fixe: Negru, Rosu, Alb, Albastru, Verde, Auriu si Argintiu pe carduri albe sau colorate in masa." onmouseover="javascript:Tips.add(this, event, this.rel, 'Monocrom', { style: 'standard', stem: true, tipJoint: [ 'right', 'middle' ], targetJoint: [ 'left', 'middle' ], target: true });"></a>
+							<input class="input-radio" type="radio" name="printing_color" value="Monocrom" id="printing_type_monochrome" class="validate-one-required" />
+							<label class="input-label-radio" for="printing_type_monochrome">Monocrom</label><br/>
+							<a href="#" class="tooltip-info" rel="Pantone este un sistem standard de reproducere a culorilor, cu ajutorul caruia se obtin, prin metode industriale, culori speciale ce nu pot fi reproduse prin amestecul CMYK<br/><br/>
+PANTONE &reg; Matching System (PMS) este sistemul de standardizare a culorilor cel mai raspandit la momentul actual. Culorile de diferite nuante sunt reprezenate prin diverse coduri. Sistemul asigura ca orice nuanta de culoare este aceeasi, indiferent de locul de unde este cumparata cerneala sau de cine este produsa. Exista chiar si ghiduri de culoare Pantone in care sunt prezentate absolut toate culorile care se produc, standardizate si grupate.<br/><br/> 
+O culoare speciala poate avea aspect diferit in functie de tipul de card pe care se imprima (lucioasa sau mata) desi formula culorii este aceeasi. Pentru a exclude erorile care pot aparea, se recomanda utilizarea ghidurilor de culoare Pantone." onmouseover="javascript:Tips.add(this, event, this.rel, 'Pantone &reg;', { style: 'standard', stem: true, tipJoint: [ 'right', 'middle' ], targetJoint: [ 'left', 'middle' ], target: true });"></a>
+							<input class="input-radio validate-one-required" type="radio" name="printing_color" value="Pantone" id="printing_type_pantone" />
+							<label class="input-label-radio" for="printing_type_pantone">Pantone&reg;</label><br/>
+						</div>
+					</div>
+					
+					<div class="form-block">
+						<label class="input-label-small" style="vertical-align:top; padding-top:3px;">&nbsp;</label>
+						<div style="display:inline-block;">
+							<a href="#" class="tooltip-info" rel="Bifati aceasta obtiune daca doriti carduri de tipul GOLD, SILVER, PLATINUM sau BRONZE si care sa reproduca aceste nuante." onmouseover="javascript:Tips.add(this, event, this.rel, 'Acoperire metalica', { style: 'standard', stem: true, tipJoint: [ 'right', 'middle' ], targetJoint: [ 'left', 'middle' ], target: true });"></a>
+							<input type="checkbox" name="metal_covering" id="metal_covering" value="Acoperire metalica" />
+							<label class="input-label-checkbox" for="metal_covering">Acoperire metalica</label><br/>
+							<a href="#" class="tooltip-info" rel="Cerneala UV este invizibila cu ochiul liber si devine vizibila doar expusa la lumina ultravioleta (black light). Aplicand aceasta cerneala pe carduri, folosind elemente grafice specifice, obtineti un card securizat." onmouseover="javascript:Tips.add(this, event, this.rel, 'Cerneala UV', { style: 'standard', stem: true, tipJoint: [ 'right', 'middle' ], targetJoint: [ 'left', 'middle' ], target: true });"></a>
+							<input type="checkbox" name="uv_ink" id="uv_ink" value="Cerneala UV" />
+							<label class="input-label-checkbox" for="uv_ink">Cerneala UV</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="fclear"></div>
+				
+				<hr/>
+				
+				<div class="fleft" style="width:45%;">
+					<div class="form-block">
+						<label class="input-label-small" for="magnetic_stripe">Banda magnetica</label>
+						<select name="magnetic_stripe" id="magnetic_stripe">
+							<option value="">Fara</option>
+							<option value="HiCo">HiCo</option>
+							<option value="LoCo">LoCo</option>
+						</select>
+					</div>
+					
+					<div class="form-block">
+						<label class="input-label-small" for="contactless_chip">Chip proximitate</label>
+						<select name="contactless_chip" id="contactless_chip">
+							<option value="">Fara</option>
+							<option value="Mifare 1kb (S50)">Mifare 1kb (S50)</option>
+							<option value="Mifare 4kb (S50)">Mifare 4kb (S70)</option>
+							<option value="Mifare Ultralight">Mifare Ultralight</option>
+							<option value="EM 4102">EM 4102</option>
+						</select>
+					</div>
+					
+					<div class="form-block">
+						<label class="input-label-small" for="contact_chip">Contact Chip</label>
+						<select name="contact_chip" id="contact_chip">
+							<option value="">Fara</option>
+							<option value="SLE 5542">SLE 5542</option>
+							<option value="SLE 5528">SLE 5528</option>
+						</select>
+					</div>
+					
+					<div class="form-block">
+						<label class="input-label-small" style="vertical-align:top; padding-top:3px;">&nbsp;</label>
+						<div style="display:inline-block;">
+							<a href="#" class="tooltip-info" rel="Echipamentele pe care le utilizam pot encoda benzile magentice atat pe o pista cat si pe toate cele piste disponibile, in functie de nevoile pe care le aveti." onmouseover="javascript:Tips.add(this, event, this.rel, 'Encodare banda magnetica', { style: 'standard', stem: true, tipJoint: [ 'right', 'middle' ], targetJoint: [ 'left', 'middle' ], target: true });"></a>
+							<input type="checkbox" name="magnetic_encoding_type" id="magnetic_encoding_type" value="Encodare banda magentica" />
+							<label class="input-label-checkbox" for="magnetic_encoding_type" style="margin-right:0;">Encodare banda magentica</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="fright" style="width:50%; padding-right:5%;">
+					<div class="form-block">
+						<label class="input-label-small" style="vertical-align:top; padding-top:3px;">&nbsp;</label>
+						<div style="display:inline-block;">
+							<a href="#" class="tooltip-info" rel="Utila pentru cazurile in care doriti sa aveti o zona pe care se poate scrie cu un marker." onmouseover="javascript:Tips.add(this, event, this.rel, 'Zona de semnatura', { style: 'standard', stem: true, tipJoint: [ 'right', 'middle' ], targetJoint: [ 'left', 'middle' ], target: true });"></a>
+							<input type="checkbox" name="signature_area" id="signature_area" value="Zona de semnatura" />
+							<label class="input-label-checkbox" for="signature_area">Zona de semnatura</label>
+							<br/>
+							<a href="#" class="tooltip-info" rel="Este o zona speciala, care se poate razui cu o moneda si sub care se poate proteja o serie, un cod, numar pin, etc." onmouseover="javascript:Tips.add(this, event, this.rel, 'Zona razuire', { style: 'standard', stem: true, tipJoint: [ 'right', 'middle' ], targetJoint: [ 'left', 'middle' ], target: true });"></a>
+							<input type="checkbox" name="rasure_area" id="rasure_area" value="Zona razuire" />
+							<label class="input-label-checkbox" for="rasure_area">Zona razuire</label>
+							<br/>
+							<a href="#" class="tooltip-info" rel="Daca dori carduri inseriate. Acestea de obicei se imprima cu negru. Seriile pot fi aleatoare sau in ordine crecatoare." onmouseover="javascript:Tips.add(this, event, this.rel, 'Inseriere', { style: 'standard', stem: true, tipJoint: [ 'right', 'middle' ], targetJoint: [ 'left', 'middle' ], target: true });"></a>
+							<input type="checkbox" name="serialization" id="serialization" value="Inseriere" />
+							<label class="input-label-checkbox" for="serialization">Inseriere</label>
+							<br/>
+							<a href="#" class="tooltip-info" rel="Putem personaliza cardurile dumneavoastra cu orice tip de coduri de bare 1D sau 2D." onmouseover="javascript:Tips.add(this, event, this.rel, 'Coduri de bare', { style: 'standard', stem: true, tipJoint: [ 'right', 'middle' ], targetJoint: [ 'left', 'middle' ], target: true });"></a>
+							<input type="checkbox" name="bar_codes" id="bar_codes" value="Coduri de bare" />
+							<label class="input-label-checkbox" for="bar_codes">Coduri de bare</label>
+							<br/>
+							<a href="#" class="tooltip-info" rel="Puteti mari securitatea cardului cu ajutorul hologramelor." onmouseover="javascript:Tips.add(this, event, this.rel, 'Holograma', { style: 'standard', stem: true, tipJoint: [ 'right', 'middle' ], targetJoint: [ 'left', 'middle' ], target: true });"></a>
+							<input type="checkbox" name="hologram" id="hologram" value="Holograma" />
+							<label class="input-label-checkbox" for="hologram">Holograma</label>
+							<br/>
+							<a href="#" class="tooltip-info-disabled"></a>
+							<input type="checkbox" name="embossing" id="embossing" value="Embosare" />
+							<label class="input-label-checkbox" for="embossing">Embosare</label>
+							<br/>
+							<a href="#" class="tooltip-info-disabled"></a>
+							<input type="checkbox" name="perforating" id="perforating" value="Perforare" />
+							<label class="input-label-checkbox" for="perforating">Perforare</label>
+							<br/>
+							<a href="#" class="tooltip-info" rel="Bifati aceasta obtinue daca doriti carduri personalizate cu numele viitorilor posesori." onmouseover="javascript:Tips.add(this, event, this.rel, 'Personalizare', { style: 'standard', stem: true, tipJoint: [ 'right', 'middle' ], targetJoint: [ 'left', 'middle' ], target: true });"></a>
+							<input type="checkbox" name="presonalization" id="presonalization" value="Personalizare" />
+							<label class="input-label-checkbox" for="presonalization">Personalizare</label>
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="fclear"></div>
+				
+				<hr/>
+				
+				<div>
+					<div class="form-block">
+						<label class="input-label-small">Servicii design</label>
+						<input class="input-radio" type="radio" name="design_services" value="Da" id="printing_type_yes" /> <label class="input-label-radio" for="printing_type_yes">Da</label>
+						<input class="input-radio validate-one-required" type="radio" name="design_services" value="Nu" id="printing_type_no" /> <label class="input-label-radio" for="printing_type_no">Nu</label>
+					</div>
+	
+					<div class="form-block" style="margin:15px 0;">
+						<label class="input-label-small" for="message" style="vertical-align:top; padding-top:5px;">Alte instructiuni</label>
+						<textarea name="message" id="message" title="Alte instructiuni" class="input-text" style="height:100px;" cols="50" rows="3"></textarea>
+					</div>
+					
+				    <div class="button-set">
+				    	<label class="input-label-small">&nbsp;</label>
+				        <button class="button small-button" type="submit"><span><span>Trimite</span></span></button>
+				    </div>
+			    </div>
+			</form>
+			
+			<br/><br/>
+			
+			<script type="text/javascript">
+				function formCallback(result, form) {
+					window.status = "valiation callback for form '" + form.id + "': result = " + result;
+				}
+				var valid = new Validation('contact_form_card_prod', {immediate : true, onFormValidate : formCallback});
+			</script>
+		 
+		</div>
+		
+	</div>
+</div>
