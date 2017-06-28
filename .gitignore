@@ -1,0 +1,16 @@
+idea/
+/.idea
+/media/
+var/
+app/etc/local.xml
+migration/db.php
+/nbproject/private/
+/nbproject
+downloader/cache.cfg
+downloader/connect.cfg
+robots.txt
+sitemap/
+sitemap.xml
+tmp/
+full_bkp_27_6_2017_before_manadev/
+credentials.txt
