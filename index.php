@@ -77,8 +77,8 @@ if (isset($_SERVER['MAGE_IS_DEVELOPER_MODE'])) {
 #ini_set('display_errors', 1);
 
 umask(0);
-
-switch($_SERVER['HTTP_HOST']) {
+//echo $_SERVER['HTTP_HOST'];die;
+/*switch($_SERVER['HTTP_HOST']) {
     case 'printcard.ro':
     case 'www.printcard.ro':
         $mageRunCode = 'default';
@@ -89,12 +89,14 @@ switch($_SERVER['HTTP_HOST']) {
         $mageRunCode = 'magicard';
         $mageRunType = 'store';
     break;
-}
+}*/
 
 /* Store or website code */
-// $mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : '';
+ $mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : '';
 
 /* Run store or run website */
-// $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
+ $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
 
+//$mageRunCode = 'default';
+//$mageRunType = 'store';
 Mage::run($mageRunCode, $mageRunType);
