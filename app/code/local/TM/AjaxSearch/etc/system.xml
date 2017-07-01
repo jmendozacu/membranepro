@@ -191,7 +191,7 @@
                             <show_in_store>1</show_in_store>
                         </footertext>
                         <notfoundtext translate="label">
-                            <label>text when nothing not found</label>
+                            <label>Text when nothing found</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>65</sort_order>
                             <show_in_default>1</show_in_default>
@@ -239,11 +239,24 @@
                             <show_in_store>1</show_in_store>
                         </enablecms>
 
+                        <cms_attributes translate="label">
+                            <label>Search cms pages by</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>TM_AjaxSearch_Model_Adminhtml_System_Config_Source_CmsSearchAttributes</source_model>
+                            <sort_order>72</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enablecms>1</enablecms>
+                            </depends>
+                        </cms_attributes>
+
                         <enabletags translate="label">
                             <label>Show suggested by tags in result</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>72</sort_order>
+                            <sort_order>73</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -339,7 +352,7 @@
                         <attributes translate="label">
                             <label>Search by</label>
                             <frontend_type>multiselect</frontend_type>
-                            <source_model>TM_AjaxSearch_Adminhtml_Model_System_Config_Source_SearchAttributes</source_model>
+                            <source_model>TM_AjaxSearch_Model_Adminhtml_System_Config_Source_SearchAttributes</source_model>
                             <sort_order>206</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>

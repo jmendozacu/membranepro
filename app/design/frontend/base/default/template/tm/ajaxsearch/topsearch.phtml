@@ -1,47 +1,36 @@
-<?php if (Mage::getStoreConfig('tm_ajaxsearch/general/enabled')) :?>
-<form id="search_mini_form" action="<?php echo $this->helper('catalogSearch')->getResultUrl() ?>" method="get">
+<?php
+    $actionUrl = $this->helper('catalogSearch')->getResultUrl();
+    $folded = (bool)$this->getFolded();
+    $config = $this->helper('ajaxsearch')->getConfigAsJsonString(
+        array('folded' => $folded, 'fullWidthMode' => !$folded)
+    );
+    $package = Mage::getSingleton('core/design_package')->getPackageName();
+    $categoryFilter = (bool)$this->helper('ajaxsearch')->getConfig('general/show_category_filter');
+?>
+<form id="search_mini_form" action="<?php echo $actionUrl;?>" method="get" data-config='<?php echo $config;?>' class="<?php echo $package; ?><?php if ($folded): ?> folded<?php endif; ?>"<?php if ($categoryFilter):?> data-chosen-no-result='<?php echo $this->__('No results match'); ?>'<?php endif; ?>>
     <fieldset>
-        <legend><?php echo $this->__('Search Site') ?></legend>
         <div class="mini-search form-search">
             <div id="searchajaxico" class=""></div>
+            <?php if ($folded): ?>
+            <div class="search-field-wrapper<?php echo $categoryFilter ? ' with-filter' : '' ?>">
+            <?php endif; ?>
             <label for="search"><?php echo $this->__('Search:') ?></label>
-            <?php if (Mage::getStoreConfigFlag('tm_ajaxsearch/general/show_category_filter')) : ?>
+            <?php if ($categoryFilter) : ?>
                 <?php echo $this->getChildHtml('ajaxsearch_category_filter') ?>
             <?php endif; ?>
             <?php
                 $searchFieldText = Mage::getStoreConfig('tm_ajaxsearch/general/searchfieldtext');
-
                 $queryText = Mage::helper('catalogsearch')->getEscapedQueryText();
-                if (!empty($queryText)) {
-                    $searchFieldText = $queryText;
-                }
             ?>
-            <input id="search" type="text" class="input-text" name="<?php echo $this->helper('catalogSearch')->getQueryParamName() ?>" value="<?php echo $searchFieldText; ?>" />
-            <button type="button" title="<?php echo $this->__('Search') ?>" class="button">
+                <input id="search" type="text" class="input-text" name="<?php echo $this->helper('catalogSearch')->getQueryParamName() ?>" placeholder="<?php echo $searchFieldText;?>" value="<?php echo $queryText;?>" />
+            <?php if ($folded): ?>
+                <a class="close search-close" href="#" title="Close">×</a>
+            </div>
+            <?php endif; ?>
+            <button type="button" title="<?php echo $this->__('Search') ?>" class="button btn-search">
+                <i class="fa fa-search fa-2x"></i>
                 <span><span><?php echo $this->__('Search') ?></span></span>
             </button>
         </div>
     </fieldset>
 </form>
-<script type="text/javascript">
-//<![CDATA[
-    <?php $_isSecure = $this->getRequest()->isSecure(); ?>
-    function initAjaxsearchAutocomplete(){
-        new AjaxsearchAutocomplete('search', {
-            serviceUrl   : '<?php echo $this->getUrl('ajaxsearch', array('_secure' => $_isSecure)); ?>',
-            enableloader : <?php echo Mage::getStoreConfig('tm_ajaxsearch/general/enableloader') ? 'true' : 'false'; ?>,
-            minChars     : <?php echo Mage::getStoreConfig('tm_ajaxsearch/general/minchars'); ?>,
-            maxHeight    : <?php echo Mage::getStoreConfig('tm_ajaxsearch/general/maxheight'); ?>,
-            width        : '<?php echo Mage::getStoreConfig('tm_ajaxsearch/general/width'); ?>',
-            searchtext   : '<?php echo Mage::getStoreConfig('tm_ajaxsearch/general/searchfieldtext'); ?>',
-            onSelect     : function (value, data) {setLocation(value.url);}
-        });
-    }
-    if (Prototype.Browser.IE) {
-        Event.observe(window, 'load', initAjaxsearchAutocomplete);
-    } else {
-        document.observe("dom:loaded", initAjaxsearchAutocomplete);
-    }
-//]]>
-</script>
-<?php endif; ?>

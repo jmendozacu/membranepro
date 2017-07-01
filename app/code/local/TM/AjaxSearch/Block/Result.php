@@ -12,6 +12,16 @@ class TM_AjaxSearch_Block_Result extends TM_AjaxSearch_Block_CatalogSearch_Resul
 
     const RESULT_SIZE_CONFIG        = 'tm_ajaxsearch/general/productstoshow';
 
+    const ENABLE_TAGS    = 'tm_ajaxsearch/general/enabletags';
+    const ENABLE_CATALOG = 'tm_ajaxsearch/general/enablecatalog';
+    const ENABLE_CMS     = 'tm_ajaxsearch/general/enablecms';
+
+    const SORT_ORDER_SUGGEST = 'tm_ajaxsearch/general/suggest_order';
+    const SORT_ORDER_PRODUCT = 'tm_ajaxsearch/general/product_order';
+    const SORT_ORDER_CATALOG = 'tm_ajaxsearch/general/catalog_order';
+    const SORT_ORDER_CMS     = 'tm_ajaxsearch/general/cms_order';
+    const SORT_ORDER_TAGS    = 'tm_ajaxsearch/general/tags_order';
+
     /**
      *
      * @var string
@@ -34,7 +44,7 @@ class TM_AjaxSearch_Block_Result extends TM_AjaxSearch_Block_CatalogSearch_Resul
 
         if ($strlen($text) > $len) {
             $whitespaceposition = $strpos($text, " ", $len) - 1;
-            if($whitespaceposition > 0) {
+            if ($whitespaceposition > 0) {
                 $text = $substr($text, 0, ($whitespaceposition + 1));
             }
             return $text . $delim;
@@ -62,7 +72,6 @@ class TM_AjaxSearch_Block_Result extends TM_AjaxSearch_Block_CatalogSearch_Resul
             ->setStoreId($this->getStoreId())
             ->setQueryFilter($this->getQueryText());
 
-//        Zend_Debug::dump((string)$collection->getSelect());
         return $collection;
     }
 
@@ -92,7 +101,8 @@ class TM_AjaxSearch_Block_Result extends TM_AjaxSearch_Block_CatalogSearch_Resul
             $_html .= " <a href='{$_url}'>{$item['title']}({$item['num_of_results']})</a>" ;
         }
         if (count($data) > 0) {
-            $this->_suggestions[] = array('html' => '<p class="headercategorysearch">'
+            $sortOrder = Mage::getStoreConfig(self::SORT_ORDER_SUGGEST);
+            $this->_suggestions[$sortOrder][] = array('html' => '<p class="headercategorysearch">'
                 . $this->__("Suggestions") . '<br/>' . $_html . '</p>');
         }
     }
@@ -120,6 +130,39 @@ class TM_AjaxSearch_Block_Result extends TM_AjaxSearch_Block_CatalogSearch_Resul
         return intval($model->getPopularity()) > 1;
     }
 
+    public function getAvailableOrders()
+    {
+        $category = $this->getCategory();
+        if (!$category instanceof Mage_Catalog_Model_Category) {
+            $category = Mage::getSingleton('catalog/layer')->getCurrentCategory();
+        }
+
+        /* @var $category Mage_Catalog_Model_Category */
+        $availableOrders = $category->getAvailableSortByOptions();
+        unset($availableOrders['position']);
+        $availableOrders = array_merge(array(
+            'relevance' => $this->__('Relevance')
+        ), $availableOrders);
+
+        return $availableOrders;
+    }
+
+    public function getToolbarBlock()
+    {
+        $toolbar = $this->getLayout()
+            ->createBlock('catalog/product_list_toolbar', microtime());
+
+        $toolbar
+            ->setData('_current_grid_order', false)
+            ->setData('_current_grid_direction', false)
+            ->setAvailableOrders($this->getAvailableOrders())
+            ->setDefaultDirection('desc')
+            ->setDefaultOrder('relevance')
+        ;
+
+        return $toolbar;
+    }
+
     protected function _prepareProducts()
     {
         $isEnabledImage = (bool) Mage::getStoreConfig(self::ENABLE_IMAGE_CONFIG);
@@ -131,43 +174,55 @@ class TM_AjaxSearch_Block_Result extends TM_AjaxSearch_Block_CatalogSearch_Resul
 
         $collection = $this->_getAlternativeProductCollection();
 
-        $this->_prepareQueryPopularity($collection->getSize());
+        // $this->_prepareQueryPopularity($collection->getSize());
 
-        $this->getLayout()
-            ->createBlock('catalog/product_list_toolbar', microtime())
-            ->setCollection($collection);
+        $toolbar = $this->getToolbarBlock();
+
+        $toolbar->setCollection($collection);
 
         $size = (int) Mage::getStoreConfig(self::RESULT_SIZE_CONFIG);
         $collection->setPageSize($size);
+        // $collection->getSelect()->limit($size);
+        $sortOrder = Mage::getStoreConfig(self::SORT_ORDER_PRODUCT);
 
         if (0 < count($collection)) {
-            $this->_suggestions[] = array('html' =>
+            $this->_suggestions[$sortOrder][] = array('html' =>
                 '<p class="headercategorysearch">' . $this->__("Products") . '</p>'
             );
         }
-        if($isEnabledImage) {
+        if ($isEnabledImage) {
             $helper = Mage::helper('catalog/image');
         }
-        foreach($collection as $_row) {
 
-            $_product = Mage::getModel('catalog/product')->load($_row->getId());
+        foreach ($collection as $_row) {
+
+            $_product = Mage::getModel('catalog/product')
+                ->setStoreId($this->getStoreId())
+                ->load($_row->getId());
 
             $_image = $_srcset = $_description = '';
 
-            if($isEnabledImage) {
+            if ($isEnabledImage) {
                 $_image  = (string) $helper->init($_product, 'thumbnail')->resize($imageWidth, $imageHeight);
                 $_srcset = (string) $helper->init($_product, 'thumbnail')->resize($imageWidth * 2, $imageHeight * 2);
                 $_srcset .= ' 2x';
             }
-            if($isEnabledDescription) {
+            if ($isEnabledDescription) {
                 $_description = strip_tags($this->_trim(
-                    $_product->getShortDescription(), $lengthDescription
+                    $_product->getShortDescription(),
+                    $lengthDescription
                 ));
             }
 
-            $this->_suggestions[] = array(
+            // $store = Mage::app()->getStore();
+            // $path = Mage::getResourceModel('core/url_rewrite')
+            //     ->getRequestPathByIdPath('product/' . $_product->getId(), $store);
+            // // $url = $store->getBaseUrl($store::URL_TYPE_WEB) . $path;
+            // $url = rtrim(Mage::getUrl($path, array('_store' => $store->getStoreId())), '/');
+            $url = $_product->getProductUrl();
+            $this->_suggestions[$sortOrder][] = array(
                 'name'        => $_product->getName(),
-                'url'         => $_product->getProductUrl(),
+                'url'         => $url,
                 'image'       => $_image,
                 'srcset'      => $_srcset,
                 'description' => $_description
@@ -209,34 +264,36 @@ class TM_AjaxSearch_Block_Result extends TM_AjaxSearch_Block_CatalogSearch_Resul
         $isEnabledDescription = (bool) Mage::getStoreConfig(self::ENABLE_DESCRIPTION_CONFIG);
         $lengthDescription    = (int) Mage::getStoreConfig(self::DESCRIPTION_LENGTH_CONFIG);
 
+        $sortOrder = Mage::getStoreConfig(self::SORT_ORDER_TAGS);
         $collection = $this->_getTagCollection();
         if (0 < count($collection)) {
-            $this->_suggestions[] = array('html' =>
+            $this->_suggestions[$sortOrder][] = array('html' =>
                 '<p class="headercategorysearch">' . $this->__("Products tags suggested")
                 . '</p><span class="hr"></span>'
             );
         }
 
-        if($isEnabledImage) {
+        if ($isEnabledImage) {
             $helper = Mage::helper('catalog/image');
         }
-        foreach($collection as $_row) {
+        foreach ($collection as $_row) {
             $_product = Mage::getModel('catalog/product')->load($_row->getId());
             $_image = $_srcset = $_description = '';
-            if($isEnabledImage) {
+            if ($isEnabledImage) {
                 $helper = $helper->init($_product, 'thumbnail');
                 $_image = $helper->resize($imageWidth, $imageHeight)
                     ->__toString();
                 $_srcset = $helper->resize($imageWidth * 2, $imageHeight * 2)
                     ->__toString() . ' 2x';
             }
-            if($isEnabledDescription) {
+            if ($isEnabledDescription) {
                 $_description = strip_tags($this->_trim(
-                    $_product->getShortDescription(), $lengthDescription
+                    $_product->getShortDescription(),
+                    $lengthDescription
                 ));
             }
 
-            $this->_suggestions[] = array(
+            $this->_suggestions[$sortOrder][] = array(
                 'name'        => $_product->getName(),
                 'url'         => $_product->getProductUrl(),
                 'image'       => $_image,
@@ -258,15 +315,16 @@ class TM_AjaxSearch_Block_Result extends TM_AjaxSearch_Block_CatalogSearch_Resul
     protected function _prepareCategory()
     {
         $collection = $this->_getCategoryCollection();
+        $sortOrder = Mage::getStoreConfig(self::SORT_ORDER_CATALOG);
         if (0 < count($collection)) {
-            $this->_suggestions[] = array('html' => '<p class="headercategorysearch">'
+            $this->_suggestions[$sortOrder][] = array('html' => '<p class="headercategorysearch">'
                 . $this->__("Categories")
                 . '</p><span class="hr"></span>'
             );
         }
         foreach ($collection as $_row) {
             $category = Mage::getModel("catalog/category")->load($_row['entity_id']);
-            $this->_suggestions[] = array(
+            $this->_suggestions[$sortOrder][] = array(
                 'name' => $_row['name'],
                 'url'  => $category->getUrl()
             );
@@ -285,8 +343,9 @@ class TM_AjaxSearch_Block_Result extends TM_AjaxSearch_Block_CatalogSearch_Resul
     protected function _prepareCms()
     {
         $collection = $this->_getCmsCollection();
+        $sortOrder = Mage::getStoreConfig(self::SORT_ORDER_CMS);
         if (count($collection)) {
-            $this->_suggestions[] = array('html' => '<p class="headercategorysearch">'
+            $this->_suggestions[$sortOrder][] = array('html' => '<p class="headercategorysearch">'
                 . $this->__("Info Pages")
                 . '</p><span class="hr"></span>'
             );
@@ -303,9 +362,45 @@ class TM_AjaxSearch_Block_Result extends TM_AjaxSearch_Block_CatalogSearch_Resul
                 continue;
             }
 
-            $this->_suggestions[] = array(
+            $this->_suggestions[$sortOrder][] = array(
                 'name' => $page->getTitle(),
                 'url'  => $helper->getPageUrl($page->getId())
+            );
+        }
+    }
+
+    protected function _getKnowledgebaseCollection()
+    {
+        return Mage::getResourceModel('knowledgebase/faq_collection')
+            ->addStoreFilter($this->getStoreId())
+            ->addSearchQuery($this->getQueryText())
+            ;
+    }
+
+    protected function _prepareKnowledgebase()
+    {
+        if (!$this->helper('core')->isModuleOutputEnabled('TM_KnowledgeBase')) {
+            return;
+        }
+        $collection = $this->_getKnowledgebaseCollection();
+        $sortOrder = Mage::getStoreConfig(self::SORT_ORDER_CMS) + 100;
+        if (count($collection)) {
+            $this->_suggestions[$sortOrder][] = array('html' => '<p class="headercategorysearch">'
+                . $this->__("Faqs")
+                . '</p><span class="hr"></span>'
+            );
+        }
+        foreach ($collection as $article) {
+            $article = Mage::getModel('knowledgebase/faq')
+                ->load($article->getId());
+
+            if (!$article || !$article->getId()) {
+                continue;
+            }
+            $url = Mage::helper('knowledgebase')->getUrl('faq/' . $article->getIdentifier());
+            $this->_suggestions[$sortOrder][] = array(
+                'name' => $article->getTitle(),
+                'url'  => $url
             );
         }
     }
@@ -319,15 +414,34 @@ class TM_AjaxSearch_Block_Result extends TM_AjaxSearch_Block_CatalogSearch_Resul
         }
         $this->_prepareProducts();
 
-        if (Mage::getStoreConfig('tm_ajaxsearch/general/enabletags')) {
+        if (Mage::getStoreConfig(self::ENABLE_TAGS)) {
             $this->_prepareTags();
         }
-        if (Mage::getStoreConfig('tm_ajaxsearch/general/enablecatalog')) {
+        if (Mage::getStoreConfig(self::ENABLE_CATALOG)) {
             $this->_prepareCategory();
         }
-        if (Mage::getStoreConfig('tm_ajaxsearch/general/enablecms')) {
+        if (Mage::getStoreConfig(self::ENABLE_CMS)) {
             $this->_prepareCms();
+            $this->_prepareKnowledgebase();
         }
+
+        if (!function_exists('array_flatten_once')) {
+            function array_flatten_once($array)
+            {
+                $return = array();
+                foreach ($array as $key => $value) {
+                    if (is_array($value)) {
+                        $return = array_merge($return, $value);
+                    } else {
+                        $return[$key] = $value;
+                    }
+                }
+
+                return $return;
+            }
+        }
+        ksort($this->_suggestions);
+        $this->_suggestions = array_flatten_once($this->_suggestions);
 
         $helper = Mage::helper('core');
         $query = $this->getQueryText();
@@ -352,7 +466,7 @@ class TM_AjaxSearch_Block_Result extends TM_AjaxSearch_Block_CatalogSearch_Resul
         if ($notFound && !empty($nothingNotFoundText)) {
             $this->_suggestions[] = array('html' =>
                 '<p class="headerajaxsearchwindow">' .
-                    $nothingNotFoundText .
+                    $this->__($nothingNotFoundText) .
                 '</p>'
             );
         }

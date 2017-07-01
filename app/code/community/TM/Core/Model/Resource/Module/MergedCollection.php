@@ -53,12 +53,39 @@ class TM_Core_Model_Resource_Module_MergedCollection extends Varien_Data_Collect
                 array(
                     'id'           => $code,
                     'data_version' => $module->getDataVersion(),
+                    'version'      => $module->getVersion(),
+                    'release_date' => null,
                     'code'         => $code,
                     'available_upgrades' => $module->getUpgradesToRun()
                 ),
                 $values->asCanonicalArray()
             );
 
+            $this->_collectedModules[$code] =
+                $this->_syncLocalAndRemoteData(
+                    $localData,
+                    $remoteCollection->getItemById($code)
+                );
+        }
+
+        // merge remote modules, that are not available locally
+        $remoteCodes = $remoteCollection->getColumnValues('code');
+        $localCodes = array_keys($this->_collectedModules);
+        $newCodes = array_diff($remoteCodes, $localCodes);
+        foreach ($newCodes as $code) {
+            if (0 !== strpos($code, 'TM_')) {
+                continue;
+            }
+
+            $module = new $this->_itemObjectClass();
+            $localData = array(
+                'id'           => $code,
+                'data_version' => $module->getDataVersion(),
+                'version'      => $module->getVersion(),
+                'release_date' => null,
+                'code'         => $code,
+                'available_upgrades' => $module->getUpgradesToRun()
+            );
             $this->_collectedModules[$code] =
                 $this->_syncLocalAndRemoteData(
                     $localData,
@@ -102,20 +129,11 @@ class TM_Core_Model_Resource_Module_MergedCollection extends Varien_Data_Collect
     {
         $result = array();
         if ($remote) {
-            $remote      = $remote->toArray();
-            $result      = $remote;
-            $version     = $remote['version'];
-            $dataVersion = '';
-            if (isset($remote['data_version'])) {
-                $dataVersion = $remote['data_version'];
-            }
-
-            unset($result['version']);
-            unset($result['data_version']);
-
-            $result['latest_version'] = $version;
-            $result['latest_data_version'] = $dataVersion;
+            $remote = $remote->toArray();
+            $result = $remote;
             $result['version_status'] = $this->_getVersionStatusLabel($local, $remote);
+        } else {
+            $result['version_status'] = $this->_getVersionStatusLabel($local, array());
         }
         return array_merge($local, $result);
     }
@@ -129,11 +147,12 @@ class TM_Core_Model_Resource_Module_MergedCollection extends Varien_Data_Collect
      */
     private function _getVersionStatusLabel(array $local, array $remote = array())
     {
-        $versionCompare = version_compare($local['version'], $remote['version']);
-        $dataCompare    = 0;
-        if (isset($remote['data_version'])) {
-            $dataCompare = version_compare($local['data_version'], $remote['data_version']);
+        if (isset($remote['latest_version'])) {
+            $versionCompare = version_compare($local['version'], $remote['latest_version']);
+        } else {
+            $versionCompare = 0;
         }
+        $dataCompare = 0;
         if ($local['available_upgrades']) {
             $dataCompare = -1;
         }

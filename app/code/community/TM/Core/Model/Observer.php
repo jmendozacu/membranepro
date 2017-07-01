@@ -10,6 +10,10 @@ class TM_Core_Model_Observer
     public function preDispatch(Varien_Event_Observer $observer)
     {
         if (Mage::getSingleton('admin/session')->isLoggedIn()) {
+            if (!Mage::getStoreConfig('tmcore/notification/enabled')) {
+                return;
+            }
+
             $feedModel = Mage::getModel('tmcore/notification_feed');
             $feedModel->checkUpdate();
         }
@@ -51,4 +55,25 @@ class TM_Core_Model_Observer
             $updates->appendChild($node);
         }
     }
+
+    public function onBeforeRenderLayout()
+    {
+        $layout = Mage::app()->getLayout();
+        if ($debug = $layout->getBlock(TM_Core_Helper_Debug::POPUP_NAME)) {
+            $layout->getBlock('content')->append($debug);
+        }
+    }
+
+    /**
+     * Refreshes block cache after saving the product. Fix message:
+     * "One or more of the Cache Types are invalidated: Blocks HTML output."
+     *
+     * @param Varien_Event_Observer $observer
+     */
+    public function updateInvalidatedBlockHtmlCache($observer)
+    {
+        Mage::app()->getCacheInstance()
+            ->cleanType(Mage_Core_Block_Abstract::CACHE_GROUP);
+    }
+
 }

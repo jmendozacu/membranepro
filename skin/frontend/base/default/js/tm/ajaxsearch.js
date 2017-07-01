@@ -36,6 +36,7 @@ var AjaxsearchAutocomplete = function(el, options){
     deferRequestBy:500,
     width:0,
     searchtext:'',
+    folded: false,
     baseUrl:'',
     secureUrl:'',
     container:null,
@@ -101,35 +102,36 @@ AjaxsearchAutocomplete.prototype = {
 
     Event.observe(this.el, window.opera ? 'keypress':'keydown', this.onKeyPress.bind(this));
     Event.observe(this.el, 'keyup', this.onKeyUp.bind(this));
+    Event.observe(this.el, 'paste', this.onPaste.bind(this));
+    Event.observe(this.el, 'cut', this.onPaste.bind(this));
     Event.observe(this.el, 'blur', this.enableKillerFn.bind(this));
     Event.observe(this.el, 'focus', this.fixPosition.bind(this));
-    Event.observe(this.el, 'click', this.fixText.bind(this));
-    Event.observe(this.el, 'blur', this.fixText.bind(this));
     if (this.submitButton) {
         Event.observe(this.submitButton, 'click', this.onButtonClick.bind(this));
     }
 
     if (this.categorySelect) {
         Event.observe(this.categorySelect, 'change', this.onCategoryChange.bind(this));
-
-        if (-1 === this.el.getStyle("width").indexOf('%')) {
-            var elWidth = (this.el.getStyle("width") ?
-                  parseInt(this.el.getStyle("width"), 10) : this.el.getWidth()),
-              selectWidth = (this.categorySelect.getStyle("width") ?
-                  parseInt(this.categorySelect.getStyle("width"), 10) : this.categorySelect.getWidth());
-
-            this.el.setStyle({
-                width: elWidth - selectWidth + 'px'
-            });
-        }
     }
 
     this.container.setStyle({ maxHeight: this.options.maxHeight + 'px' });
     this.instanceId = AjaxsearchAutocomplete.instances.push(this) - 1;
+
+    if (this.options.folded) {
+      var close = this.form.down('.close');
+      if (close) {
+          close.observe('click', function(event) {
+              Event.stop(event);
+              this.deactivateSearchField();
+          }.bind(this));
+      }
+    }
+    // fire event Ajax Search initialized
+    Element.fire(document, 'Ajaxsearch:init:after', this);
   },
 
   fixPosition: function() {
-    var offset = this.options.container ? this.el.positionedOffset() : this.el.cumulativeOffset(),
+    var offset = this.options.container ? this.positionedOffset(this.el) : this.el.cumulativeOffset(),
         left = offset.left;
     if (this.categorySelect && this.options.fullWidthMode) {
         left -= (this.categorySelect.getWidth() + 4);
@@ -156,26 +158,6 @@ AjaxsearchAutocomplete.prototype = {
     }
   },
 
-  fixText: function() {
-    if (document.activeElement) { // modern browsers. Prevent filling the dummy text on double click
-        var isFocused = (this.el.id === document.activeElement.id);
-        if (isFocused && (this.el.value === this.options.searchtext)) {
-            this.el.value = '';
-        } else if (!isFocused && this.el.value.length === 0) {
-            this.el.value = this.options.searchtext;
-        }
-        return;
-    }
-
-    if(this.el.value == this.options.searchtext){
-        this.el.value='';
-    } else if(this.el.value.length === 0) {
-        this.el.value = this.options.searchtext;
-    } else {
-        return;
-    }
-  },
-
   enableKillerFn: function() {
     Event.observe(document.body, 'click', this.killerFn);
   },
@@ -194,10 +176,48 @@ AjaxsearchAutocomplete.prototype = {
   },
 
   onButtonClick: function(e) {
+    if (this.options.folded && !this.activateSearchField(e)) {
+        return false;
+    }
     if (this.currentValue !== '' && this.currentValue !== this.options.searchtext) {
         this.hide();
         this.form.submit();
     }
+  },
+
+  activateSearchField: function(event) {
+    var field = this.el;
+    if (this.form.hasClassName('shown')) {
+        return true;
+    }
+
+    this.form.addClassName('shown');
+    this.el.focus();
+
+    if (field.value && field.value != this.options.searchtext) {
+        Event.stop(event);
+        // http://stackoverflow.com/questions/13071106/set-caret-to-end-of-textbox-on-focus/13071184#13071184
+        setTimeout(function() {
+            if (field.createTextRange) {
+                var r = field.createTextRange();
+                r.collapse(true);
+                r.moveEnd("character", field.value.length);
+                r.moveStart("character", field.value.length);
+                r.select();
+            } else {
+                field.selectionStart = field.selectionEnd = field.value.length;
+            }
+        }.bind(this), 13);
+        return false;
+    } else if (field.value == this.options.searchtext || field.value === '') {
+        field.setValue('');
+    }
+    return true;
+  },
+
+  deactivateSearchField: function() {
+      this.form.removeClassName('shown');
+      this.hide();
   },
 
   onKeyPress: function(e) {
@@ -270,6 +290,9 @@ AjaxsearchAutocomplete.prototype = {
         this.onValueChange();
       }
     }
+  },
+  onPaste: function(e) {
+    this.onKeyUp.bind(this).delay(0.1, e);
   },
 
   onValueChange: function() {
@@ -474,7 +497,7 @@ AjaxsearchAutocomplete.prototype = {
 
   showloader: function() {
     if (this.options.enableloader == 1) {
-        var elOffset = this.el.positionedOffset(),
+        var elOffset = this.positionedOffset(this.el),
             iconSize = {
                 width: 20,
                 height: 20
@@ -523,8 +546,54 @@ AjaxsearchAutocomplete.prototype = {
 
   onSelect: function(i) {
     (this.options.onSelect || Prototype.emptyFunction)(this.suggestions[i], this.data[i]);
+  },
+  /* Use own implementation of positionedOffset because of bug in original */
+  positionedOffset: function(element) {
+    var valueT = 0, valueL = 0;
+    do {
+      valueT += element.offsetTop  || 0;
+      valueL += element.offsetLeft || 0;
+      element = element.offsetParent;
+      if (element) {
+        if (element.nodeName.toUpperCase() === 'BODY') break;
+        var p = Element.getStyle(element, 'position');
+        if (p !== 'static') break;
+      }
+    } while (element);
+
+    return new Element.Offset(valueL, valueT);
   }
 
 };
 
-Event.observe(document, 'dom:loaded', function(){ AjaxsearchAutocomplete.isDomLoaded = true; }, false);
+function initAjaxsearchAutocomplete() {
+
+  AjaxsearchAutocomplete.isDomLoaded = true;
+
+  window.tmAjaxSearch = {};
+
+  var searchFormSelector =
+    '#search_mini_form, '
+    + '#search_mini_form-left, '
+    + '#search_mini_form-right';
+
+  $$(searchFormSelector).each(function(form){
+    var searchInputSelector = '.input-text';
+    var searchContainerSelector = '.mini-search';
+    if (form.hasAttribute('data-config')) {
+      var options = JSON.parse(form.readAttribute('data-config'));
+      options.container = form.down(searchContainerSelector);
+      options.onSelect = function (value, data) {setLocation(value.url)};
+      window.tmAjaxSearch[form.id] =
+        new AjaxsearchAutocomplete(form.down(searchInputSelector).id, options);
+    }
+  });
+}
+
+if ('complete' === document.readyState) {
+    initAjaxsearchAutocomplete();
+} else if (Prototype.Browser.IE) {
+    Event.observe(window, 'load', initAjaxsearchAutocomplete);
+} else {
+    document.observe("dom:loaded", initAjaxsearchAutocomplete);
+}

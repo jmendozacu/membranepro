@@ -34,7 +34,12 @@ class TM_AjaxSearch_IndexController  extends Mage_Core_Controller_Front_Action
 
     public function indexAction()
     {
-        $block = $this->getLayout()->createBlock('ajaxsearch/result');
-        $this->_sendJson($block->getSuggestions());
+        $request = $this->getRequest();
+        if ($request && $request->isXmlHttpRequest()) {
+            $block = $this->getLayout()->createBlock('ajaxsearch/result');
+            $this->_sendJson($block->getSuggestions());
+        } else {
+            $this->_redirectReferer();
+        }
     }
 }

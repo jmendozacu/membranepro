@@ -67,60 +67,6 @@ class TM_AjaxSearch_Block_CatalogSearch_Result extends Mage_CatalogSearch_Block_
         return $this->_queryText;
     }
 
-    protected function _getAlternativeProductCollection()
-    {
-        $query = $this->getQueryText();
-        $store = $this->getStoreId();
-        $category = $this->getCategory();
-
-        $isStandartCollection = (bool) Mage::getStoreConfig(self::USE_CATALOGSEARCH_COLLECTION_CONFIG);
-//        $isStandartCollection = true;
-        if ($isStandartCollection) {
-
-            $_query = Mage::helper('catalogsearch')->getQuery();
-            $_query->prepare();
-
-            $layer = Mage::getSingleton('catalogsearch/layer');
-            if (null !== $category) {
-                $layer->setCurrentCategory($category);
-            }
-            $collection = $layer->getProductCollection();
-            /* @var $collection Mage_Catalog_Model_Resource_Eav_Resource_Product_Collection */
-
-        } else {
-            $collection = Mage::getResourceModel('ajaxsearch/product_collection')
-                ->setQueryFilter($query);
-            /* @var $collection TM_AjaxSearch_Model_Mysql4_Collection */
-            $collection->addAttributeToSelect(
-                Mage::getSingleton('catalog/config')->getProductAttributes()
-            );
-            $collection->addMinimalPrice()
-                ->addFinalPrice()
-                ->addTaxPercents();
-            Mage::getSingleton('catalog/product_status')
-                ->addVisibleFilterToCollection($collection);
-            Mage::getSingleton('catalog/product_visibility')
-                ->addVisibleInSearchFilterToCollection($collection);
-        }
-
-        $collection->addStoreFilter($store)
-            ->addUrlRewrite()
-//            ->addAttributeToSort($attributeToSort, $attributeSortOrder)
-        ;
-
-        if (null !== $category) {
-            $collection->addCategoryFilter($category);
-        }
-
-        if (!Mage::helper('cataloginventory')->isShowOutOfStock()) {
-            Mage::getSingleton('cataloginventory/stock')
-                ->addInStockFilterToCollection($collection);
-        }
-
-//        $collection->load();
-        return $collection;
-    }
-
     /**
      * Retrieve loaded category collection
      *
@@ -133,11 +79,73 @@ class TM_AjaxSearch_Block_CatalogSearch_Result extends Mage_CatalogSearch_Block_
             $dontUseOnController = !Mage::getStoreConfig(self::UCCOSP_CONFIG);
             if (!$enabled || $dontUseOnController) {
                 $this->_productCollection = parent::_getProductCollection();
+
+                if (!$this->_productCollection instanceof Mage_CatalogSearch_Model_Resource_Fulltext_Collection) {
+                    $collection = Mage::getResourceModel('catalogsearch/fulltext_collection');
+                    $collection
+                        ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
+                        ->addSearchFilter(Mage::helper('catalogsearch')->getQuery()->getQueryText())
+                        ->setStore(Mage::app()->getStore())
+                        ->addMinimalPrice()
+                        ->addFinalPrice()
+                        ->addTaxPercents()
+                        ->addStoreFilter()
+                        ->addUrlRewrite();
+
+                    Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
+                    Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($collection);
+
+                    $this->_productCollection =  $collection;
+                }
             } else {
-                $this->_productCollection = $this->_getAlternativeProductCollection();
+                $collection = $this->_getAlternativeProductCollection();
+                $this->_productCollection = $collection;
             }
         }
+        // $s = (string) $collection->getSelect();
+        // \Zend_Debug::dump($s);
+        // die;
         return $this->_productCollection;
+    }
+
+    /**
+     *
+     * @return Mage_Catalog_Model_Resource_Eav_Resource_Product_Collection
+     */
+    protected function _getAlternativeProductCollection()
+    {
+        $query = $this->getQueryText();
+        $store = $this->getStoreId();
+        $category = $this->getCategory();
+
+        $_query = Mage::helper('catalogsearch')->getQuery();
+        $_query->prepare();
+
+        $layer = Mage::getSingleton('catalogsearch/layer');
+        if (!$layer) {
+            $layer = Mage::getModel('catalogsearch/layer');
+        }
+        if (!$layer) {
+            $layer = new Mage_CatalogSearch_Model_Layer();
+        }
+        if (null !== $category) {
+            $layer->setCurrentCategory($category);
+        }
+        $collection = $layer->getProductCollection();
+        /* @var $collection Mage_Catalog_Model_Resource_Eav_Resource_Product_Collection */
+        if (null !== $category) {
+            $collection->addCategoryFilter($category);
+        }
+
+        // $collection->addAttributeToSort($attributeToSort, $attributeSortOrder)
+        ;
+
+        if (!Mage::helper('cataloginventory')->isShowOutOfStock()) {
+            Mage::getSingleton('cataloginventory/stock')
+                ->addInStockFilterToCollection($collection);
+        }
+        // $collection->load();
+        return $collection;
     }
 
     /**
@@ -183,8 +191,9 @@ class TM_AjaxSearch_Block_CatalogSearch_Result extends Mage_CatalogSearch_Block_
      */
     public function setListCollection()
     {
-        $this->getListBlock()
-           ->setCollection($this->_getProductCollection());
-       return $this;
+        $this->getListBlock()->setCollection(
+            $this->_getProductCollection()
+        );
+        return $this;
     }
 }
