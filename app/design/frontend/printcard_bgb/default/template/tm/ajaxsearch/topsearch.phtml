@@ -14,7 +14,7 @@
             <?php if ($folded): ?>
             <div class="search-field-wrapper<?php echo $categoryFilter ? ' with-filter' : '' ?>">
             <?php endif; ?>
-            <label for="search"><?php echo $this->__('Search:') ?></label>
+            <label for="search" class="ion-android-search"></label>
             <?php if ($categoryFilter) : ?>
                 <?php echo $this->getChildHtml('ajaxsearch_category_filter') ?>
             <?php endif; ?>

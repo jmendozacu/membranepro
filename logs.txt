@@ -3,4 +3,7 @@ Logs
 
 Task Ajax Autocomplete Search Upgrade (1-7-2017)
 =======================================
-1. 
+1. Move new extension files as per extension standard.
+2. Move app/design layouts , templates , skin images to active pacakage theme.
+3. Change template html.
+4. change css to meet requirement.
