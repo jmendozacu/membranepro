@@ -34,6 +34,13 @@ class TM_AjaxSearch_Model_Layer extends Mage_CatalogSearch_Model_Layer
                 )
                 ->setQueryFilter($query)
                 ;
+            // vishal code start here
+            $collection ->joinField('category_id','catalog/category_product','category_id','product_id=entity_id',null,'left')
+                        ->addAttributeToFilter('category_id', array('nin' => 29));
+             $collection->getSelect()->group('e.entity_id');
+            //echo $collection->getSelect();die;
+            // vishal code end here
+            
             /* @var $collection TM_AjaxSearch_Model_Mysql4_Collection */
             $collection->setStore(Mage::app()->getStore())
                 ->addMinimalPrice()
@@ -48,7 +55,6 @@ class TM_AjaxSearch_Model_Layer extends Mage_CatalogSearch_Model_Layer
                 ->addVisibleInSearchFilterToCollection($collection);
         }
         // $this->prepareProductCollection($collection);
-
         return $collection;
     }
 }

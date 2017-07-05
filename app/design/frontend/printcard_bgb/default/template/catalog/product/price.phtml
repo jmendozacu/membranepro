@@ -52,13 +52,14 @@ $_minimalPrice = $_taxHelper->getPrice($_product, $_minimalPriceValue, $_simpleP
 $_convertedFinalPrice = $_store->roundPrice($_store->convertPrice($_product->getFinalPrice()));
 $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStoreLabel();
 ?>
-
-<?php if ($_product->getPriceOnDemand() && (Mage::app()->getRequest()->getModuleName() == 'catalog')): ?>
+<!-- Vishal added new condition to add code start -->
+<?php if ($_product->getPriceOnDemand() && (Mage::app()->getRequest()->getModuleName() == 'catalog' || Mage::app()->getRequest()->getModuleName() == 'catalogsearch')): ?>
     <div class="price-box">
          <span class="regular-price">
              <span class="price on-demand"><?php echo $this->__('Pret disponibil la cerere') ?></span>
          </span>
      </div>
+<!-- Vishal added new condition to add code end -->
 <?php else: ?>
     <?php if (!$_product->isGrouped()): ?>
         <?php $_weeeTaxAmount = $_weeeHelper->getAmountForDisplay($_product); ?>
