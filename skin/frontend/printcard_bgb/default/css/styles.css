@@ -3697,6 +3697,9 @@ div.block-layered-nav dd{ }
 	text-align: left;
 	width: auto; }
 .catalog-category-view .products-grid .price-box { width: 35%; }
+.catalogsearch-result-index .products-grid .price-box{
+    width: 35%;
+}
 .products-grid .availability{  }
 .products-grid .actions{
 	clear: none;
